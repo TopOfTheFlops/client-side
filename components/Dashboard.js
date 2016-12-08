@@ -1,11 +1,13 @@
 import React from 'react'
-import Header from './header'
-import Nav from './nav'
+import Header from './Header'
+import Nav from './Nav'
+import Lifestyles from './Lifestyles'
 
 function Dashboard({state}) {
   return (
     <div>
-    <Header header={state.header} />
+    <Header />
+    <Lifestyles state={state}/>
     <Nav />
     </div>
   )
