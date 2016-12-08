@@ -1,12 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Header from './header'
+import Nav from './nav'
 
 function Dashboard({state}) {
   return (
     <div>
     <Header header={state.header} />
+    <Nav />
     </div>
   )
 }
 
-export default Dashboard
+module.exports = Dashboard
