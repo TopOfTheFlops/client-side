@@ -36,8 +36,8 @@ var initialState = {
 const {dispatch, getState, subscribe} = createStore(reducer, initialState)
 
 const route = Router({default: '/404'}, [
-  ['/login', (params) => Login],
-  ['/', (params) => Dashboard]
+  ['/', (params) => Login],
+  ['/lsdaf', (params) => Dashboard]
 ])
 
 subscribe(() => {

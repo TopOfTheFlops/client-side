@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Login(props) {
+function Login({state}) {
   return (
     <div>
-      <h1>{props.name}</h1>
+      <h1>{state.header}</h1>
       <form>
         <input placeholder='username' type='text'/>
         <input placeholder='password' type='text'/>
