@@ -2,38 +2,45 @@ import React from 'react'
 import { render } from 'react-dom'
 import {createStore} from 'redux'
 import reducer from './reducer'
+import Router from 'sheet-router'
 
-import App from './components/App'
+import Login from './components/Login'
 
 var main = document.querySelector('main')
 
 var initialState = {
   currentPage: 'login',
-  lifeStyles: [
-    {
-      title: 'Best Lasagna',
-      description: 'The person that can make the best lasagna',
-      flops: {
-        flopper: 'michael',
-        flopID: 1,
-        media: 'imgur.com/1345lkj'
-        description: 'This is my best lasagna currently'
-      }
-   ]
-    currentFlopper: {
-      flopperID: 1,
-      name: 'lord master',
-      profilePic: 'imgur.com/flj2530',
-      bio: 'Im good at things!',
-      lifeStylesFollowing: ['lasagna', 'cup stacking'],
-      floppersFollowing: [1,3,4]
-    }
+  lifestyles: [
+    {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
+    {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2},
+  ],
+  currentFlopper: {
+    flopperId: 1,
+    name: 'lord master',
+    profilePic: 'imgur.com/flj2530',
+    bio: 'Im good at things!',
+    lifestylesFollowing: ['lasagna', 'cup stacking'],
+    floppersFollowing: [1,3,4]
+  },
+    flops: [
+    {flopId: 1, lifestyleId: 1, upvotes: 7, downvotes: 5},
+    {flopId: 2, lifestyleId: 1, upvotes: 5, downvotes: 5},
+    {flopId: 3, lifestyleId: 2, upvotes: 5, downvotes: 5},
+    {flopId: 4, lifestyleId: 1, upvotes: 5, downvotes: 5}
+  ]
 }
+
 
 const {dispatch, getState, subscribe} = createStore(reducer, initialState)
 
+const route = Router({default: '/404'}, [
+  ['/', (params) => Login]
+])
+
 subscribe(() => {
-  render(<App name='TopOfTheFlopsClient' />, main)
+  var Component = route(getState().currentPage)
+  render(<Component name='top of the flops'
+  state={getState()} dispatch={dispatch} />, main)
 })
 
 dispatch({type: 'INIT'})
