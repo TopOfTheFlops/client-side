@@ -5,11 +5,13 @@ import reducer from './reducer'
 import Router from 'sheet-router'
 
 import Login from './components/Login'
+import Dashboard from './components/Dashboard'
 
 var main = document.querySelector('main')
 
 var initialState = {
   currentPage: 'login',
+  header: 'top of the flops',
   lifestyles: [
     {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
     {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2},
@@ -34,13 +36,13 @@ var initialState = {
 const {dispatch, getState, subscribe} = createStore(reducer, initialState)
 
 const route = Router({default: '/404'}, [
-  ['/', (params) => Login]
+  ['/login', (params) => Login],
+  ['/', (params) => Dashboard]
 ])
 
 subscribe(() => {
   var Component = route(getState().currentPage)
-  render(<Component name='top of the flops'
-  state={getState()} dispatch={dispatch} />, main)
+  render(<Component state={getState()} dispatch={dispatch} />, main)
 })
 
 dispatch({type: 'INIT'})
