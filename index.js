@@ -14,7 +14,7 @@ import Profile from './components/Profile'
 var main = document.querySelector('main')
 
 var initialState = {
-  currentPage: '/dashboard',
+  currentPage: '/',
   currentLifestyleId: 1,
   lifestyles: [
     {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1, media: 'http://assets.bonappetit.com/photos/57ae45a253e63daf11a4e4a9/master/w_1200,c_limit/squash-and-broccoli-rabe-lasagna.jpg'},
@@ -43,7 +43,7 @@ const route = Router({default: '/404'}, [
   ['/', (params) => Login],
   ['/dashboard', (params) => Dashboard],
   ['/flops', (params) => Flops],
-  ['/createlifestyle', (params) => CreateLifestyle],
+  ['/createLifestyle', (params) => CreateLifestyle],
   ['/CreateFlop', (params) => CreateFlop],
   ['/profile', (params) => Profile]
 ])

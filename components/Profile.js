@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import Nav from './Nav'
 
-function Profile({state}) {
+function Profile({state, dispatch}) {
   return (
     <div>
       <Header />
@@ -15,7 +15,7 @@ function Profile({state}) {
         </div>
       </div>
       {SortFlops(state)}
-      <Nav />
+      <Nav state={state} dispatch={dispatch} />
     </div>
   )
 }

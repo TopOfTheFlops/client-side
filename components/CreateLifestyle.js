@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import Nav from './Nav'
 
-function CreateLifestyle({state}) {
+function CreateLifestyle({state, dispatch}) {
   return (
     <div>
       <Header />
@@ -16,7 +16,7 @@ function CreateLifestyle({state}) {
         <input placeholder='Image url' type="text"/>
       </form>
       <button className='create'>Go!</button>
-      <Nav />
+      <Nav state={state} dispatch={dispatch}/>
     </div>
   )
 }

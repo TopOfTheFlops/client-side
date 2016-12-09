@@ -3,14 +3,17 @@ import React from 'react'
 import Header from './Header'
 import Nav from './Nav'
 
-function Flops({state}) {
+function Flops({state, dispatch}) {
+  function goToCreateFlop (e) {
+    dispatch({type: 'CHANGE_PAGE', payload: '/CreateFlop'})
+  }
   return (
     <div>
       <Header />
       {RenderTitle(state)}
       {RenderFlops(state)}
-      <button className='create'>Compete!</button>
-      <Nav />
+      <button className='create' onClick={goToCreateFlop}>Go!</button>
+      <Nav state={state} dispatch={dispatch}/>
     </div>
   )
 }
@@ -24,7 +27,7 @@ function RenderFlops(state) {
     .map( (flop, index) => {
       flop.rank = index+1
       return (
-        <div className='lifestyle'>
+        <div className='lifestyle' key={flop.flopId}>
         <img className='flopPic' src={flop.media}/>
           <h3>{flop.rank} {flop.name}</h3>
           <p>{flop.description}</p>
