@@ -67,3 +67,20 @@ nav {
   left: 0;
   height:50px;
 }
+
+.profilePic {
+  width: 100px;
+  height: 90px;
+  border-radius: 50%;
+  float:left;
+  border: solid 1px black;
+}
+
+.profileInfo {
+  float: left;
+  margin-left: 30px;
+}
+
+.profile {
+  display: inline-block;
+}

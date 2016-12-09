@@ -39,6 +39,7 @@ module.exports = (state, action) => {
 
 
 
+
 // recieve lifeStyles
 // recieve flops
 // recieve currentFlopper

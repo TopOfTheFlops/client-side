@@ -21,4 +21,5 @@ function CreateLifestyle({state}) {
   )
 }
 
+
 module.exports = CreateLifestyle

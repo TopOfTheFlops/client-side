@@ -8,6 +8,8 @@ import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import Flops from './components/Flops'
 import CreateLifestyle from './components/CreateLifestyle'
+import CreateFlop from './components/CreateFlop'
+import Profile from './components/Profile'
 
 var main = document.querySelector('main')
 
@@ -21,7 +23,7 @@ var initialState = {
   currentFlopper: {
     flopperId: 1,
     name: 'lord master',
-    profilePic: 'imgur.com/flj2530',
+    profilePic: 'http://abdindia.com/wp-content/uploads/2014/01/lord.jpg',
     bio: 'Im good at things!',
     lifestylesFollowing: ['lasagna', 'cup stacking'],
     floppersFollowing: [1,3,4]
@@ -29,7 +31,7 @@ var initialState = {
     flops: [
     {flopId: 1, lifestyleId: 1, userId: '1', name: 'lord master', media: 'https://barilla.azureedge.net/~/media/images/en_us/hero-images/oven-ready-lasagna.jpg', description: 'hello',upvotes: 0, downvotes: 5},
     {flopId: 2, lifestyleId: 1, userId: '2', name: 'james', media: 'https://static01.nyt.com/images/2015/10/15/dining/15RECIPE20DIN/15RECIPE20DIN-superJumbo.jpg', description: 'James is cool',upvotes: 14, downvotes: 5},
-    {flopId: 3, lifestyleId: 2, userId: '4', name: 'gaby', media: '', description: 'Michael is nice',upvotes: 5, downvotes: 5},
+    {flopId: 3, lifestyleId: 2, userId: '1', name: 'lord master', media: '', description: 'Michael is nice',upvotes: 5, downvotes: 5},
     {flopId: 4, lifestyleId: 1, userId: '1', name: 'harry', media: 'http://assets.kraftfoods.com/recipe_images/opendeploy/Table-for-Two_Lasagna_640x428.jpg', description: 'Kate is good',upvotes: 5, downvotes: 5}
   ]
 }
@@ -41,7 +43,9 @@ const route = Router({default: '/404'}, [
   ['/login', (params) => Login],
   ['/dashboard', (params) => Dashboard],
   ['/flops', (params) => Flops],
-  ['/', (params) => CreateLifestyle]
+  ['/createlifestyle', (params) => CreateLifestyle],
+  ['/CreateFlop', (params) => CreateFlop],
+  ['/', (params) => Profile]
 ])
 
 subscribe(() => {
