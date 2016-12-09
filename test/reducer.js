@@ -55,7 +55,7 @@ test('tests UP_VOTE can increment the upvote count', function(t) {
       {flopId: 4, lifestyleId: 1, upvotes: 5, downvotes: 5}
     ]
   }
-  var actual= reducer(initialState, {type: 'UP_VOTE', payload: {lifestyleId: 1, flopId: 1}})
+  var actual= reducer(initialState, {type: 'UP_VOTE', payload: 1})
 
   t.deepEqual(actual, expected, 'UP_VOTE increments vote count')
   t.end()
@@ -93,7 +93,7 @@ test('tests DOWN_VOTE can decrement the downvote count', function(t) {
       {flopId: 4, lifestyleId: 1, upvotes: 5, downvotes: 6}
     ]
   }
-  const actual = reducer(initialState, {type: 'DOWN_VOTE', payload: {lifestyleId: 1, flopId: 4}})
+  const actual = reducer(initialState, {type: 'DOWN_VOTE', payload: 4})
   t.deepEqual(actual, expected, 'DOWN_VOTE increments vote count')
   t.end()
 })

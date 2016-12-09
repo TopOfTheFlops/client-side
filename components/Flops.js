@@ -2,6 +2,8 @@ import React from 'react'
 
 import Header from './Header'
 import Nav from './Nav'
+import upvoteFlop from '../api/upvoteFlop'
+import downvoteFlop from '../api/downvoteFlop'
 
 function Flops({state, dispatch}) {
   function goToCreateFlop (e) {
@@ -11,14 +13,17 @@ function Flops({state, dispatch}) {
     <div>
       <Header />
       {RenderTitle(state)}
-      {RenderFlops(state)}
+      {RenderFlops(state, dispatch)}
       <button className='create' onClick={goToCreateFlop}>Go!</button>
       <Nav state={state} dispatch={dispatch}/>
     </div>
   )
 }
 
-function RenderFlops(state) {
+function RenderFlops(state, dispatch) {
+  function actionDownvote(dispatch, id){
+
+  }
   return state.flops
   .sort((a, b) => b.upvotes - a.upvotes)
     .filter(flop => {
@@ -31,13 +36,14 @@ function RenderFlops(state) {
           <img className='flopPic' src={flop.mediaURL}/>
           <h3>{flop.rank} {flop.username}</h3>
           <p>{flop.description}</p>
-          <button>cool!</button>
+          <button id={index} onClick={() => upvoteFlop(dispatch, flop.flopId)} >cool!</button>
           <p>up: {flop.upvotes}</p>
-          <button>stupid!</button>
+          <button onClick={() => downvoteFlop(dispatch, flop.flopId)}>stupid!</button>
           <p>down: {flop.downvotes}</p>
         </div>
       )
     })
+
 }
 
 function RenderTitle(state) {

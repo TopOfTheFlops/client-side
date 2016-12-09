@@ -5,7 +5,6 @@ module.exports = (dispatch) => {
     .get('http://topoftheflops.herokuapp.com/api/v1/flops')
     .end((err, res) => {
       if (err) return console.log(err)
-      console.log('Getting flops', res.body);
       dispatch({type: 'RECEIVE_FLOPS', payload: res.body.flops})
   })
 }

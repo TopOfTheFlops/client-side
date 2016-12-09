@@ -7,17 +7,12 @@ module.exports = (state, action) => {
       newState.currentPage = payload
       return newState
     case 'UP_VOTE':
-    var {lifestyleId, flopId} = payload
-      newState.flops.forEach((flop, index) => {
-        if(flop.lifestyleId === lifestyleId && flop.flopId === flopId) newState.flops[index].upvotes ++
-      })
+      newState.flops.find(flop => flop.flopId == payload).upvotes++
       return newState
     case 'DOWN_VOTE':
-    var {lifestyleId, flopId} = payload
-      newState.flops.forEach((flop, index) => {
-        if(flop.lifestyleId === lifestyleId && flop.flopId === flopId) newState.flops[index].downvotes ++
-      })
-      return newState
+    var correctFlop = newState.flops.find(flop => flop.flopId == payload)
+    correctFlop.downvotes ++
+    return newState
     case 'RECEIVE_LIFESTYLES':
       newState.lifestyles = payload
       return newState
