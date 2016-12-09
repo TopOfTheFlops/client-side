@@ -84,3 +84,25 @@ nav {
 .profile {
   display: inline-block;
 }
+
+.loginPage {
+  background-color: #f64161;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.username {
+  margin-left: 30%;
+  display: block;
+}
+
+.password {
+  margin-left: 30%;
+  display: block;
+}
+
+.loginTitle {
+  color: white;
+}

@@ -14,7 +14,7 @@ import Profile from './components/Profile'
 var main = document.querySelector('main')
 
 var initialState = {
-  currentPage: 'login',
+  currentPage: '/dashboard',
   currentLifestyleId: 1,
   lifestyles: [
     {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1, media: 'http://assets.bonappetit.com/photos/57ae45a253e63daf11a4e4a9/master/w_1200,c_limit/squash-and-broccoli-rabe-lasagna.jpg'},
@@ -40,17 +40,17 @@ var initialState = {
 const {dispatch, getState, subscribe} = createStore(reducer, initialState)
 
 const route = Router({default: '/404'}, [
-  ['/login', (params) => Login],
+  ['/', (params) => Login],
   ['/dashboard', (params) => Dashboard],
   ['/flops', (params) => Flops],
   ['/createlifestyle', (params) => CreateLifestyle],
   ['/CreateFlop', (params) => CreateFlop],
-  ['/', (params) => Profile]
+  ['/profile', (params) => Profile]
 ])
 
 subscribe(() => {
   var Component = route(getState().currentPage)
-  render(<Component state={getState()} dispatch={dispatch} />, main)
+  render(<Component state={getState()} dispatch={dispatch}/>, main)
 })
 
 dispatch({type: 'INIT'})

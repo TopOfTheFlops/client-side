@@ -1,14 +1,14 @@
 import React from 'react'
 
-function Login({state}) {
+function Login({state, reducer}) {
+
   return (
-    <div>
-      <h1>top of the flops</h1>
-      <form>
-        <input placeholder='username' type='text'/>
-        <input placeholder='password' type='text'/>
+    <div className='loginPage'>
+      <h1 className='loginTitle'>top of the flops</h1>
+        <input className='username' placeholder='username' type='text'/>
+        <input className='password' placeholder='password' type='text'/>
         <button>Login!</button>
-      </form>
+
       <button>Sign Up!</button>
     </div>
   )
