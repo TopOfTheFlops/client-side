@@ -7,6 +7,7 @@ import Router from 'sheet-router'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import Flops from './components/Flops'
+import CreateLifestyle from './components/CreateLifestyle'
 
 var main = document.querySelector('main')
 
@@ -39,7 +40,8 @@ const {dispatch, getState, subscribe} = createStore(reducer, initialState)
 const route = Router({default: '/404'}, [
   ['/login', (params) => Login],
   ['/dashboard', (params) => Dashboard],
-  ['/', (params) => Flops]
+  ['/flops', (params) => Flops],
+  ['/', (params) => CreateLifestyle]
 ])
 
 subscribe(() => {
