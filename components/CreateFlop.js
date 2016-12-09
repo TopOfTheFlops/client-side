@@ -8,7 +8,7 @@ function CreateFlop({state, dispatch}) {
       <Header />
       <h2>Flopping In</h2>
       <form>
-        <h3>{RenderTitle(state)}</h3>
+        {RenderTitle(state)}
         <input placeholder='Image url' type="text"/>
         <h3>Describe your entry</h3>
         <input placeholder='Description' type="text"/>
@@ -21,7 +21,7 @@ function CreateFlop({state, dispatch}) {
 
 function RenderTitle(state) {
   const {lifestyles, currentLifestyleId} = state
-  return lifestyles.filter( lifestyle => lifestyle.lifestyleId == currentLifestyleId).map(lifestyle => (<h2>{lifestyle.title}</h2>))
+  return lifestyles.filter( lifestyle => lifestyle.lifestyleId == currentLifestyleId).map(lifestyle => (<h2 key={lifestyle.lifestyleId}>{lifestyle.title}</h2>))
 }
 
 

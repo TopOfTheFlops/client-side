@@ -18,6 +18,7 @@ function lifeDash(state, dispatch){
   return lifestyles.map(function(lifestyle, index){
     return (
       <div className="lifestyle" key={index} onClick={() =>{
+        dispatch({type: 'CHANGE_CURRENTLIFESTYLEID', payload: lifestyle.lifestyleId})
         dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
       }}>
         <h4>{lifestyle.title}</h4>
