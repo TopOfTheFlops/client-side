@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import Nav from './Nav'
 
-function CreateFlop({state}) {
+function CreateFlop({state, dispatch}) {
   return (
     <div>
       <Header />
@@ -14,7 +14,7 @@ function CreateFlop({state}) {
         <input placeholder='Description' type="text"/>
       </form>
       <button className='create'>Compete!</button>
-      <Nav />
+      <Nav dispatch={dispatch} state={state}/>
     </div>
   )
 }

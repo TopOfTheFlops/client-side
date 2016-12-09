@@ -8,10 +8,10 @@ function Profile({state, dispatch}) {
       <Header />
       <h3>Your Profile</h3>
       <div className="profile">
-        <img className='profilePic' src={state.currentFlopper.profilePic}/>
+        <img className='profilePic' src={state.currentUser.profilePic}/>
         <div className="profileInfo">
-          <h2 >{state.currentFlopper.name}</h2>
-          <p>{state.currentFlopper.bio}</p>
+          <h2 >{state.currentUser.name}</h2>
+          <p>{state.currentUser.bio}</p>
         </div>
       </div>
       {SortFlops(state)}
@@ -29,8 +29,7 @@ function SortFlops(state) {
     .sort((a,b) => b.upvotes - a.upvotes)
     .map((flop, index) => {
       flop.rank = index+1
-      console.log(flop);
-      if (flop.name == state.currentFlopper.name)
+      if (flop.name == state.currentUser.name)
       return (
         <div>
           <h2>#{flop.rank}</h2>

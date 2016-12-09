@@ -27,9 +27,9 @@ function RenderFlops(state) {
     .map( (flop, index) => {
       flop.rank = index+1
       return (
-        <div className='lifestyle' key={flop.flopId}>
-        <img className='flopPic' src={flop.media}/>
-          <h3>{flop.rank} {flop.name}</h3>
+        <div className='flop' key={flop.flopId}>
+          <img className='flopPic' src={flop.mediaURL}/>
+          <h3>{flop.rank} {flop.username}</h3>
           <p>{flop.description}</p>
           <button>cool!</button>
           <p>up: {flop.upvotes}</p>
@@ -42,7 +42,7 @@ function RenderFlops(state) {
 
 function RenderTitle(state) {
   const {lifestyles, currentLifestyleId} = state
-  return lifestyles.filter( lifestyle => lifestyle.lifestyleId == currentLifestyleId).map(lifestyle => (<h2>{lifestyle.title}</h2>))
+  return lifestyles.filter( lifestyle => lifestyle.lifestyleId == currentLifestyleId).map(lifestyle => (<h2 key={lifestyle.lifestyleId}>{lifestyle.title}</h2>))
 }
 
 module.exports = Flops

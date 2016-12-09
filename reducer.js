@@ -1,7 +1,3 @@
-var getLifestyles = require('./test/apiCalls').getLifestyles
-var getFlops = require('./test/apiCalls').getFlops
-var getCurrentFlopper = require('./test/apiCalls').getCurrentFlopper
-
 
 module.exports = (state, action) => {
   const newState = require('clone')(state)
@@ -23,23 +19,18 @@ module.exports = (state, action) => {
       })
       return newState
     case 'RECEIVE_LIFESTYLES':
-      newState.lifeStyles = getLifestyles()
+      newState.lifestyles = payload
       return newState
     case 'RECEIVE_FLOPS':
-      newState.flops = getFlops()
+      newState.flops = payload
       return newState
-    case 'RECEIVE_CURRENTFLOPPER':
-      newState.currentFlopper = getCurrentFlopper()
+    case 'RECEIVE_CURRENT_USER':
+      newState.currentUser = payload
+      return newState
+    case 'CHANGE_CURRENTLIFESTYLEID':
+      newState.currentLifestyleId = payload
       return newState
     default:
       return newState
   }
 }
-
-
-
-
-
-// recieve lifeStyles
-// recieve flops
-// recieve currentFlopper

@@ -31,7 +31,7 @@ function lifeDash(state, dispatch){
 }
 
 function getTopThree(state, id) {
-  var {lifestyles, flops, currentFlopper} = state
+  var {lifestyles, flops, currentUser} = state
   return (
     <div className='topThree'>
       { flops
@@ -39,10 +39,10 @@ function getTopThree(state, id) {
         .sort((a,b) => b.upvotes - a.upvotes)
         .filter((flop, index) => {
           flop.rank = index+1
-          return flop.userId == currentFlopper.flopperId || index < 3
+          return flop.userId == currentUser.userId || index < 3
         })
         .map( (flop, index) => {
-          return <div key={index}>{flop.rank} {flop.name} {flop.upvotes} </div>
+          return <div key={index}>{flop.rank} {flop.username} {flop.upvotes} </div>
         })
     }
     </div>

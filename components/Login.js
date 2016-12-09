@@ -1,8 +1,12 @@
 import React from 'react'
+import getLifestyles from '../api/getLifestyles'
+import getFlops from '../api/getFlops'
 
 function Login({state, dispatch}) {
   function login (e) {
     e.preventDefault()
+    getLifestyles(dispatch)
+    getFlops(dispatch)
     dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
   }
   return (
