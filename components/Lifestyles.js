@@ -7,8 +7,8 @@ function Lifestyles({state, dispatch}) {
   }
   return (
     <div className='lifestyles'>
+    <button className='create' onClick={goToCreateLifestyle}>create new lifestyle</button>
         {lifeDash(state, dispatch)}
-        <button className='create' onClick={goToCreateLifestyle}>create new lifestyle</button>
     </div>
   )
 }
@@ -22,28 +22,26 @@ function lifeDash(state, dispatch){
         dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
       }}>
         <h4>{lifestyle.title}</h4>
-        <div className='lifeScores'>
-          <img className="lifestylePic" src={lifestyle.media}/>
-          {getTopThree(state, lifestyle.lifestyleId)}
-        </div>
+        <img className="lifestylePic" src={lifestyle.media}/>
+        {getTopThree(state, lifestyle.lifestyleId)}
       </div>
     )
   })
 }
 
-function getTopThree(state, id) {
+function getTopThree(state, lifestyleId) {
   var {lifestyles, flops, currentUser} = state
   return (
     <div className='topThree'>
       { flops
-        .filter( flop => flop.lifestyleId === id)
+        .filter( flop => flop.lifestyleId === lifestyleId)
         .sort((a,b) => b.upvotes - a.upvotes)
         .filter((flop, index) => {
           flop.rank = index+1
-          return flop.userId == currentUser.userId || index < 3
+          return flop.userId === lifestyleId || index < 3
         })
         .map( (flop, index) => {
-          return <div key={index}>{flop.rank} {flop.username} {flop.upvotes} </div>
+          return <div key={index}>{flop.rank}. {flop.username} {flop.upvotes} </div>
         })
     }
     </div>
