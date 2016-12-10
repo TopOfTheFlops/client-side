@@ -17,8 +17,7 @@ module.exports = (dispatch, userInfo) => {
       } else {
         getLifestyles(dispatch)
         getFlops(dispatch)
-        getCurrentUser(dispatch, 3) // This is hard coded, where do we get the id of the user from when signing in?
-        dispatch({type: 'LOGIN_SUCCESSFUL', payload: res.body})
+        dispatch({type: 'LOGIN_SUCCESSFUL', payload: res.body.user})
         dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
       }
   })

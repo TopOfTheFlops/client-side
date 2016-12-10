@@ -41,7 +41,8 @@ function getTopThree(state, lifestyleId) {
           return flop.userId === lifestyleId || index < 3
         })
         .map( (flop, index) => {
-          return <div key={index}>{flop.rank}. {flop.username} {flop.upvotes} </div>
+          var customClass = flop.username === state.currentUser.username ? 'currentUser' : 'otherUser'
+          return <div className={customClass} key={index}>{flop.rank}. {flop.username} {flop.upvotes} </div>
         })
     }
     </div>
