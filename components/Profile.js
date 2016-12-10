@@ -3,6 +3,7 @@ import Header from './Header'
 import Nav from './Nav'
 
 function Profile({state, dispatch}) {
+  console.log('State at Profile', state.currentUser)
   return (
     <div>
       <Header />

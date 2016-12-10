@@ -1,26 +1,36 @@
 import React from 'react'
-import getLifestyles from '../api/getLifestyles'
-import getFlops from '../api/getFlops'
-import getCurrentUser from '../api/getCurrentUser'
+import loginService from '../api/loginService'
 
 function Login({state, dispatch}) {
+
   function login (e) {
+
     e.preventDefault()
-    getCurrentUser(dispatch, 2)
-    getLifestyles(dispatch)
-    getFlops(dispatch)
-    dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
+
+    const userInfo = {
+      username: document.getElementById('username').value,
+      password: document.getElementById('password').value
+    }
+    loginService(dispatch, userInfo)
   }
+
   function goToSignup () {
     dispatch({type: 'CHANGE_PAGE', payload: '/signup'})
   }
+
+  const customClass = state.loginInProgress ? '' : 'hidden'
+
+  const successClass = state.loginUnsuccessful ? 'show' : 'hidden'
+
   return (
     <div className='loginPage'>
       <h1 className='loginTitle'>top of the flops</h1>
       <form className='loginForm'>
-        <input className='username' placeholder='username' type='text'/>
-        <input className='password' placeholder='password' type='password'/>
+        <input className='username' placeholder='username' type='text' id='username'/>
+        <input className='password' placeholder='password' type='password' id='password'/>
         <input className='loginButton' type='submit' value='Login!' onClick={login}></input>
+        <p className={customClass}>Login in progress</p>
+        <p className={successClass}>Login unsuccessful</p>
       </form>
       <button className='signupButton' onClick={goToSignup}>Sign Up!</button>
     </div>
@@ -28,3 +38,7 @@ function Login({state, dispatch}) {
 }
 
 export default Login
+
+
+
+// dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})

@@ -101,6 +101,7 @@ test('tests DOWN_VOTE can decrement the downvote count', function(t) {
 test('tests RECEIVE_LIFESTYLES gets lifestyle data', function(t) {
   var initialState = {
     currentPage: 'login',
+    requestingLifestyles: true,
     lifestyles: [],
     currentUser: {},
     flops: []
@@ -109,6 +110,7 @@ test('tests RECEIVE_LIFESTYLES gets lifestyle data', function(t) {
 
   var expected = {
     currentPage: 'login',
+    requestingLifestyles: false,
     lifestyles: [
       {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
       {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2}
@@ -128,6 +130,7 @@ test('tests RECEIVE_LIFESTYLES gets lifestyle data', function(t) {
 test('tests RECEIVE_FLOPS gets flops data', function(t) {
   var initialState = {
     currentPage: 'login',
+    requestingFlops: true,
     lifestyles: [],
     currentUser: {},
     flops: []
@@ -137,6 +140,7 @@ test('tests RECEIVE_FLOPS gets flops data', function(t) {
   var expected = {
     currentPage: 'login',
     lifestyles: [],
+    requestingFlops: false,
     currentUser: {},
     flops: [
       {flopId: 1, lifestyleId: 1, upvotes: 7, downvotes: 5},
@@ -208,5 +212,64 @@ test('tests CHANGE_CURRENTLIFESTYLEID can change the id', function (t) {
   const actual = reducer(initialState, {type: 'CHANGE_CURRENTLIFESTYLEID', payload: 2})
 
   t.deepEqual(actual,expected, 'changing the currentLifestyleId')
+  t.end()
+})
+
+test('LOGIN_INIT', function(t){
+
+  var initialState = {
+    loginInProgress: false
+  }
+  // arrange
+  const expectedLoginInProgress = true
+  freeze(initialState)
+  const action = {type: 'LOGIN_INIT'}
+  // act
+  const newState = reducer(initialState, action)
+  // assert
+  t.equal(newState.loginInProgress, expectedLoginInProgress, "login init changes logininprogr 1`ess to true")
+  t.end()
+})
+
+test('LOGIN_SUCCESSFUL', function(t){
+  var initialState = {
+    loginInProgress: true,
+    loginUnsuccessful: true
+  }
+  // arrange
+  const expectedLoginInProgress = false
+  const expectedLoginUnsuccessful = false
+  freeze(initialState)
+  const userData = {
+      userId: 1,
+      name: 'lord master',
+      profilePic: 'http://abdindia.com/wp-content/uploads/2014/01/lord.jpg',
+      bio: 'Im good at things!'
+    }
+  const action = {type: 'LOGIN_SUCCESSFUL', payload: userData}
+  // act
+  const newState = reducer(initialState, action)
+  // assert
+  t.equal(newState.loginInProgress, expectedLoginInProgress, "Login succesful changes state to loginInProgress to false")
+  t.equal(newState.loginUnsuccessful, expectedLoginUnsuccessful, "Login succesful changes state to loginUnsuccessful to true")
+  t.deepEqual(newState.currentUser, userData, "Login successful adds the user data from payload to current user")
+  t.end()
+})
+
+test('LOGIN_UNSUCCESSFUL', function(t){
+  var initialState = {
+    loginInProgress: true,
+    loginUnsuccessful: false
+  }
+  // arrange
+  const expectedLoginInProgress = false
+  const expectedLoginUnsuccessful = true
+  freeze(initialState)
+  const action = {type: 'LOGIN_UNSUCCESSFUL'}
+  // act
+  const newState = reducer(initialState, action)
+  // assert
+  t.equal(newState.loginInProgress, expectedLoginInProgress, "Login unsuccesful changes state to loginInProgress to false")
+  t.equal(newState.loginUnsuccessful, expectedLoginUnsuccessful, "Login unsuccesful changes state to loginUnsuccessful to false")
   t.end()
 })
