@@ -15,29 +15,31 @@ function Profile({state, dispatch}) {
           <p>{state.currentUser.bio}</p>
         </div>
       </div>
-      {SortFlops(state)}
+      {SortFlops(state, dispatch)}
       <Nav state={state} dispatch={dispatch} />
     </div>
   )
 }
 
-function SortFlops(state) {
+function SortFlops(state, dispatch) {
   const {flops, lifestyles} = state
   return lifestyles
-  .map(lifestyle => {
-  return flops
-    .filter( flop => flop.lifestyleId == lifestyle.lifestyleId)
-    .sort((a,b) => b.upvotes - a.upvotes)
-    .map((flop, index) => {
-      flop.rank = index+1
-      if (flop.name == state.currentUser.name)
-      return (
-        <div>
-          <h2>#{flop.rank}</h2>
-          {getTitle(flop, lifestyle)}
-        </div>)
+    .map(lifestyle => {
+        console.log('Current Lifestyle', lifestyle)
+        return flops
+      .filter( flop => flop.lifestyleId === lifestyle.lifestyleId)
+      .sort((a,b) => b.upvotes - a.upvotes)
+      .map((flop, index) => {
+        flop.rank = index+1
+        if (flop.username === state.currentUser.username)
+        return (
+          <div>
+            {getTitle(flop, lifestyle)}
+            <h2>#{flop.rank}</h2>
+          </div>
+        )
+    })
   })
-})
 }
 
 function getTitle (flop, lifestyle){
