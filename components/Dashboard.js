@@ -14,6 +14,7 @@ function Dashboard({state, dispatch}) {
       <div>
       <Header />
       <Lifestyles state={state} dispatch={dispatch}/>
+      <div className='clear'></div>
       <Nav state={state} dispatch={dispatch}/>
       </div>
     )
