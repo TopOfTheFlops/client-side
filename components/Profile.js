@@ -1,0 +1,47 @@
+import React from 'react'
+import Header from './Header'
+import Nav from './Nav'
+
+function Profile({state, dispatch}) {
+  return (
+    <div>
+      <Header />
+      <h3>Your Profile</h3>
+      <div className="profile">
+        <img className='profilePic' src={state.currentUser.profilePic}/>
+        <div className="profileInfo">
+          <h2 >{state.currentUser.name}</h2>
+          <p>{state.currentUser.bio}</p>
+        </div>
+      </div>
+      {SortFlops(state)}
+      <Nav state={state} dispatch={dispatch} />
+    </div>
+  )
+}
+
+function SortFlops(state) {
+  const {flops, lifestyles} = state
+  return lifestyles
+  .map(lifestyle => {
+  return flops
+    .filter( flop => flop.lifestyleId == lifestyle.lifestyleId)
+    .sort((a,b) => b.upvotes - a.upvotes)
+    .map((flop, index) => {
+      flop.rank = index+1
+      if (flop.name == state.currentUser.name)
+      return (
+        <div>
+          <h2>#{flop.rank}</h2>
+          {getTitle(flop, lifestyle)}
+        </div>)
+  })
+})
+}
+
+function getTitle (flop, lifestyle){
+  flop.lifestyleId == lifestyle.lifestyleId
+  return <h2>{lifestyle.title}</h2>
+}
+
+module.exports = Profile

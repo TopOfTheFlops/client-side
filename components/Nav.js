@@ -1,0 +1,22 @@
+import React from 'react'
+
+function Nav({state, dispatch}) {
+  function goToNewsfeed (e) {
+    e.preventDefault()
+    dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
+  }
+  function goToProfile (e) {
+    e.preventDefault()
+    dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+  }
+  return (
+    <nav>
+      <ul>
+        <li onClick={goToNewsfeed}>newsfeed</li>
+        <li onClick={goToProfile}>profile</li>
+      </ul>
+    </nav>
+  )
+}
+
+module.exports = Nav
