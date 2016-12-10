@@ -1,7 +1,6 @@
 import request from 'superagent'
 
 module.exports = (dispatch, flopId) => {
-  dispatch({type:'UP_VOTE', payload: flopId})
   request
     .post('http://topoftheflops.herokuapp.com/api/v1/flops/vote')
     .send({
@@ -10,5 +9,6 @@ module.exports = (dispatch, flopId) => {
     })
     .end((err, res) => {
       if (err) return console.log(err)
+      dispatch({type:'UP_VOTE', payload: flopId})
     })
 }

@@ -175,3 +175,7 @@ nav li {
   font-size: 1.3em;
   padding: 7px 0;
 }
+
+.hidden {
+  display: none
+}

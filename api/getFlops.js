@@ -1,6 +1,7 @@
 import request from 'superagent'
 
 module.exports = (dispatch) => {
+  dispatch({type: 'REQUEST_FLOPS'})
   request
     .get('http://topoftheflops.herokuapp.com/api/v1/flops')
     .end((err, res) => {
