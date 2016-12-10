@@ -21,12 +21,7 @@ var initialState = {
   currentLifestyleId: 1,
   lifestyles: [],
   flops: [],
-  currentUser: {
-    userId: 1,
-    name: 'lord master',
-    profilePic: 'http://abdindia.com/wp-content/uploads/2014/01/lord.jpg',
-    bio: 'Im good at things!'
-  }
+  currentUser: {}
 }
 
 
