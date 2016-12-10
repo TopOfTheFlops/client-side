@@ -9,7 +9,7 @@ module.exports = (dispatch, userInfo) => {
   dispatch({type: 'LOGIN_INIT'})
 
   request
-    .post('http://topoftheflops.herokuapp.com/api/v1/users/login')
+    .post('https://topoftheflops.herokuapp.com/api/v1/users/login')
     .send(userInfo)
     .end((err, res) => {
       if (err) {

@@ -101,6 +101,7 @@ test('tests DOWN_VOTE can decrement the downvote count', function(t) {
 test('tests RECEIVE_LIFESTYLES gets lifestyle data', function(t) {
   var initialState = {
     currentPage: 'login',
+    requestingLifestyles: true,
     lifestyles: [],
     currentUser: {},
     flops: []
@@ -109,6 +110,7 @@ test('tests RECEIVE_LIFESTYLES gets lifestyle data', function(t) {
 
   var expected = {
     currentPage: 'login',
+    requestingLifestyles: false,
     lifestyles: [
       {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
       {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2}
@@ -128,6 +130,7 @@ test('tests RECEIVE_LIFESTYLES gets lifestyle data', function(t) {
 test('tests RECEIVE_FLOPS gets flops data', function(t) {
   var initialState = {
     currentPage: 'login',
+    requestingFlops: true,
     lifestyles: [],
     currentUser: {},
     flops: []
@@ -137,6 +140,7 @@ test('tests RECEIVE_FLOPS gets flops data', function(t) {
   var expected = {
     currentPage: 'login',
     lifestyles: [],
+    requestingFlops: false,
     currentUser: {},
     flops: [
       {flopId: 1, lifestyleId: 1, upvotes: 7, downvotes: 5},

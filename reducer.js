@@ -25,9 +25,15 @@ module.exports = (state, action) => {
       var correctFlop = newState.flops.find(flop => flop.flopId == payload)
       correctFlop.downvotes ++
       return newState
+    case 'REQUEST_LIFESTYLES':
+      newState.requestingLifestyles = true
+      return newState
     case 'RECEIVE_LIFESTYLES':
       newState.requestingLifestyles = false
       newState.lifestyles = payload
+      return newState
+    case 'REQUEST_FLOPS':
+      newState.requestingFlops = true
       return newState
     case 'RECEIVE_FLOPS':
       newState.requestingFlops = false
@@ -38,12 +44,6 @@ module.exports = (state, action) => {
       return newState
     case 'CHANGE_CURRENTLIFESTYLEID':
       newState.currentLifestyleId = payload
-      return newState
-    case 'REQUEST_LIFESTYLES':
-      newState.requestingLifestyles = true
-      return newState
-    case 'REQUEST_FLOPS':
-      newState.requestingFlops = true
       return newState
     default:
       return newState

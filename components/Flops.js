@@ -21,9 +21,9 @@ function Flops ({state, dispatch}) {
 }
 
 function RenderFlops (state, dispatch) {
-  function actionDownvote (dispatch, id) {
-    return
-  }
+  // function actionDownvote (dispatch, id) {
+  //   return
+  // }
   return state.flops
     .sort((a, b) => b.upvotes - a.upvotes)
     .filter(flop => {
