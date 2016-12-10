@@ -6,9 +6,9 @@ function Lifestyles({state, dispatch}) {
     dispatch({type: 'CHANGE_PAGE', payload: '/createLifestyle'})
   }
   return (
-    <div>
-      {lifeDash(state, dispatch)}
-      <button className='create' onClick={goToCreateLifestyle}>create new lifestyle</button>
+    <div className='lifestyles'>
+        {lifeDash(state, dispatch)}
+        <button className='create' onClick={goToCreateLifestyle}>create new lifestyle</button>
     </div>
   )
 }

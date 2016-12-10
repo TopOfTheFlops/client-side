@@ -11,16 +11,18 @@ function Login({state, dispatch}) {
     getFlops(dispatch)
     dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
   }
+  function goToSignup () {
+    dispatch({type: 'CHANGE_PAGE', payload: '/signup'})
+  }
   return (
     <div className='loginPage'>
       <h1 className='loginTitle'>top of the flops</h1>
       <form className='loginForm'>
         <input className='username' placeholder='username' type='text'/>
-        <input className='password' placeholder='password' type='text'/>
-        <input type='submit' value='Login!' onClick={login}></input>
+        <input className='password' placeholder='password' type='password'/>
+        <input className='loginButton' type='submit' value='Login!' onClick={login}></input>
       </form>
-      <button>Sign Up!</button>
-
+      <button className='signupButton' onClick={goToSignup}>Sign Up!</button>
     </div>
   )
 }

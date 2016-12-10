@@ -25,10 +25,10 @@ function RenderFlops(state, dispatch) {
 
   }
   return state.flops
-  .sort((a, b) => b.upvotes - a.upvotes)
+    .sort((a, b) => b.upvotes - a.upvotes)
     .filter(flop => {
       return flop.lifestyleId == state.currentLifestyleId
-    })
+      })
     .map( (flop, index) => {
       flop.rank = index+1
       return (

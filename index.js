@@ -10,10 +10,12 @@ import Flops from './components/Flops'
 import CreateLifestyle from './components/CreateLifestyle'
 import CreateFlop from './components/CreateFlop'
 import Profile from './components/Profile'
+import Signup from './components/Signup'
 
 var main = document.querySelector('main')
 
 var initialState = {
+  loginInfo: {username: "", password: "", bio: "", profilePic: ""},
   currentPage: '/',
   currentLifestyleId: 1,
   lifestyles: [],
@@ -31,6 +33,7 @@ const {dispatch, getState, subscribe} = createStore(reducer, initialState)
 
 const route = Router({default: '/404'}, [
   ['/', (params) => Login],
+  ['/signup', (params) => Signup],
   ['/dashboard', (params) => Dashboard],
   ['/flops', (params) => Flops],
   ['/createLifestyle', (params) => CreateLifestyle],
