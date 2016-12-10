@@ -11,6 +11,7 @@ import CreateLifestyle from './components/CreateLifestyle'
 import CreateFlop from './components/CreateFlop'
 import Profile from './components/Profile'
 import Signup from './components/Signup'
+import Unauthenticated from './components/Unauthenticated'
 
 var main = document.querySelector('main')
 
@@ -38,7 +39,8 @@ const route = Router({default: '/404'}, [
   ['/flops', (params) => Flops],
   ['/createLifestyle', (params) => CreateLifestyle],
   ['/CreateFlop', (params) => CreateFlop],
-  ['/profile', (params) => Profile]
+  ['/profile', (params) => Profile],
+  ['/unauthenticated', (parmas) => Unauthenticated]
 ])
 
 subscribe(() => {

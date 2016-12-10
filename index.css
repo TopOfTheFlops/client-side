@@ -106,6 +106,7 @@ nav li {
   position: relative;
   left: 0;
   height:50px;
+  margin-bottom: 50px;
 }
 
 .profilePic {
