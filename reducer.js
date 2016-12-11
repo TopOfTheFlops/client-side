@@ -45,6 +45,12 @@ module.exports = (state, action) => {
     case 'CHANGE_CURRENTLIFESTYLEID':
       newState.currentLifestyleId = payload
       return newState
+    case 'SAVE_PHOTO_URL':
+      newState.currentPhotoURLs = payload
+      return newState
+    case 'REMOVE_PHOTO_URL':
+        newState.currentPhotoURLs = null
+        return newState
     default:
       return newState
   }
