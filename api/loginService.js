@@ -11,6 +11,7 @@ module.exports = (dispatch, userInfo) => {
   request
     .post('https://topoftheflops.herokuapp.com/api/v1/users/login')
     .send(userInfo)
+    .withCredentials()
     .end((err, res) => {
       if (err) {
         dispatch({type: 'LOGIN_UNSUCCESSFUL'})
