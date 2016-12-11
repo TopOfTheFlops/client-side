@@ -48,6 +48,12 @@ module.exports = (state, action) => {
     case 'CHANGE_VIEW_SINGLE_FLOP':
       newState.viewSingleFlop = payload
       return newState
+    case 'SAVE_PHOTO_URL':
+      newState.currentPhotoURLs = payload
+      return newState
+    case 'REMOVE_PHOTO_URL':
+        newState.currentPhotoURLs = null
+        return newState
     default:
       return newState
   }
