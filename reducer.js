@@ -45,6 +45,9 @@ module.exports = (state, action) => {
     case 'CHANGE_CURRENTLIFESTYLEID':
       newState.currentLifestyleId = payload
       return newState
+    case 'CHANGE_VIEW_SINGLE_FLOP':
+      newState.viewSingleFlop = payload
+      return newState
     default:
       return newState
   }
