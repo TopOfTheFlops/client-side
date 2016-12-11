@@ -1,9 +1,11 @@
 import request from 'superagent'
+import getLifestyles from '../api/getLifestyles'
 
 module.exports = (dispatch, lifestyleInfo) => {
   console.log(lifestyleInfo);
   request
     .post('https://topoftheflops.herokuapp.com/api/v1/lifestyles')
+    .withCredentials()
     .send(lifestyleInfo)
     .end((err, res) => {
       if (err) {
@@ -11,6 +13,9 @@ module.exports = (dispatch, lifestyleInfo) => {
         dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
       }
       // console.log('hello', res.body);
-      else dispatch({type: 'RECEIVE_LIFESTYLES', payload: '/dashboard'})
+      else {
+        getLifestyles(dispatch)
+        dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
+    }
     })
 }

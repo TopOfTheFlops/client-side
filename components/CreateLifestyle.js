@@ -6,12 +6,14 @@ import Nav from './Nav'
 import postNewLifestyle from '../api/postNewLifestyle'
 
 function CreateLifestyle({state, dispatch}) {
-  function createNewLifestyle (dispatch) {
+  function createNewLifestyle (e) {
+    e.preventDefault()
     var lifestyleInfo = {
       title: document.getElementById('title').value,
       description: document.getElementById('description').value,
       media: document.getElementById('media').value
     }
+    console.log(lifestyleInfo);
     postNewLifestyle(dispatch, lifestyleInfo)
   }
   return (
