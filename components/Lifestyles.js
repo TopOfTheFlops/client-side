@@ -3,7 +3,7 @@ import React from 'react'
 function Lifestyles({state, dispatch}) {
   function goToCreateLifestyle (e) {
     e.preventDefault()
-    dispatch({type: 'CHANGE_PAGE', payload: '/createLifestyle'})
+    dispatch({type: 'CHANGE_PAGE', payload: '/createlifestyle'})
   }
   return (
     <div className='lifestyles'>

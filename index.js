@@ -12,6 +12,7 @@ import CreateFlop from './components/CreateFlop'
 import Profile from './components/Profile'
 import Signup from './components/Signup'
 import Unauthenticated from './components/Unauthenticated'
+import SingleFlop from './components/SingleFlop'
 
 var main = document.querySelector('main')
 
@@ -21,7 +22,8 @@ var initialState = {
   currentLifestyleId: 1,
   lifestyles: [],
   flops: [],
-  currentUser: {}
+  currentUser: {},
+  viewSingleFlopId: null
 }
 
 
@@ -32,8 +34,9 @@ const route = Router({default: '/404'}, [
   ['/signup', (params) => Signup],
   ['/dashboard', (params) => Dashboard],
   ['/flops', (params) => Flops],
-  ['/createLifestyle', (params) => CreateLifestyle],
-  ['/CreateFlop', (params) => CreateFlop],
+  ['/singleflop', (params) => SingleFlop],
+  ['/createlifestyle', (params) => CreateLifestyle],
+  ['/createflop', (params) => CreateFlop],
   ['/profile', (params) => Profile],
   ['/unauthenticated', (parmas) => Unauthenticated]
 ])

@@ -9,14 +9,14 @@ import request from 'superagent'
 
 function Flops ({state, dispatch}) {
   function goToCreateFlop (e) {
-    dispatch({type: 'CHANGE_PAGE', payload: '/CreateFlop'})
+    dispatch({type: 'CHANGE_PAGE', payload: '/createflop'})
   }
   return (
     <div>
       <Header />
       {RenderTitle(state)}
+      <button className='create' onClick={goToCreateFlop}>Compete!</button>
       {RenderFlops(state, dispatch)}
-      <button className='create' onClick={goToCreateFlop}>Go!</button>
       <Nav state={state} dispatch={dispatch} />
     </div>
   )
@@ -35,8 +35,12 @@ function RenderFlops (state, dispatch) {
       flop.rank = index + 1
       return (
         <div className='flop' key={flop.flopId}>
-          <img className='flopPic' src={flop.mediaURL} />
+          <img className='flopPic' src={flop.mediaURL} onClick={() => {
+            dispatch({type: 'CHANGE_VIEW_SINGLE_FLOP', payload: flop})
+            dispatch({type: 'CHANGE_PAGE', payload: '/singleflop'})
+          }}/>
           <p>{flop.rank}. {flop.username}</p>
+          <p>{flop.description}</p>
           <button className='upvote' onClick={() => upvoteFlop(dispatch, flop.flopId)} >{flop.upvotes}</button>
           <button className='downvote' onClick={() => downvoteFlop(dispatch, flop.flopId)}>{flop.downvotes}</button>
         </div>
