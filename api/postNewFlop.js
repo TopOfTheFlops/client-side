@@ -5,6 +5,7 @@ module.exports = (dispatch, flopInfo) => {
   request
     .post('https://topoftheflops.herokuapp.com/api/v1/flops')
     .send(flopInfo)
+    .withCredentials()
     .end((err, res) => {
       if (err) return console.log(err)
       console.log(res.body.error);
