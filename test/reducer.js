@@ -273,3 +273,37 @@ test('LOGIN_UNSUCCESSFUL', function(t){
   t.equal(newState.loginUnsuccessful, expectedLoginUnsuccessful, "Login unsuccesful changes state to loginUnsuccessful to false")
   t.end()
 })
+
+test('SAVE_PHOTO_URL', function(t){
+  var initialState = {
+    currentPhotoURLs: null
+  }
+  // arrange
+  var expectedState = {
+    currentPhotoURLs: "url"
+  }
+  freeze(initialState)
+  const action = {type: 'SAVE_PHOTO_URL', payload: "url" }
+  // act
+  const newState = reducer(initialState, action)
+  // assert
+  t.equal(newState.currentPhotoURLs, expectedState.currentPhotoURLs, "Save photo urls changes the property to payload urls")
+  t.end()
+})
+
+test('REMOVE_PHOTO_URL', function(t){
+  var initialState = {
+    currentPhotoURLs: "url"
+  }
+  // arrange
+  const expectedState = {
+    currentPhotoURLs: null
+  }
+  freeze(initialState)
+  const action = {type: 'REMOVE_PHOTO_URL'}
+  // act
+  const newState = reducer(initialState, action)
+  // assert
+  t.equal(newState.currentPhotoURLs, expectedState.currentPhotoURLs, "Remove photo url changes currentPhotoURLs to null")
+  t.end()
+})

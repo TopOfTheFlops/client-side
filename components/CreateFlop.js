@@ -4,6 +4,8 @@ import Header from './Header'
 import Nav from './Nav'
 
 import postNewFlop from '../api/postNewFlop'
+import callCloudinary from '../widget'
+
 
 function CreateFlop({state, dispatch}) {
 
@@ -30,6 +32,7 @@ function CreateFlop({state, dispatch}) {
         <input placeholder='Description' type="text" id='description'/>
         <input className='loginButton' type='submit' value='compete!' onClick={createNewFlop}/>
       </form>
+      <div id="upload_widget_opener" onClick={callCloudinary}>Click to upload</div>
       <Nav dispatch={dispatch} state={state}/>
     </div>
   )
