@@ -14,7 +14,7 @@ function CreateFlop({state, dispatch}) {
     e.preventDefault()
     var flopInfo = {
       userId: state.currentUser.userId,
-      mediaURL: document.getElementById('mediaURL').value,
+      mediaURL: state.currentPhotoURLs,
       description: document.getElementById('description').value,
       lifestyleId: state.currentLifestyleId
     }
@@ -27,12 +27,11 @@ function CreateFlop({state, dispatch}) {
       <h2>Flopping</h2>
       {RenderTitle(state)}
       <form>
-        <input placeholder='Image url' type="text" id='mediaURL'/>
         <label>Describe your entry</label>
         <input placeholder='Description' type="text" id='description'/>
         <input className='loginButton' type='submit' value='compete!' onClick={createNewFlop}/>
       </form>
-      <div id="upload_widget_opener" onClick={callCloudinary}>Click to upload</div>
+      <div id="upload_widget_opener" onClick={() => callCloudinary(dispatch)}>Click to upload</div>
       <Nav dispatch={dispatch} state={state}/>
     </div>
   )
@@ -47,3 +46,7 @@ function RenderTitle(state) {
 
 
 module.exports = CreateFlop
+
+
+
+// <input placeholder='Image url' type="text" id='mediaURL'/>
