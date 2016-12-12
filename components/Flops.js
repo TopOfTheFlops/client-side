@@ -4,7 +4,6 @@ import Header from './Header'
 import Nav from './Nav'
 import voteFlop from '../api/voteFlop'
 
-
 function Flops ({state, dispatch}) {
   function goToCreateFlop (e) {
     dispatch({type: 'CHANGE_PAGE', payload: '/createflop'})
@@ -15,7 +14,7 @@ function Flops ({state, dispatch}) {
       {RenderTitle(state)}
       <button className='create' onClick={goToCreateFlop}>Compete!</button>
       {RenderFlops(state, dispatch)}
-      <div className='clear'></div>
+      <div className='clear' />
       <Nav state={state} dispatch={dispatch} />
     </div>
   )
@@ -29,13 +28,13 @@ function RenderFlops (state, dispatch) {
     })
     .map((flop, index) => {
       flop.rank = index + 1
-      console.log('this is the flops', flop);
+      console.log('this is the flops', flop)
       return (
         <div className='flop' key={flop.flopId}>
           <img className='flopPic' src={flop.mediaURL} onClick={() => {
             dispatch({type: 'CHANGE_VIEW_SINGLE_FLOP', payload: flop})
             dispatch({type: 'CHANGE_PAGE', payload: '/singleflop'})
-          }}/>
+          }} />
           <p>{flop.rank}. {flop.username}</p>
           <p>{flop.description}</p>
           <button className='upvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>

@@ -3,7 +3,7 @@ import getLifestyles from '../api/getLifestyles'
 import url from './apiUrl'
 
 module.exports = (dispatch, lifestyleInfo) => {
-  console.log(lifestyleInfo);
+  console.log(lifestyleInfo)
   request
     .post(`${url}/api/v1/lifestyles`)
     .withCredentials()
@@ -12,11 +12,10 @@ module.exports = (dispatch, lifestyleInfo) => {
       if (err) return console.log(err)
       if (res.body.error) {
         dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
-      }
-      else {
+      } else {
         getLifestyles(dispatch)
         dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
         dispatch({type: 'REMOVE_PHOTO_URL'})
-    }
+      }
     })
 }
