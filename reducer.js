@@ -89,7 +89,6 @@ function attachVotes(votes, flops) {
         flop.upvotes += Number(vote.upvote)
         flop.downvotes += Number(vote.downvote)
       })
-    console.log('This is a flop mod', flop)
     return flop
   })
 }
