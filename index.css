@@ -65,7 +65,7 @@ nav li {
 
 .clear {
   clear: both;
-  height: 60px;
+  height: 70px;
 }
 
 /******************************************/
@@ -213,4 +213,8 @@ nav li {
 
 .hidden {
   display: none
+}
+
+.loadingPulse {
+  margin-top: 20px;
 }
