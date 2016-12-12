@@ -1,11 +1,13 @@
 import request from 'superagent'
 import getFlops from '../api/getFlops'
 
-module.exports = (dispatch, flopInfo) => {
+module.exports = (dispatch, mediaFile) => {
+  console.log(mediaFile);
   request
-    .post('https://topoftheflops.herokuapp.com/api/v1/flops')
-    .send(flopInfo)
+    .post('http://localhost:3000/api/v1/flops/photo')
     .withCredentials()
+    .type('image/jpg')
+    .send(mediaFile)
     .end((err, res) => {
       if (err) return console.log(err)
       if (res.body.error) {
@@ -14,7 +16,6 @@ module.exports = (dispatch, flopInfo) => {
       else {
         getFlops(dispatch)
         dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
-        dispatch({type: 'REMOVE_PHOTO_URL'})
       }
     })
 }

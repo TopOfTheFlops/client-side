@@ -8,11 +8,10 @@ module.exports = (dispatch, lifestyleInfo) => {
     .withCredentials()
     .send(lifestyleInfo)
     .end((err, res) => {
-      if (err) {
-        console.log('hello', err)
+      if (err) return console.log(err)
+      if (res.body.error) {
         dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
       }
-      // console.log('hello', res.body);
       else {
         getLifestyles(dispatch)
         dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
