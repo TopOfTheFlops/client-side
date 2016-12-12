@@ -2,9 +2,7 @@ import React from 'react'
 
 import Header from './Header'
 import Nav from './Nav'
-import upvoteFlop from '../api/upvoteFlop'
-import downvoteFlop from '../api/downvoteFlop'
-import request from 'superagent'
+import voteFlop from '../api/voteFlop'
 
 
 function Flops ({state, dispatch}) {
@@ -40,8 +38,8 @@ function RenderFlops (state, dispatch) {
           }}/>
           <p>{flop.rank}. {flop.username}</p>
           <p>{flop.description}</p>
-          <button className='upvote' onClick={() => upvoteFlop(dispatch, flop.flopId)} >{flop.upvotes}</button>
-          <button className='downvote' onClick={() => downvoteFlop(dispatch, flop.flopId)}>{flop.downvotes}</button>
+          <button className='upvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
+          <button className='downvote' onClick={() => voteFlop(dispatch,state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
         </div>
       )
     })

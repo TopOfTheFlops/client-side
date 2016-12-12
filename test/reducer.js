@@ -24,7 +24,7 @@ test('tests CHANGE_PAGE case', function(t) {
   t.end()
 })
 
-test('tests UP_VOTE can increment the upvote count', function(t) {
+test('tests POST_VOTE can add a vote to the state ', function(t) {
   var initialState = {
     currentPage: 'login',
     lifestyles: [
@@ -32,12 +32,8 @@ test('tests UP_VOTE can increment the upvote count', function(t) {
       {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2},
     ],
     currentUser: {},
-    flops: [
-      {flopId: 1, lifestyleId: 1, upvotes: 6, downvotes: 5},
-      {flopId: 2, lifestyleId: 1, upvotes: 5, downvotes: 5},
-      {flopId: 3, lifestyleId: 2, upvotes: 5, downvotes: 5},
-      {flopId: 4, lifestyleId: 1, upvotes: 5, downvotes: 5}
-    ]
+    flops: [],
+    votes: [{"voteId": 1, "flopId": 1, "userId": 1, "upvote": 0, "downvote": 1}]
   }
 
   freeze(initialState)
@@ -48,21 +44,20 @@ test('tests UP_VOTE can increment the upvote count', function(t) {
       {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2},
     ],
     currentUser: {},
-    flops: [
-      {flopId: 1, lifestyleId: 1, upvotes: 7, downvotes: 5},
-      {flopId: 2, lifestyleId: 1, upvotes: 5, downvotes: 5},
-      {flopId: 3, lifestyleId: 2, upvotes: 5, downvotes: 5},
-      {flopId: 4, lifestyleId: 1, upvotes: 5, downvotes: 5}
+    flops: [],
+    votes: [
+      {"voteId": 1, "flopId": 1, "userId": 1, "upvote": 0, "downvote": 1},
+      {"voteId": 3, "flopId": 13, "userId": 32, "upvote": 1, "downvote": 0}
     ]
   }
-  var actual= reducer(initialState, {type: 'UP_VOTE', payload: 1})
+  var actual= reducer(initialState, {type: 'POST_VOTE', payload:
+    {"voteId": 3, "flopId": 13, "userId": 32, "upvote": 1, "downvote": 0}})
 
-  t.deepEqual(actual, expected, 'UP_VOTE increments vote count')
+  t.deepEqual(actual, expected, 'POST_VOTE posts a single vote correctly')
   t.end()
 })
 
-
-test('tests DOWN_VOTE can decrement the downvote count', function(t) {
+test('tests POST_VOTE only updates vote when it is already present ', function(t) {
   var initialState = {
     currentPage: 'login',
     lifestyles: [
@@ -70,12 +65,8 @@ test('tests DOWN_VOTE can decrement the downvote count', function(t) {
       {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2},
     ],
     currentUser: {},
-    flops: [
-      {flopId: 1, lifestyleId: 1, upvotes: 7, downvotes: 5},
-      {flopId: 2, lifestyleId: 1, upvotes: 5, downvotes: 5},
-      {flopId: 3, lifestyleId: 2, upvotes: 5, downvotes: 5},
-      {flopId: 4, lifestyleId: 1, upvotes: 5, downvotes: 5}
-    ]
+    flops: [],
+    votes: [{"flopId": 1, "userId": 1, "upvote": 0, "downvote": 1}]
   }
 
   freeze(initialState)
@@ -86,15 +77,15 @@ test('tests DOWN_VOTE can decrement the downvote count', function(t) {
       {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2},
     ],
     currentUser: {},
-    flops: [
-      {flopId: 1, lifestyleId: 1, upvotes: 7, downvotes: 5},
-      {flopId: 2, lifestyleId: 1, upvotes: 5, downvotes: 5},
-      {flopId: 3, lifestyleId: 2, upvotes: 5, downvotes: 5},
-      {flopId: 4, lifestyleId: 1, upvotes: 5, downvotes: 6}
+    flops: [],
+    votes: [
+      {"flopId": 1, "userId": 1, "upvote": 0, "downvote": 1},
     ]
   }
-  const actual = reducer(initialState, {type: 'DOWN_VOTE', payload: 4})
-  t.deepEqual(actual, expected, 'DOWN_VOTE increments vote count')
+  var actual= reducer(initialState, {type: 'POST_VOTE', payload:
+    {"flopId": 1, "userId": 1, "upvote": 1, "downvote": 0}})
+
+  t.deepEqual(actual, expected, 'POST_VOTE updates a vote correctly')
   t.end()
 })
 

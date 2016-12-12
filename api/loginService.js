@@ -20,9 +20,9 @@ module.exports = (dispatch, userInfo) => {
       if (err) {
         dispatch({type: 'LOGIN_UNSUCCESSFUL'})
       } else {
+        getVotes(dispatch)
         getLifestyles(dispatch)
         getFlops(dispatch)
-        getVotes(dispatch)
         dispatch({type: 'LOGIN_SUCCESSFUL', payload: res.body.user})
         dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
       }

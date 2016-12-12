@@ -5,11 +5,13 @@ module.exports = (state, action) => {
   switch(type) {
     case 'LOGIN_INIT':
       newState.loginInProgress = true
+      newState.flops = attachVotes(newState.votes, newState.flops)
       return newState
     case 'LOGIN_SUCCESSFUL':
       newState.loginInProgress = false
       newState.loginUnsuccessful = false
       newState.currentUser = payload
+      newState.flops = attachVotes(newState.votes, newState.flops)
       return newState
     case 'LOGIN_UNSUCCESSFUL':
       newState.loginInProgress = false
@@ -18,21 +20,33 @@ module.exports = (state, action) => {
     case 'CHANGE_PAGE':
       newState.currentPage = payload
       return newState
-    case 'UP_VOTE':
-      newState.flops.find(flop => flop.flopId == payload).upvotes++
-      return newState
-    case 'DOWN_VOTE':
-      newState.flops.find(flop => flop.flopId == payload).downvotes++
-      return newState
+    case 'POST_VOTE':
+      newState.flops = attachVotes(newState.votes, newState.flops)
+      var foundVote = newState.votes.find(vote => vote.flopId === payload.flopId && vote.userId === payload.userId)
+      if (foundVote) {
+        foundVote = payload
+        newState.flops = attachVotes(newState.votes, newState.flops)
+        console.log('in the if', newState)
+        return newState
+      }
+      else {
+        newState.votes.push(payload)
+        newState.flops = attachVotes(newState.votes, newState.flops)
+        console.log('state', newState)
+        return newState
+      }
     case 'RECEIVE_VOTES':
       newState.votes = payload
+      newState.flops = attachVotes(newState.votes, newState.flops)
       return newState
     case 'REQUEST_LIFESTYLES':
       newState.requestingLifestyles = true
+      newState.flops = attachVotes(newState.votes, newState.flops)
       return newState
     case 'RECEIVE_LIFESTYLES':
       newState.requestingLifestyles = false
       newState.lifestyles = payload
+      newState.flops = attachVotes(newState.votes, newState.flops)
       return newState
     case 'REQUEST_FLOPS':
       newState.requestingFlops = true
@@ -40,6 +54,7 @@ module.exports = (state, action) => {
     case 'RECEIVE_FLOPS':
       newState.requestingFlops = false
       newState.flops = payload
+      newState.flops = attachVotes(newState.votes, newState.flops)
       return newState
     case 'RECEIVE_CURRENT_USER':
       newState.currentUser = payload
@@ -62,4 +77,19 @@ module.exports = (state, action) => {
     default:
       return newState
   }
+}
+
+function attachVotes(votes, flops) {
+   return flops.map(flop => {
+    flop.upvotes = 0
+    flop.downvotes = 0
+    votes
+      .filter(vote => vote.flopId == flop.flopId)
+      .forEach(vote => {
+        flop.upvotes += Number(vote.upvote)
+        flop.downvotes += Number(vote.downvote)
+      })
+    console.log('This is a flop mod', flop)
+    return flop
+  })
 }
