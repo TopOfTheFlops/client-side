@@ -69,6 +69,7 @@ module.exports = (state, action) => {
       return newState
     case 'LOGOUT':
       newState.currentUser = null
+      newState.currentPage = '/'
       return newState
     case 'ATTACH_VOTES':
       newState.flops = newState.flops.map(flop => {
