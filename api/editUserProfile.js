@@ -1,8 +1,9 @@
 import request from 'superagent'
+import url from './apiUrl'
 
 module.exports = (dispatch, userInfo, state) => {
   request
-    .post('https://topoftheflops.herokuapp.com/api/v1/users/edit${state.currentUser.userId}')
+    .post(`${url}/api/v1/users/edit${state.currentUser.userId}`)
     .withCredentials()
     .send(userInfo)
     .end((err, res) => {

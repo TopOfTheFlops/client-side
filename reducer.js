@@ -52,8 +52,11 @@ module.exports = (state, action) => {
       newState.currentPhotoURLs = payload
       return newState
     case 'REMOVE_PHOTO_URL':
-        newState.currentPhotoURLs = null
-        return newState
+      newState.currentPhotoURLs = null
+      return newState
+    case 'LOGOUT':
+      newState.currentUser = null
+      return newState
     default:
       return newState
   }

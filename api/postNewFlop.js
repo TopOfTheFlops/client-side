@@ -1,9 +1,10 @@
 import request from 'superagent'
 import getFlops from '../api/getFlops'
+import url from './apiUrl'
 
 module.exports = (dispatch, flopInfo) => {
   request
-    .post('https://topoftheflops.herokuapp.com/api/v1/flops')
+    .post(`${url}/api/v1/flops`)
     .send(flopInfo)
     .withCredentials()
     .end((err, res) => {

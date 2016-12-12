@@ -2,11 +2,11 @@ import request from 'superagent'
 import url from './apiUrl'
 
 module.exports = (dispatch) => {
-  dispatch({type: 'REQUEST_FLOPS'})
   request
-    .get(`${url}/api/v1/flops`)
+    .get(`${url}/api/v1/users/logout`)
     .end((err, res) => {
       if (err) return console.log(err)
-      dispatch({type: 'RECEIVE_FLOPS', payload: res.body.flops})
+      dispatch({type: 'LOGOUT'})
+      dispatch({type: 'CHANGE_PAGE', payload: '/'})
   })
 }
