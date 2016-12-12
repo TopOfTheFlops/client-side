@@ -10,7 +10,6 @@ import callCloudinary from '../widget'
 function CreateFlop({state, dispatch}) {
 
   function createNewFlop (e) {
-    console.log('Creating new flop');
     e.preventDefault()
     var flopInfo = {
       userId: state.currentUser.userId,
@@ -29,9 +28,13 @@ function CreateFlop({state, dispatch}) {
       <form>
         <label>Describe your entry</label>
         <input placeholder='Description' type="text" id='description'/>
+        <button className="upload" id="upload_widget_opener" onClick={ (e) => {
+            e.preventDefault()
+            callCloudinary(dispatch)
+          }
+        }>Click to upload File</button>
         <input className='loginButton' type='submit' value='compete!' onClick={createNewFlop}/>
       </form>
-      <div id="upload_widget_opener" onClick={() => callCloudinary(dispatch)}>Click to upload</div>
       <div className='clear'></div>
       <Nav dispatch={dispatch} state={state}/>
     </div>
@@ -47,7 +50,3 @@ function RenderTitle(state) {
 
 
 module.exports = CreateFlop
-
-
-
-// <input placeholder='Image url' type="text" id='mediaURL'/>
