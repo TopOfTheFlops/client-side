@@ -1,11 +1,11 @@
 import React from 'react'
-import createNewUser from '../api/createNewUser'
+import editUserProfile from '../api/editUserProfile'
 import callCloudinary from '../widget'
 import Header from './Header'
 import Nav from './Nav'
 
 function EditProfile({state, dispatch}) {
-  function editUserProfile (e) {
+  function editProfile (e) {
     e.preventDefault()
     var userInfo = {
       password : document.getElementById('password').value,
@@ -13,7 +13,7 @@ function EditProfile({state, dispatch}) {
       location: document.getElementById('location').value,
       profilePic : state.currentPhotoURLs
     }
-    createNewUser(dispatch, userInfo)
+    editUserProfile(dispatch, userInfo, state)
   }
   return(
     <div className=''>
@@ -28,7 +28,7 @@ function EditProfile({state, dispatch}) {
             callCloudinary(dispatch)
           }
         }>Change profile picture</button>
-        <input className='loginButton' type='submit' value='Submit!' onClick={editUserProfile}/>
+        <input className='loginButton' type='submit' value='Submit!' onClick={editProfile}/>
       </form>
       <Nav state={state} dispatch={dispatch} />
     </div>
