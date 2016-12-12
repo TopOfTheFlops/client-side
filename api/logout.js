@@ -8,5 +8,5 @@ module.exports = (dispatch) => {
       if (err) return console.log(err)
       dispatch({type: 'LOGOUT'})
       dispatch({type: 'CHANGE_PAGE', payload: '/'})
-  })
+    })
 }

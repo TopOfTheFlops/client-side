@@ -9,5 +9,5 @@ module.exports = (dispatch) => {
       if (err) return console.log(err)
       dispatch({type: 'RECEIVE_LIFESTYLES', payload: res.body.lifestyles})
       dispatch({type: 'ATTACH_VOTES'})
-  })
+    })
 }

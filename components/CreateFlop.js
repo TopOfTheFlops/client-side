@@ -6,9 +6,7 @@ import Nav from './Nav'
 import postNewFlop from '../api/postNewFlop'
 import callCloudinary from '../widget'
 
-
-function CreateFlop({state, dispatch}) {
-
+function CreateFlop ({state, dispatch}) {
   function createNewFlop (e) {
     e.preventDefault()
     var flopInfo = {
@@ -27,26 +25,25 @@ function CreateFlop({state, dispatch}) {
       {RenderTitle(state)}
       <form>
         <label>Describe your entry</label>
-        <input placeholder='Description' type="text" id='description'/>
-        <button className="upload" id="upload_widget_opener" onClick={ (e) => {
-            e.preventDefault()
-            callCloudinary(dispatch)
-          }
+        <input placeholder='Description' type='text' id='description' />
+        <button className='upload' id='upload_widget_opener' onClick={(e) => {
+          e.preventDefault()
+          callCloudinary(dispatch)
+        }
         }>Click to upload File</button>
-        <input className='loginButton' type='submit' value='compete!' onClick={createNewFlop}/>
+        <input className='loginButton' type='submit' value='compete!' onClick={createNewFlop} />
       </form>
-      <div className='clear'></div>
-      <Nav dispatch={dispatch} state={state}/>
+      <div className='clear' />
+      <Nav dispatch={dispatch} state={state} />
     </div>
   )
 }
 
-function RenderTitle(state) {
+function RenderTitle (state) {
   const {lifestyles, currentLifestyleId} = state
   return lifestyles
-    .filter( lifestyle => lifestyle.lifestyleId == currentLifestyleId)
+    .filter(lifestyle => lifestyle.lifestyleId == currentLifestyleId)
     .map(lifestyle => (<h2 key={lifestyle.lifestyleId}>{lifestyle.title}</h2>))
 }
-
 
 module.exports = CreateFlop
