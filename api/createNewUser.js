@@ -4,6 +4,7 @@ import url from './apiUrl'
 module.exports = (dispatch, userInfo) => {
   request
     .post(`${url}/api/v1/users/signup`)
+    .withCredentials()
     .send(userInfo)
     .end((err, res) => {
       if (err) return console.log(err)
