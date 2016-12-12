@@ -5,7 +5,6 @@ import callCloudinary from '../widget'
 function Signup({state, dispatch}) {
   function signupNewUser (e) {
     e.preventDefault()
-    console.log('Username:',e.target.value)
     var userInfo ={
       username : document.getElementById('username').value,
       name : document.getElementById('name').value,

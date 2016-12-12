@@ -7,7 +7,6 @@ import Nav from './Nav'
 function EditProfile({state, dispatch}) {
   function editUserProfile (e) {
     e.preventDefault()
-    console.log('Username:',e.target.value)
     var userInfo = {
       password : document.getElementById('password').value,
       bio : document.getElementById('bio').value,
