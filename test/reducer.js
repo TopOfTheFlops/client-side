@@ -327,3 +327,34 @@ test('LOGOUT', function(t){
   t.deepEqual(newState.currentUser, expectedCurrentUser, "Logout successfully removes currentUser data from the state")
   t.end()
 })
+
+  test('tests RECEIVE_VOTES gets all the votes', function(t) {
+  var initialState = {
+    currentPage: 'login',
+    lifestyles: [],
+    currentUser: {},
+    flops: [],
+    votes: []
+  }
+  freeze(initialState)
+
+  var expected = {
+    currentPage: 'login',
+    lifestyles: [],
+    currentUser: {},
+    flops: [],
+    votes: [
+      {"voteId": 1, "flopId": 1, "userId": 1, "upvote": 0, "downvote": 1},
+      {"voteId": 2, "flopId": 20, "userId": 1, "upvote": 0, "downvote": 1},
+      {"voteId": 3, "flopId": 13, "userId": 1, "upvote": 1, "downvote": 0},
+    ]
+  }
+
+  const actual = reducer(initialState, {type: 'RECEIVE_VOTES', payload: [
+    {"voteId": 1, "flopId": 1, "userId": 1, "upvote": 0, "downvote": 1},
+    {"voteId": 2, "flopId": 20, "userId": 1, "upvote": 0, "downvote": 1},
+    {"voteId": 3, "flopId": 13, "userId": 1, "upvote": 1, "downvote": 0},
+  ]})
+  t.deepEqual(actual, expected, 'receive votes works really very well')
+  t.end()
+})

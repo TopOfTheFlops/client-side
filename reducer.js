@@ -22,8 +22,10 @@ module.exports = (state, action) => {
       newState.flops.find(flop => flop.flopId == payload).upvotes++
       return newState
     case 'DOWN_VOTE':
-      var correctFlop = newState.flops.find(flop => flop.flopId == payload)
-      correctFlop.downvotes ++
+      newState.flops.find(flop => flop.flopId == payload).downvotes++
+      return newState
+    case 'RECEIVE_VOTES':
+      newState.votes = payload
       return newState
     case 'REQUEST_LIFESTYLES':
       newState.requestingLifestyles = true

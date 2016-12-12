@@ -1,8 +1,11 @@
 import request from 'superagent'
-import getLifestyles from '../api/getLifestyles'
-import getFlops from '../api/getFlops'
-import getCurrentUser from '../api/getCurrentUser'
+
 import url from './apiUrl'
+
+import getLifestyles from './getLifestyles'
+import getFlops from './getFlops'
+import getCurrentUser from './getCurrentUser'
+import getVotes from './getVotes'
 
 
 module.exports = (dispatch, userInfo) => {
@@ -19,6 +22,7 @@ module.exports = (dispatch, userInfo) => {
       } else {
         getLifestyles(dispatch)
         getFlops(dispatch)
+        getVotes(dispatch)
         dispatch({type: 'LOGIN_SUCCESSFUL', payload: res.body.user})
         dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
       }
