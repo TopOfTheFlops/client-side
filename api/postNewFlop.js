@@ -11,8 +11,7 @@ module.exports = (dispatch, flopInfo) => {
       if (err) return console.log(err)
       if (res.body.error) {
         dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
-      }
-      else {
+      } else {
         getFlops(dispatch)
         dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
         dispatch({type: 'REMOVE_PHOTO_URL'})

@@ -3,7 +3,7 @@ import url from './apiUrl'
 
 module.exports = (dispatch, userInfo, state) => {
   request
-    .post(`${url}/api/v1/users/edit${state.currentUser.userId}`)
+    .post(`${url}/api/v1/users/edit/${state.currentUser.userId}`)
     .withCredentials()
     .send(userInfo)
     .end((err, res) => {
@@ -11,7 +11,7 @@ module.exports = (dispatch, userInfo, state) => {
       if (res.body.error) {
         dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
       }
+      dispatch({type: 'RECEIVE_CURRENT_USER', payload: res.body.user})
       dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
-      dispatch({type: 'REMOVE_PHOTO_URL'})
     })
 }

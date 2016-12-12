@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Nav({state, dispatch}) {
+function Nav ({state, dispatch}) {
   function goToNewsfeed (e) {
     e.preventDefault()
     dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})

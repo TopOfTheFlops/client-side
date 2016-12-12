@@ -2,7 +2,7 @@
 module.exports = (state, action) => {
   const newState = require('clone')(state)
   const {type, payload} = action
-  switch(type) {
+  switch (type) {
     case 'LOGIN_INIT':
       newState.loginInProgress = true
       return newState
@@ -18,12 +18,25 @@ module.exports = (state, action) => {
     case 'CHANGE_PAGE':
       newState.currentPage = payload
       return newState
-    case 'UP_VOTE':
-      newState.flops.find(flop => flop.flopId == payload).upvotes++
+    case 'POST_VOTE':
+      var voteFound = false
+      var voteIndex = 0
+      newState.votes.forEach((vote, index) => {
+        if (vote.flopId === payload.flopId && vote.userId === payload.userId) {
+          console.log('Vote found, overwriting')
+          voteFound = true
+          voteIndex = index
+        }
+      })
+      if (voteFound) {
+        newState.votes[voteIndex] = payload
+      } else {
+        newState.votes.push(payload)
+      }
       return newState
-    case 'DOWN_VOTE':
-      var correctFlop = newState.flops.find(flop => flop.flopId == payload)
-      correctFlop.downvotes ++
+
+    case 'RECEIVE_VOTES':
+      newState.votes = payload
       return newState
     case 'REQUEST_LIFESTYLES':
       newState.requestingLifestyles = true
@@ -56,6 +69,19 @@ module.exports = (state, action) => {
       return newState
     case 'LOGOUT':
       newState.currentUser = null
+      return newState
+    case 'ATTACH_VOTES':
+      newState.flops = newState.flops.map(flop => {
+        flop.upvotes = 0
+        flop.downvotes = 0
+        newState.votes
+           .filter(vote => vote.flopId == flop.flopId)
+           .forEach(vote => {
+             flop.upvotes += Number(vote.upvote)
+             flop.downvotes += Number(vote.downvote)
+           })
+        return flop
+      })
       return newState
     default:
       return newState

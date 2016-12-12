@@ -7,7 +7,7 @@ test('base test', function (t) {
   t.end()
 })
 
-test('tests CHANGE_PAGE case', function(t) {
+test('tests CHANGE_PAGE case', function (t) {
   var initialState = {
     currentPage: 'login',
     lifestyles: [],
@@ -17,27 +17,23 @@ test('tests CHANGE_PAGE case', function(t) {
   var expected = {
     currentPage: 'newsFeed',
     lifestyles: [],
-    currentUser : {}
+    currentUser: {}
   }
   var actual = reducer(initialState, {type: 'CHANGE_PAGE', payload: 'newsFeed'})
   t.deepEqual(actual, expected, 'CHANGE_PAGE changes page correctly')
   t.end()
 })
 
-test('tests UP_VOTE can increment the upvote count', function(t) {
+test('tests POST_VOTE can add a vote to the state ', function (t) {
   var initialState = {
     currentPage: 'login',
     lifestyles: [
       {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
-      {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2},
+      {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2}
     ],
     currentUser: {},
-    flops: [
-      {flopId: 1, lifestyleId: 1, upvotes: 6, downvotes: 5},
-      {flopId: 2, lifestyleId: 1, upvotes: 5, downvotes: 5},
-      {flopId: 3, lifestyleId: 2, upvotes: 5, downvotes: 5},
-      {flopId: 4, lifestyleId: 1, upvotes: 5, downvotes: 5}
-    ]
+    flops: [],
+    votes: [{'voteId': 1, 'flopId': 1, 'userId': 1, 'upvote': 0, 'downvote': 1}]
   }
 
   freeze(initialState)
@@ -45,37 +41,32 @@ test('tests UP_VOTE can increment the upvote count', function(t) {
     currentPage: 'login',
     lifestyles: [
       {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
-      {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2},
+      {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2}
     ],
     currentUser: {},
-    flops: [
-      {flopId: 1, lifestyleId: 1, upvotes: 7, downvotes: 5},
-      {flopId: 2, lifestyleId: 1, upvotes: 5, downvotes: 5},
-      {flopId: 3, lifestyleId: 2, upvotes: 5, downvotes: 5},
-      {flopId: 4, lifestyleId: 1, upvotes: 5, downvotes: 5}
+    flops: [],
+    votes: [
+      {'voteId': 1, 'flopId': 1, 'userId': 1, 'upvote': 0, 'downvote': 1},
+      {'voteId': 3, 'flopId': 13, 'userId': 32, 'upvote': 1, 'downvote': 0}
     ]
   }
-  var actual= reducer(initialState, {type: 'UP_VOTE', payload: 1})
+  var actual = reducer(initialState, {type: 'POST_VOTE', payload:
+    {'voteId': 3, 'flopId': 13, 'userId': 32, 'upvote': 1, 'downvote': 0}})
 
-  t.deepEqual(actual, expected, 'UP_VOTE increments vote count')
+  t.deepEqual(actual, expected, 'POST_VOTE posts a single vote correctly')
   t.end()
 })
 
-
-test('tests DOWN_VOTE can decrement the downvote count', function(t) {
+test('tests POST_VOTE only updates vote when it is already present ', function (t) {
   var initialState = {
     currentPage: 'login',
     lifestyles: [
       {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
-      {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2},
+      {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2}
     ],
     currentUser: {},
-    flops: [
-      {flopId: 1, lifestyleId: 1, upvotes: 7, downvotes: 5},
-      {flopId: 2, lifestyleId: 1, upvotes: 5, downvotes: 5},
-      {flopId: 3, lifestyleId: 2, upvotes: 5, downvotes: 5},
-      {flopId: 4, lifestyleId: 1, upvotes: 5, downvotes: 5}
-    ]
+    flops: [],
+    votes: [{'flopId': 1, 'userId': 1, 'upvote': 0, 'downvote': 1}]
   }
 
   freeze(initialState)
@@ -83,22 +74,22 @@ test('tests DOWN_VOTE can decrement the downvote count', function(t) {
     currentPage: 'login',
     lifestyles: [
       {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
-      {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2},
+      {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2}
     ],
     currentUser: {},
-    flops: [
-      {flopId: 1, lifestyleId: 1, upvotes: 7, downvotes: 5},
-      {flopId: 2, lifestyleId: 1, upvotes: 5, downvotes: 5},
-      {flopId: 3, lifestyleId: 2, upvotes: 5, downvotes: 5},
-      {flopId: 4, lifestyleId: 1, upvotes: 5, downvotes: 6}
+    flops: [],
+    votes: [
+      {'flopId': 1, 'userId': 1, 'upvote': 1, 'downvote': 0}
     ]
   }
-  const actual = reducer(initialState, {type: 'DOWN_VOTE', payload: 4})
-  t.deepEqual(actual, expected, 'DOWN_VOTE increments vote count')
+  var actual = reducer(initialState, {type: 'POST_VOTE', payload:
+    {'flopId': 1, 'userId': 1, 'upvote': 1, 'downvote': 0}})
+
+  t.deepEqual(actual, expected, 'POST_VOTE updates a vote correctly')
   t.end()
 })
 
-test('tests RECEIVE_LIFESTYLES gets lifestyle data', function(t) {
+test('tests RECEIVE_LIFESTYLES gets lifestyle data', function (t) {
   var initialState = {
     currentPage: 'login',
     requestingLifestyles: true,
@@ -122,12 +113,12 @@ test('tests RECEIVE_LIFESTYLES gets lifestyle data', function(t) {
   const actual = reducer(initialState, {type: 'RECEIVE_LIFESTYLES', payload: [
     {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
     {title: 'Best Cake', description: 'The person that can make the best cake', lifestyleId: 2}
-  ],})
+  ] })
   t.deepEqual(actual, expected, 'receive lifestyles works')
   t.end()
 })
 
-test('tests RECEIVE_FLOPS gets flops data', function(t) {
+test('tests RECEIVE_FLOPS gets flops data', function (t) {
   var initialState = {
     currentPage: 'login',
     requestingFlops: true,
@@ -160,8 +151,7 @@ test('tests RECEIVE_FLOPS gets flops data', function(t) {
   t.end()
 })
 
-
-test('tests RECEIVE_CURRENT_USER gets current flopper data', function(t) {
+test('tests RECEIVE_CURRENT_USER gets current flopper data', function (t) {
   var initialState = {
     currentPage: 'login',
     lifestyles: [],
@@ -179,7 +169,7 @@ test('tests RECEIVE_CURRENT_USER gets current flopper data', function(t) {
       profilePic: 'imgur.com/flj2530',
       bio: 'Im good at things!',
       lifestylesFollowing: ['lasagna', 'cup stacking'],
-      floppersFollowing: [1,3,4]
+      floppersFollowing: [1, 3, 4]
     },
     flops: []
   }
@@ -190,8 +180,8 @@ test('tests RECEIVE_CURRENT_USER gets current flopper data', function(t) {
     profilePic: 'imgur.com/flj2530',
     bio: 'Im good at things!',
     lifestylesFollowing: ['lasagna', 'cup stacking'],
-    floppersFollowing: [1,3,4]
-    }})
+    floppersFollowing: [1, 3, 4]
+  }})
   t.deepEqual(actual, expected, 'receive currentUser works')
   t.end()
 })
@@ -211,12 +201,11 @@ test('tests CHANGE_CURRENTLIFESTYLEID can change the id', function (t) {
 
   const actual = reducer(initialState, {type: 'CHANGE_CURRENTLIFESTYLEID', payload: 2})
 
-  t.deepEqual(actual,expected, 'changing the currentLifestyleId')
+  t.deepEqual(actual, expected, 'changing the currentLifestyleId')
   t.end()
 })
 
-test('LOGIN_INIT', function(t){
-
+test('LOGIN_INIT', function (t) {
   var initialState = {
     loginInProgress: false
   }
@@ -227,11 +216,11 @@ test('LOGIN_INIT', function(t){
   // act
   const newState = reducer(initialState, action)
   // assert
-  t.equal(newState.loginInProgress, expectedLoginInProgress, "login init changes logininprogr 1`ess to true")
+  t.equal(newState.loginInProgress, expectedLoginInProgress, 'login init changes logininprogr 1`ess to true')
   t.end()
 })
 
-test('LOGIN_SUCCESSFUL', function(t){
+test('LOGIN_SUCCESSFUL', function (t) {
   var initialState = {
     loginInProgress: true,
     loginUnsuccessful: true
@@ -241,22 +230,22 @@ test('LOGIN_SUCCESSFUL', function(t){
   const expectedLoginUnsuccessful = false
   freeze(initialState)
   const userData = {
-      userId: 1,
-      name: 'lord master',
-      profilePic: 'http://abdindia.com/wp-content/uploads/2014/01/lord.jpg',
-      bio: 'Im good at things!'
-    }
+    userId: 1,
+    name: 'lord master',
+    profilePic: 'http://abdindia.com/wp-content/uploads/2014/01/lord.jpg',
+    bio: 'Im good at things!'
+  }
   const action = {type: 'LOGIN_SUCCESSFUL', payload: userData}
   // act
   const newState = reducer(initialState, action)
   // assert
-  t.equal(newState.loginInProgress, expectedLoginInProgress, "Login succesful changes state to loginInProgress to false")
-  t.equal(newState.loginUnsuccessful, expectedLoginUnsuccessful, "Login succesful changes state to loginUnsuccessful to true")
-  t.deepEqual(newState.currentUser, userData, "Login successful adds the user data from payload to current user")
+  t.equal(newState.loginInProgress, expectedLoginInProgress, 'Login succesful changes state to loginInProgress to false')
+  t.equal(newState.loginUnsuccessful, expectedLoginUnsuccessful, 'Login succesful changes state to loginUnsuccessful to true')
+  t.deepEqual(newState.currentUser, userData, 'Login successful adds the user data from payload to current user')
   t.end()
 })
 
-test('LOGIN_UNSUCCESSFUL', function(t){
+test('LOGIN_UNSUCCESSFUL', function (t) {
   var initialState = {
     loginInProgress: true,
     loginUnsuccessful: false
@@ -269,31 +258,31 @@ test('LOGIN_UNSUCCESSFUL', function(t){
   // act
   const newState = reducer(initialState, action)
   // assert
-  t.equal(newState.loginInProgress, expectedLoginInProgress, "Login unsuccesful changes state to loginInProgress to false")
-  t.equal(newState.loginUnsuccessful, expectedLoginUnsuccessful, "Login unsuccesful changes state to loginUnsuccessful to false")
+  t.equal(newState.loginInProgress, expectedLoginInProgress, 'Login unsuccesful changes state to loginInProgress to false')
+  t.equal(newState.loginUnsuccessful, expectedLoginUnsuccessful, 'Login unsuccesful changes state to loginUnsuccessful to false')
   t.end()
 })
 
-test('SAVE_PHOTO_URL', function(t){
+test('SAVE_PHOTO_URL', function (t) {
   var initialState = {
     currentPhotoURLs: null
   }
   // arrange
   var expectedState = {
-    currentPhotoURLs: "url"
+    currentPhotoURLs: 'url'
   }
   freeze(initialState)
-  const action = {type: 'SAVE_PHOTO_URL', payload: "url" }
+  const action = {type: 'SAVE_PHOTO_URL', payload: 'url' }
   // act
   const newState = reducer(initialState, action)
   // assert
-  t.equal(newState.currentPhotoURLs, expectedState.currentPhotoURLs, "Save photo urls changes the property to payload urls")
+  t.equal(newState.currentPhotoURLs, expectedState.currentPhotoURLs, 'Save photo urls changes the property to payload urls')
   t.end()
 })
 
-test('REMOVE_PHOTO_URL', function(t){
+test('REMOVE_PHOTO_URL', function (t) {
   var initialState = {
-    currentPhotoURLs: "url"
+    currentPhotoURLs: 'url'
   }
   // arrange
   const expectedState = {
@@ -304,18 +293,18 @@ test('REMOVE_PHOTO_URL', function(t){
   // act
   const newState = reducer(initialState, action)
   // assert
-  t.equal(newState.currentPhotoURLs, expectedState.currentPhotoURLs, "Remove photo url changes currentPhotoURLs to null")
+  t.equal(newState.currentPhotoURLs, expectedState.currentPhotoURLs, 'Remove photo url changes currentPhotoURLs to null')
   t.end()
 })
 
-test('LOGOUT', function(t){
+test('LOGOUT', function (t) {
   var initialState = {
     currentUser: {
-        userId: 1,
-        name: 'lord master',
-        profilePic: 'http://abdindia.com/wp-content/uploads/2014/01/lord.jpg',
-        bio: 'Im good at things!'
-      }
+      userId: 1,
+      name: 'lord master',
+      profilePic: 'http://abdindia.com/wp-content/uploads/2014/01/lord.jpg',
+      bio: 'Im good at things!'
+    }
   }
   // arrange
   const expectedCurrentUser = null
@@ -324,6 +313,37 @@ test('LOGOUT', function(t){
   // act
   const newState = reducer(initialState, action)
   // assert
-  t.deepEqual(newState.currentUser, expectedCurrentUser, "Logout successfully removes currentUser data from the state")
+  t.deepEqual(newState.currentUser, expectedCurrentUser, 'Logout successfully removes currentUser data from the state')
+  t.end()
+})
+
+test('tests RECEIVE_VOTES gets all the votes', function (t) {
+  var initialState = {
+    currentPage: 'login',
+    lifestyles: [],
+    currentUser: {},
+    flops: [],
+    votes: []
+  }
+  freeze(initialState)
+
+  var expected = {
+    currentPage: 'login',
+    lifestyles: [],
+    currentUser: {},
+    flops: [],
+    votes: [
+      {'voteId': 1, 'flopId': 1, 'userId': 1, 'upvote': 0, 'downvote': 1},
+      {'voteId': 2, 'flopId': 20, 'userId': 1, 'upvote': 0, 'downvote': 1},
+      {'voteId': 3, 'flopId': 13, 'userId': 1, 'upvote': 1, 'downvote': 0}
+    ]
+  }
+
+  const actual = reducer(initialState, {type: 'RECEIVE_VOTES', payload: [
+    {'voteId': 1, 'flopId': 1, 'userId': 1, 'upvote': 0, 'downvote': 1},
+    {'voteId': 2, 'flopId': 20, 'userId': 1, 'upvote': 0, 'downvote': 1},
+    {'voteId': 3, 'flopId': 13, 'userId': 1, 'upvote': 1, 'downvote': 0}
+  ]})
+  t.deepEqual(actual, expected, 'receive votes works really very well')
   t.end()
 })

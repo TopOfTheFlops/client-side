@@ -18,7 +18,7 @@ import EditProfile from './components/EditProfile'
 const main = document.querySelector('main')
 
 var initialState = {
-  loginInfo: {username: "", password: "", bio: "", profilePic: ""},
+  loginInfo: {username: '', password: '', bio: '', profilePic: ''},
   currentPage: '/',
   currentLifestyleId: 1,
   lifestyles: [],
@@ -44,7 +44,7 @@ const route = Router({default: '/404'}, [
 
 subscribe(() => {
   var Component = route(getState().currentPage)
-  render(<Component state={getState()} dispatch={dispatch}/>, main)
+  render(<Component state={getState()} dispatch={dispatch} />, main)
 })
 
 dispatch({type: 'INIT'})
