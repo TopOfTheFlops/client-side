@@ -16,6 +16,7 @@ module.exports = (dispatch, lifestyleInfo) => {
       else {
         getLifestyles(dispatch)
         dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
+        dispatch({type: 'REMOVE_PHOTO_URL'})
     }
     })
 }
