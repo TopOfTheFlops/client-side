@@ -1,5 +1,6 @@
 import React from 'react'
 import createNewUser from '../api/createNewUser'
+import callCloudinary from '../widget'
 
 function Signup({state, dispatch}) {
   function signupNewUser (e) {
@@ -10,7 +11,7 @@ function Signup({state, dispatch}) {
       name : document.getElementById('name').value,
       password : document.getElementById('password').value,
       bio : document.getElementById('bio').value,
-      profilePic : document.getElementById('profilePic').value
+      profilePic : state.currentPhotoURLs
     }
     createNewUser(dispatch, userInfo)
   }
@@ -21,7 +22,11 @@ function Signup({state, dispatch}) {
         <input className='username' placeholder='username' type='text' name='username' id='username'/>
         <input className='username' placeholder='name' type='text' name='name' id='name'/>
         <input className='password' placeholder='password' type='password' name='password'id='password'/>
-        <input className='username' placeholder='profile pic url' type='text' name='profilePic' id='profilePic'/>
+        <button id="upload_widget_opener" onClick={ (e) => {
+            e.preventDefault()
+            callCloudinary(dispatch)
+          }
+        }>Add a profile picture</button>
         <input className='username' placeholder='a bit about you...' type='text' name='bio' id='bio'/>
         <input className='loginButton' type='submit' value='signup!' onClick={signupNewUser}/>
       </form>

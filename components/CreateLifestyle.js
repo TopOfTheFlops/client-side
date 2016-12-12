@@ -14,7 +14,6 @@ function CreateLifestyle({state, dispatch}) {
       description: document.getElementById('description').value,
       media: state.currentPhotoURLs,
     }
-    console.log(lifestyleInfo);
     postNewLifestyle(dispatch, lifestyleInfo)
   }
   return (
