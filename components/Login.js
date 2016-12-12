@@ -1,5 +1,6 @@
 import React from 'react'
 import loginService from '../api/loginService'
+import Loader from 'halogen/PulseLoader'
 
 function Login({state, dispatch}) {
 
@@ -29,7 +30,7 @@ function Login({state, dispatch}) {
         <input className='username' placeholder='username' type='text' id='username'/>
         <input className='password' placeholder='password' type='password' id='password'/>
         <input className='loginButton' type='submit' value='Login!' onClick={login}></input>
-        <p className={customClass}>Login in progress</p>
+        <Loader className={customClass + ' loadingPulse'}/>
         <p className={successClass}>Login unsuccessful</p>
       </form>
       <button className='signupButton' onClick={goToSignup}>Sign Up!</button>

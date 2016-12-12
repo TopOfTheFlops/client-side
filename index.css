@@ -214,3 +214,7 @@ nav li {
 .hidden {
   display: none
 }
+
+.loadingPulse {
+  margin-top: 20px;
+}
