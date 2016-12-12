@@ -21,6 +21,7 @@ function Flops ({state, dispatch}) {
       {RenderTitle(state)}
       <button onClick={goBack}>back</button>
       {RenderFlop(state, dispatch)}
+      <div className='clear'></div>
       <Nav state={state} dispatch={dispatch} />
     </div>
   )

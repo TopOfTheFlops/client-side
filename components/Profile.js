@@ -16,6 +16,7 @@ function Profile({state, dispatch}) {
         </div>
       </div>
       {SortFlops(state, dispatch)}
+      <div className='clear'></div>
       <Nav state={state} dispatch={dispatch} />
     </div>
   )
