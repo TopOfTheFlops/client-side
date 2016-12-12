@@ -17,15 +17,14 @@ function Flops ({state, dispatch}) {
       {RenderTitle(state)}
       <button className='create' onClick={goToCreateFlop}>Compete!</button>
       {RenderFlops(state, dispatch)}
+      <div className='clear'></div>
       <Nav state={state} dispatch={dispatch} />
     </div>
   )
 }
 
 function RenderFlops (state, dispatch) {
-  // function actionDownvote (dispatch, id) {
-  //   return
-  // }
+
   return state.flops
     .sort((a, b) => b.upvotes - a.upvotes)
     .filter(flop => {
