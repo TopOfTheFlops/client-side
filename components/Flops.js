@@ -22,7 +22,6 @@ function Flops ({state, dispatch}) {
 }
 
 function RenderFlops (state, dispatch) {
-
   return state.flops
     .sort((a, b) => b.upvotes - a.upvotes)
     .filter(flop => {
@@ -30,6 +29,7 @@ function RenderFlops (state, dispatch) {
     })
     .map((flop, index) => {
       flop.rank = index + 1
+      console.log('this is the flops', flop);
       return (
         <div className='flop' key={flop.flopId}>
           <img className='flopPic' src={flop.mediaURL} onClick={() => {
@@ -39,7 +39,7 @@ function RenderFlops (state, dispatch) {
           <p>{flop.rank}. {flop.username}</p>
           <p>{flop.description}</p>
           <button className='upvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
-          <button className='downvote' onClick={() => voteFlop(dispatch,state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
+          <button className='downvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
         </div>
       )
     })

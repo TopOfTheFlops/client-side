@@ -2,9 +2,6 @@ import React from 'react'
 
 import Header from './Header'
 import Nav from './Nav'
-import upvoteFlop from '../api/upvoteFlop'
-import downvoteFlop from '../api/downvoteFlop'
-import request from 'superagent'
 
 
 function Flops ({state, dispatch}) {

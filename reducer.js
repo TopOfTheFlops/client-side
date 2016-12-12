@@ -22,19 +22,24 @@ module.exports = (state, action) => {
       return newState
     case 'POST_VOTE':
       newState.flops = attachVotes(newState.votes, newState.flops)
-      var foundVote = newState.votes.find(vote => vote.flopId === payload.flopId && vote.userId === payload.userId)
-      if (foundVote) {
-        foundVote = payload
-        newState.flops = attachVotes(newState.votes, newState.flops)
-        console.log('in the if', newState)
-        return newState
+      var voteFound = false
+      var voteIndex = 0
+      newState.votes.forEach((vote, index)=> {
+        if(vote.flopId === payload.flopId && vote.userId === payload.userId){
+          console.log('Vote found, overwriting');
+          voteFound = true
+          voteIndex = index
+        }
+      })
+      if (voteFound) {
+        newState.votes[voteIndex] = payload
       }
       else {
         newState.votes.push(payload)
-        newState.flops = attachVotes(newState.votes, newState.flops)
-        console.log('state', newState)
-        return newState
       }
+      newState.flops = attachVotes(newState.votes, newState.flops)
+      return newState
+
     case 'RECEIVE_VOTES':
       newState.votes = payload
       newState.flops = attachVotes(newState.votes, newState.flops)
@@ -80,6 +85,7 @@ module.exports = (state, action) => {
 }
 
 function attachVotes(votes, flops) {
+  console.log('attaching votes');
    return flops.map(flop => {
     flop.upvotes = 0
     flop.downvotes = 0
