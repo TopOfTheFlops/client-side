@@ -79,7 +79,7 @@ test('tests POST_VOTE only updates vote when it is already present ', function (
     currentUser: {},
     flops: [],
     votes: [
-      {'flopId': 1, 'userId': 1, 'upvote': 0, 'downvote': 1}
+      {'flopId': 1, 'userId': 1, 'upvote': 1, 'downvote': 0}
     ]
   }
   var actual = reducer(initialState, {type: 'POST_VOTE', payload:
