@@ -7,5 +7,6 @@ module.exports = (dispatch, userId) => {
     .end((err, res) =>{
       if (err) return console.log(err)
       dispatch({type: 'RECEIVE_VOTES', payload: res.body})
+      dispatch({type: 'ATTACH_VOTES'})
     })
 }
