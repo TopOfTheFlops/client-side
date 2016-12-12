@@ -1,8 +1,9 @@
 import request from 'superagent'
+import url from './apiUrl'
 
 module.exports = (dispatch, flopId) => {
   request
-    .post('https://topoftheflops.herokuapp.com/api/v1/flops/vote')
+    .post(`${url}/api/v1/flops/vote`)
     .withCredentials()
     .send({
       action: "downvote",

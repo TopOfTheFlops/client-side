@@ -1,10 +1,11 @@
 import request from 'superagent'
 import getFlops from '../api/getFlops'
+import url from './apiUrl'
 
 module.exports = (dispatch, mediaFile) => {
   console.log(mediaFile);
   request
-    .post('http://localhost:3000/api/v1/flops/photo')
+    .post(`${url}/api/v1/flops/photo`)
     .withCredentials()
     .type('image/jpg')
     .send(mediaFile)

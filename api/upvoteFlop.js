@@ -1,4 +1,5 @@
 const request = require('superagent')
+import url from './apiUrl'
 
 module.exports = (dispatch, flopId) => {
   var toSend = {
@@ -6,7 +7,7 @@ module.exports = (dispatch, flopId) => {
     flopId: flopId
   }
   request
-    .post('https://topoftheflops.herokuapp.com/api/v1/flops/vote')
+    .post(`${url}/api/v1/flops/vote`)
     .withCredentials()
     .send(toSend)
     .end((err, res) => {

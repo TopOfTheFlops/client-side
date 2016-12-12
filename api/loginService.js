@@ -2,6 +2,7 @@ import request from 'superagent'
 import getLifestyles from '../api/getLifestyles'
 import getFlops from '../api/getFlops'
 import getCurrentUser from '../api/getCurrentUser'
+import url from './apiUrl'
 
 
 module.exports = (dispatch, userInfo) => {
@@ -9,7 +10,7 @@ module.exports = (dispatch, userInfo) => {
   dispatch({type: 'LOGIN_INIT'})
 
   request
-    .post('https://topoftheflops.herokuapp.com/api/v1/users/login')
+    .post(`${url}/api/v1/users/login`)
     .send(userInfo)
     .withCredentials()
     .end((err, res) => {

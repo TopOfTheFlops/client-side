@@ -1,10 +1,11 @@
 import request from 'superagent'
 import getLifestyles from '../api/getLifestyles'
+import url from './apiUrl'
 
 module.exports = (dispatch, lifestyleInfo) => {
   console.log(lifestyleInfo);
   request
-    .post('https://topoftheflops.herokuapp.com/api/v1/lifestyles')
+    .post(`${url}/api/v1/lifestyles`)
     .withCredentials()
     .send(lifestyleInfo)
     .end((err, res) => {
