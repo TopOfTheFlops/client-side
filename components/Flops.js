@@ -2,6 +2,7 @@ import React from 'react'
 
 import Header from './Header'
 import Nav from './Nav'
+
 import voteFlop from '../api/voteFlop'
 
 function Flops ({state, dispatch}) {

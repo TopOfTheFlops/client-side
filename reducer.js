@@ -61,6 +61,10 @@ module.exports = (state, action) => {
     case 'CHANGE_VIEW_SINGLE_FLOP':
       newState.viewSingleFlop = payload
       return newState
+    case 'VOTE_VIEW_SINGLE_FLOP':
+      newState.viewSingleFlop.upvotes += payload.up
+      newState.viewSingleFlop.downvotes += payload.down
+      return newState
     case 'SAVE_PHOTO_URL':
       newState.currentPhotoURLs = payload
       return newState

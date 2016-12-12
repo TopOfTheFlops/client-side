@@ -206,6 +206,7 @@ nav li {
 .username, .password {
   display: block;
   height: 30px;
+  width: 300px;
   margin: 10px auto;
   font-size: 1.3em;
   padding: 7px 0;
@@ -225,4 +226,16 @@ nav li {
 
 .upload {
   background-color: #f64161
+}
+
+#title, #description {
+  width: 80%;
+}
+
+/******************************************/
+/************ New Lifestyle ***************/
+/******************************************/
+
+.newLifestyleForm {
+  display: block;
 }
