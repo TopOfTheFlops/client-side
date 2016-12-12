@@ -307,3 +307,23 @@ test('REMOVE_PHOTO_URL', function(t){
   t.equal(newState.currentPhotoURLs, expectedState.currentPhotoURLs, "Remove photo url changes currentPhotoURLs to null")
   t.end()
 })
+
+test('LOGOUT', function(t){
+  var initialState = {
+    currentUser: {
+        userId: 1,
+        name: 'lord master',
+        profilePic: 'http://abdindia.com/wp-content/uploads/2014/01/lord.jpg',
+        bio: 'Im good at things!'
+      }
+  }
+  // arrange
+  const expectedCurrentUser = null
+  freeze(initialState)
+  const action = {type: 'LOGOUT'}
+  // act
+  const newState = reducer(initialState, action)
+  // assert
+  t.deepEqual(newState.currentUser, expectedCurrentUser, "Logout successfully removes currentUser data from the state")
+  t.end()
+})

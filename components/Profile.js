@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import Nav from './Nav'
+import logout from '../api/logout'
 
 function Profile({state, dispatch}) {
   console.log('State at Profile', state.currentUser)
@@ -8,6 +9,7 @@ function Profile({state, dispatch}) {
     <div>
       <Header />
       <button className='create' onClick={() => dispatch({type: 'CHANGE_PAGE', payload: '/editprofile'})}>Edit Profile</button>
+      <button className='create' onClick={logout}>Logout</button>
       <h3>Your Profile</h3>
       <div className="profile">
       <img className='profilePic' src={state.currentUser.profilePic}/>
