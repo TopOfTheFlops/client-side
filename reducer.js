@@ -7,10 +7,12 @@ module.exports = (state, action) => {
       newState.loginInProgress = true
       return newState
     case 'LOGIN_SUCCESSFUL':
-      newState.loginInProgress = false
-      newState.loginUnsuccessful = false
-      newState.currentUser = payload
-      return newState
+      return Object.assign(newState, {
+        loginInProgress: false,
+        loginUnsuccessful: false,
+        currentUser: payload
+
+      })
     case 'LOGIN_UNSUCCESSFUL':
       newState.loginInProgress = false
       newState.loginUnsuccessful = true
@@ -19,7 +21,9 @@ module.exports = (state, action) => {
       newState.currentPage = payload
       return newState
     case 'UP_VOTE':
-      newState.flops.find(flop => flop.flopId == payload).upvotes++
+      newState.flops
+        .find(flop => flop.flopId == payload)
+        .upvotes++
       return newState
     case 'DOWN_VOTE':
       var correctFlop = newState.flops.find(flop => flop.flopId == payload)

@@ -7,10 +7,9 @@ import postNewFlop from '../api/postNewFlop'
 import callCloudinary from '../widget'
 
 
-function CreateFlop({state, dispatch}) {
+function NewFlop({state, dispatch}) {
 
   function createNewFlop (e) {
-    console.log('Creating new flop');
     e.preventDefault()
     var flopInfo = {
       userId: state.currentUser.userId,

@@ -31,7 +31,11 @@ function RenderFlops (state, dispatch) {
       return flop.lifestyleId == state.currentLifestyleId
     })
     .map((flop, index) => {
+
       flop.rank = index + 1
+
+      const { description, upvotes, downvotes, flopId } = flop 
+
       return (
         <div className='flop' key={flop.flopId}>
           <img className='flopPic' src={flop.mediaURL} onClick={() => {
@@ -39,9 +43,9 @@ function RenderFlops (state, dispatch) {
             dispatch({type: 'CHANGE_PAGE', payload: '/singleflop'})
           }}/>
           <p>{flop.rank}. {flop.username}</p>
-          <p>{flop.description}</p>
-          <button className='upvote' onClick={() => upvoteFlop(dispatch, flop.flopId)} >{flop.upvotes}</button>
-          <button className='downvote' onClick={() => downvoteFlop(dispatch, flop.flopId)}>{flop.downvotes}</button>
+          <p>{description}</p>
+          <button className='upvote' onClick={() => upvoteFlop(dispatch, flopId)} >{upvotes}</button>
+          <button className='downvote' onClick={() => downvoteFlop(dispatch, flopId)}>{downvotes}</button>
         </div>
       )
     })
@@ -49,7 +53,13 @@ function RenderFlops (state, dispatch) {
 
 function RenderTitle (state) {
   const {lifestyles, currentLifestyleId} = state
-  return lifestyles.filter(lifestyle => lifestyle.lifestyleId == currentLifestyleId).map(lifestyle => (<h2 className='lifestyleHeader' key={lifestyle.lifestyleId}>{lifestyle.title}</h2>))
+  return lifestyles
+    .filter(lifestyle => lifestyle.lifestyleId == currentLifestyleId)
+    .map(Title)
+}
+
+function Title (lifestyle) {
+  return (<h2 className='lifestyleHeader' key={lifestyle.lifestyleId}>{lifestyle.title}</h2>)
 }
 
 module.exports = Flops
