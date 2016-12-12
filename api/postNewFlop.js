@@ -2,7 +2,6 @@ import request from 'superagent'
 import getFlops from '../api/getFlops'
 
 module.exports = (dispatch, flopInfo) => {
-  console.log(flopInfo);
   request
     .post('https://topoftheflops.herokuapp.com/api/v1/flops')
     .send(flopInfo)
@@ -16,6 +15,7 @@ module.exports = (dispatch, flopInfo) => {
       else {
         getFlops(dispatch)
         dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
+        dispatch({type: 'REMOVE_PHOTO_URL'})
       }
     })
 }

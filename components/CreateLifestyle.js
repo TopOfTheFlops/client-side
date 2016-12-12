@@ -4,6 +4,7 @@ import Header from './Header'
 import Nav from './Nav'
 
 import postNewLifestyle from '../api/postNewLifestyle'
+import callCloudinary from '../widget'
 
 function CreateLifestyle({state, dispatch}) {
   function createNewLifestyle (e) {
@@ -11,9 +12,8 @@ function CreateLifestyle({state, dispatch}) {
     var lifestyleInfo = {
       title: document.getElementById('title').value,
       description: document.getElementById('description').value,
-      media: document.getElementById('media').value
+      media: state.currentPhotoURLs,
     }
-    console.log(lifestyleInfo);
     postNewLifestyle(dispatch, lifestyleInfo)
   }
   return (
@@ -25,8 +25,11 @@ function CreateLifestyle({state, dispatch}) {
         <input placeholder='Name' type="text" id='title'/>
         <h3>Briefly describe what this lifestyle is about</h3>
         <input placeholder='Description' type="text" id='description'/>
-        <h3>Give the lifestyle a profile picture (optional) </h3>
-        <input placeholder='Image url' type="text" id='media' />
+        <button className="upload" id="upload_widget_opener" onClick={ (e) => {
+            e.preventDefault()
+            callCloudinary(dispatch)
+          }
+        }>Give the lifestyle a profile picture</button>
         <input className='create' type='submit' value='Go!' onClick={createNewLifestyle}/>
       </form>
       <Nav state={state} dispatch={dispatch}/>
