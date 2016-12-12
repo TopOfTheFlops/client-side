@@ -7,9 +7,10 @@ function Profile({state, dispatch}) {
   return (
     <div>
       <Header />
+      <button className='create' onClick={() => dispatch({type: 'CHANGE_PAGE', payload: '/editprofile'})}>Edit Profile</button>
       <h3>Your Profile</h3>
       <div className="profile">
-        <img className='profilePic' src={state.currentUser.profilePic}/>
+      <img className='profilePic' src={state.currentUser.profilePic}/>
         <div className="profileInfo">
           <h2 >{state.currentUser.name}</h2>
           <p>{state.currentUser.bio}</p>
