@@ -7,7 +7,9 @@ module.exports = (dispatch, userInfo, state) => {
     .send(userInfo)
     .end((err, res) => {
       if (err) return console.log(err)
-      console.log(res.body);
+      if (res.body.error) {
+        dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
+      }
       dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
       dispatch({type: 'REMOVE_PHOTO_URL'})
     })

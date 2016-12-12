@@ -5,14 +5,15 @@ module.exports = (dispatch, flopId) => {
     action: 'upvote',
     flopId: flopId
   }
-  console.log('Tosend', toSend)
   request
     .post('https://topoftheflops.herokuapp.com/api/v1/flops/vote')
     .withCredentials()
     .send(toSend)
     .end((err, res) => {
       if (err) return console.log(err)
-      console.log('Response from upvote', res)
+      if (res.body.error) {
+        dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
+      }
       dispatch({type:'UP_VOTE', payload: flopId})
     })
 }

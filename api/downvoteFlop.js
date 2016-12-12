@@ -10,6 +10,9 @@ module.exports = (dispatch, flopId) => {
     })
     .end((err, res) => {
       if (err) return console.log(err)
+      if (res.body.error) {
+        dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
+      }
       console.log(res);
       dispatch({type:'DOWN_VOTE', payload: flopId})
     })
