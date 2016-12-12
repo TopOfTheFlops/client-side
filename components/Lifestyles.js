@@ -7,8 +7,8 @@ function Lifestyles({state, dispatch}) {
   }
   return (
     <div className='lifestyles'>
-    <button className='create' onClick={goToCreateLifestyle}>create new lifestyle</button>
-        {lifeDash(state, dispatch)}
+      <button className='create' onClick={goToCreateLifestyle}>create new lifestyle</button>
+      {lifeDash(state, dispatch)}
     </div>
   )
 }
