@@ -4,12 +4,11 @@ import Nav from './Nav'
 import logout from '../api/logout'
 
 function Profile({state, dispatch}) {
-  console.log('State at Profile', state.currentUser)
   return (
     <div>
       <Header />
       <button className='create' onClick={() => dispatch({type: 'CHANGE_PAGE', payload: '/editprofile'})}>Edit Profile</button>
-      <button className='create' onClick={logout}>Logout</button>
+      <button className='create' onClick={() => logout(dispatch)}>Logout</button>
       <h3>Your Profile</h3>
       <div className="profile">
       <img className='profilePic' src={state.currentUser.profilePic}/>
@@ -29,7 +28,6 @@ function SortFlops(state, dispatch) {
   const {flops, lifestyles} = state
   return lifestyles
     .map(lifestyle => {
-        console.log('Current Lifestyle', lifestyle)
         return flops
       .filter( flop => flop.lifestyleId === lifestyle.lifestyleId)
       .sort((a,b) => b.upvotes - a.upvotes)
