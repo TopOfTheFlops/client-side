@@ -3,6 +3,8 @@ import React from 'react'
 import Header from './Header'
 import Nav from './Nav'
 
+import voteFlop from '../api/voteFlop'
+
 function Flops ({state, dispatch}) {
   function goToCreateFlop (e) {
     dispatch({type: 'CHANGE_PAGE', payload: '/CreateFlop'})
@@ -29,8 +31,15 @@ function RenderFlop (state, dispatch) {
       <img className='singleflopPic' src={state.viewSingleFlop.mediaURL} />
       <p>{state.viewSingleFlop.rank}. {state.viewSingleFlop.username}</p>
       <p>{state.viewSingleFlop.description}</p>
-      <button className='upvote' onClick={() => upvoteFlop(dispatch, state.viewSingleFlop.flopId)} >{state.viewSingleFlop.upvotes}</button>
-      <button className='downvote' onClick={() => downvoteFlop(dispatch, state.viewSingleFlop.FlopId)}>{state.viewSingleFlop.downvotes}</button>
+      <button className='upvote' onClick={() => {
+        voteFlop(dispatch, state, state.viewSingleFlop.flopId, state.currentUser.userId, 1, 0)
+      }
+      } >{state.viewSingleFlop.upvotes}</button>
+      <button className='downvote' onClick={() => {
+        voteFlop(dispatch, state, state.viewSingleFlop.flopId, state.currentUser.userId, 0, 1)
+      }
+      }
+      >{state.viewSingleFlop.downvotes}</button>
     </div>
   )
 }
