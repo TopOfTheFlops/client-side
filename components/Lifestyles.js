@@ -33,7 +33,7 @@ function getTopThree (state, dispatch, lifestyleId) {
   var {lifestyles, flops, currentUser} = state
   return (
     <div className='topThree'>
-      { flops
+      {flops
         .filter(flop => flop.lifestyleId === lifestyleId)
         .sort((a, b) => b.upvotes - a.upvotes)
         .filter((flop, index) => {
@@ -42,8 +42,10 @@ function getTopThree (state, dispatch, lifestyleId) {
         })
         .map((flop, index) => {
           var customClass = flop.username === state.currentUser.username ? 'currentUser' : 'otherUser'
+          var userPic = state.allUsers.find(user => flop.userId).profilePic
           return (
-          <div className={customClass} key={index}>
+          <div className={customClass+" clickable user"} key={index}>
+            <img className="userThumbnail" src={userPic}/>
             <p onClick={() =>{
               dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
               dispatch({type: 'CHANGE_PAGE', payload: '/profile'})

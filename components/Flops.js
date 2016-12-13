@@ -22,7 +22,7 @@ function Flops ({state, dispatch}) {
 
 function RenderFlops (state, dispatch) {
   return state.flops
-    .sort((a, b) => b.upvotes - a.upvotes)
+    .sort((a, b) => (b.upvotes - b.downvotes) - (a.upvotes - a.downvotes))
     .filter(flop => {
       return flop.lifestyleId == state.currentLifestyleId
     })

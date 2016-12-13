@@ -23,15 +23,18 @@ function Login ({state, dispatch}) {
 
   return (
     <div className='loginPage'>
-      <h1 className='loginTitle'>top of the flops</h1>
-      <form className='loginForm'>
-        <input className='username' placeholder='username' type='text' id='username' />
-        <input className='password' placeholder='password' type='password' id='password' />
-        <input className='loginButton' type='submit' value='Login!' onClick={login} />
-        <Loader className={customClass + ' loadingPulse'} />
-        <p className={successClass}>Login unsuccessful</p>
-      </form>
-      <button className='signupButton' onClick={goToSignup}>Sign Up!</button>
+      <div className='container'>
+        <h2 className='loginTitle'>top of the flops</h2>
+        <p className='loginSubtitle'>useless talents global leaders</p>
+        <form className='loginForm'>
+          <input className='username' placeholder='username' type='text' id='username' />
+          <input className='password' placeholder='password' type='password' id='password' />
+          <input className='loginButton clickable' type='submit' value='Login!' onClick={login} />
+          <Loader className={customClass + ' loadingPulse'} />
+          <p className={successClass}>Login unsuccessful</p>
+        </form>
+        <button className='signupButton clickable' onClick={goToSignup}>Sign Up!</button>
+      </div>
     </div>
   )
 }

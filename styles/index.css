@@ -6,6 +6,7 @@ body {
   font-family: 'Helvetica-Neue', sans-serif;
   margin: 0;
   font-weight: 200;
+  /*background-color: #f64161;*/
 }
 
 main {
@@ -28,6 +29,20 @@ button {
 
 input {
   text-align: center;
+}
+
+.clickable {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
 /******************************************/
@@ -76,6 +91,14 @@ nav li {
   display: inline-block;
 }
 
+.lifestyle:nth-child(even) {
+  background-color: #ecf0f1;
+}
+
+.lifestyle h4 {
+  margin-top: 0;
+}
+
 .lifestylePic {
   width: 150px;
   height: 150px;
@@ -87,12 +110,25 @@ nav li {
   padding: 15px
 }
 
-.lifestylesContainer .lifestyle:nth-child(odd){
-  background-color: #ecf0f1;
-}
-
 .currentUser {
   color: #f64161;
+  font-weight: bolder;
+}
+
+.user:hover {
+  border: solid 1px #95a5a6
+}
+
+.user {
+  padding: 6px;
+  border-radius: 3px;
+  margin: -1px;
+}
+
+.userThumbnail {
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
 }
 
 /******************************************/
@@ -107,7 +143,7 @@ nav li {
 
 .lifestyleHeader {
   background-color: #DADFE1;
-  padding: 20px 0;
+  padding: 20px 0 40px 0;
   margin: 0;
   font-size: 1.1em;
   font-weight: lighter;
@@ -116,8 +152,18 @@ nav li {
 .lifestyle, .flop {
   width: 100%;
   /*border-top: solid 1px black;*/
-  border-bottom: solid 1px black;
+  padding-top: 15px;
+  /*border-bottom: solid 1px black;*/
   margin-bottom: 2px;
+}
+
+.topThree {
+  /*border: solid 1px gray;*/
+  /*background-color: #bdc3c7;*/
+  border-radius: 3px;
+  color: #2c3e50;
+  width: 150px;
+  margin: 10px auto;
 }
 
 .flop {
@@ -167,8 +213,10 @@ nav li {
 .signupButton {
   color: white;
   background-color: #f64161;
+  position: relative;
+  bottom: -100px;
 }
-.signupButton:hover {
+.signupButton:hover, .loginButton:hover {
   color: lightgray;
 }
 
@@ -176,6 +224,11 @@ nav li {
   color: white;
   margin-top: 20%;
   font-size: 3em;
+}
+
+.loginSubtitle {
+  color: white;
+  margin-top: -25px;
 }
 
 .loginPage {
@@ -188,15 +241,20 @@ nav li {
 
 .loginForm {
   margin-top: 150px;
-  margin-bottom: 200px;
+  padding: 10px 0;
+  border-radius: 3px;
+  /*margin-bottom: 200px;*/
   text-align: center;
 }
 
 .loginButton {
   background-color: #4CAF50; /* Green */
+  border-radius: 3px;
   border: none;
   color: white;
-  padding: 15px 32px;
+  width: 302px;
+  padding: 15px 0;
+  box-sizing: border-box;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -206,6 +264,7 @@ nav li {
 .username, .password {
   display: block;
   height: 30px;
+  width: 60px;
   margin: 10px auto;
   font-size: 1.3em;
   padding: 7px 0;
