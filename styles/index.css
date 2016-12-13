@@ -16,7 +16,7 @@ li {
   list-style: none;
 }
 
-button {
+/*button {
   border: none;
   color: white;
   padding: 15px 32px;
@@ -24,7 +24,7 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-}
+}*/
 
 input {
   text-align: center;
@@ -225,7 +225,7 @@ nav li {
 /******************************************/
 
 .upload {
-  background-color: #f64161
+  /*background-color: #f64161*/
 }
 
 #title, #description {
