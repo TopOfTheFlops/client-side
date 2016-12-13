@@ -3,6 +3,7 @@ import getFlops from '../api/getFlops'
 import url from './apiUrl'
 
 module.exports = (dispatch, flopInfo) => {
+  console.log(flopInfo);
   request
     .post(`${url}/api/v1/flops`)
     .send(flopInfo)
