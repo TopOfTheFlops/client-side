@@ -46,7 +46,7 @@ function getTopThree (state, dispatch, lifestyleId) {
           <div className={customClass} key={index}>
             <p onClick={() =>{
               dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
-              dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+              dispatch({type: 'CHANGE_PAGE', payload: `/profile/${flop.username}`})
             }}>{flop.rank}. {flop.username} {flop.upvotes}</p>
           </div>
           )
