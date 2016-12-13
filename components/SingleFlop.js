@@ -58,13 +58,15 @@ function RenderDeleteButton(dispatch, flop, userId) {
 }
 
 function RenderMedia(mediaURL){
-  var extension = mediaURL.slice(mediaURL.length - 3, mediaURL.length)
-  if(extension == 'mp4'){
-    return <video width="320" height="240" controls>
-            <source src={mediaURL} type="video/mp4"/>
-          </video>
+  if(mediaURL){
+    var extension = mediaURL.slice(mediaURL.length - 3, mediaURL.length)
+    if(extension == 'mp4'){
+      return <video width="320" height="240" controls>
+      <source src={mediaURL} type="video/mp4"/>
+      </video>
+    }
+    return <img className='singleflopPic' src={mediaURL}/>
   }
-  return <img className='singleflopPic' src={mediaURL}/>
 }
 
 module.exports = Flops
