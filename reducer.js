@@ -59,7 +59,8 @@ module.exports = (state, action) => {
       newState.currentLifestyleId = payload
       return newState
     case 'CHANGE_VIEW_SINGLE_FLOP':
-      newState.viewSingleFlop = payload
+      newState.viewSingleFlopId = payload
+      console.log('State changing view', newState.viewSingleFlopId)
       return newState
     case 'SAVE_PHOTO_URL':
       newState.currentPhotoURLs = payload
