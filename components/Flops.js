@@ -32,7 +32,7 @@ function RenderFlops (state, dispatch) {
       return (
         <div className='flop' key={flop.flopId}>
           <img className='flopPic' src={flop.mediaURL} onClick={() => {
-            dispatch({type: 'CHANGE_VIEW_SINGLE_FLOP', payload: flop})
+            dispatch({type: 'CHANGE_VIEW_SINGLE_FLOP', payload: flop.flopId})
             dispatch({type: 'CHANGE_PAGE', payload: '/singleflop'})
           }} />
           <p>{flop.rank}. {flop.username}</p>
