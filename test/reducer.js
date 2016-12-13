@@ -347,3 +347,36 @@ test('tests RECEIVE_VOTES gets all the votes', function (t) {
   t.deepEqual(actual, expected, 'receive votes works really very well')
   t.end()
 })
+
+test('tests RECEIVE_ALL_USERS can receive all users correctly', function (t) {
+  var initialState = {
+    currentPage: 'login',
+    lifestyles: [],
+    currentUser: {},
+    flops: [],
+    votes: [],
+    allUsers: []
+  }
+  freeze(initialState)
+
+  var expected = {
+    currentPage: 'login',
+    lifestyles: [],
+    currentUser: {},
+    flops: [],
+    votes: [],
+    allUsers: [
+      {userId: 1, name: 'lord master', profilePic: 'imgur.com/flj2530', bio: 'Im good at things!'},
+      {userId: 1, name: 'lord man', profilePic: 'imgur.com/flj2530', bio: 'Im good at things!'},
+      {userId: 2, name: 'lord yo', profilePic: 'imgur.com/flj2530', bio: 'Im good at things!'}
+    ]
+  }
+
+  const actual = reducer(initialState, {type: 'RECEIVE_ALL_USERS', payload: [
+    {userId: 1, name: 'lord master', profilePic: 'imgur.com/flj2530', bio: 'Im good at things!'},
+    {userId: 1, name: 'lord man', profilePic: 'imgur.com/flj2530', bio: 'Im good at things!'},
+    {userId: 2, name: 'lord yo', profilePic: 'imgur.com/flj2530', bio: 'Im good at things!'}
+  ]})
+  t.deepEqual(actual, expected, 'receive allUsers works well')
+  t.end()
+})

@@ -47,15 +47,3 @@ function RenderTitle (state) {
 }
 
 module.exports = Flops
-
-
-
-// return (
-//   <div className='flop' key={state.viewSingleFlop.flopId}>
-//   <img className='singleflopPic' src={state.viewSingleFlop.mediaURL} />
-//   <p>{state.viewSingleFlop.rank}. {state.viewSingleFlop.username}</p>
-//   <p>{state.viewSingleFlop.description}</p>
-//   <button className='upvote' onClick={() => upvoteFlop(dispatch, state.viewSingleFlop.flopId)} >{state.viewSingleFlop.upvotes}</button>
-//   <button className='downvote' onClick={() => downvoteFlop(dispatch, state.viewSingleFlop.FlopId)}>{state.viewSingleFlop.downvotes}</button>
-//   </div>
-// )

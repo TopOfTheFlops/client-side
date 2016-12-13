@@ -6,6 +6,7 @@ import getLifestyles from './getLifestyles'
 import getFlops from './getFlops'
 import getCurrentUser from './getCurrentUser'
 import getVotes from './getVotes'
+import getAllUsers from './getAllUsers'
 
 module.exports = (dispatch, userInfo) => {
   dispatch({type: 'LOGIN_INIT'})
@@ -21,6 +22,7 @@ module.exports = (dispatch, userInfo) => {
         getVotes(dispatch)
         getLifestyles(dispatch)
         getFlops(dispatch)
+        getAllUsers(dispatch)
         dispatch({type: 'LOGIN_SUCCESSFUL', payload: res.body.user})
         dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
       }
