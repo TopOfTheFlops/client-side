@@ -2,6 +2,7 @@ import React from 'react'
 
 import Header from './Header'
 import Nav from './Nav'
+import deleteFlop from '../api/deleteFlop'
 
 function Flops ({state, dispatch}) {
   function goToCreateFlop (e) {
@@ -31,6 +32,7 @@ function RenderFlop (state, dispatch) {
       <p>{state.viewSingleFlop.description}</p>
       <button className='upvote' onClick={() => upvoteFlop(dispatch, state.viewSingleFlop.flopId)} >{state.viewSingleFlop.upvotes}</button>
       <button className='downvote' onClick={() => downvoteFlop(dispatch, state.viewSingleFlop.FlopId)}>{state.viewSingleFlop.downvotes}</button>
+      <button className='create' onClick={() => deleteFlop(dispatch, state.viewSingleFlop.FlopId)}>Delete Flop</button>
     </div>
   )
 }
