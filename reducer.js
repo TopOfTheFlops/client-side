@@ -54,6 +54,9 @@ module.exports = (state, action) => {
     case 'RECEIVE_CURRENT_USER':
       newState.currentUser = payload
       return newState
+    case 'RECEIVE_ALL_USERS':
+      newState.allUsers = payload
+      return newState
     case 'CHANGE_CURRENTLIFESTYLEID':
       newState.currentLifestyleId = payload
       return newState
@@ -82,6 +85,9 @@ module.exports = (state, action) => {
            })
         return flop
       })
+      return newState
+    case 'CHANGE_CURRENT_VIEW_USER_ID':
+      newState.currentViewUserId = payload
       return newState
     default:
       return newState

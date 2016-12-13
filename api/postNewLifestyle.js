@@ -3,7 +3,6 @@ import getLifestyles from '../api/getLifestyles'
 import url from './apiUrl'
 
 module.exports = (dispatch, lifestyleInfo) => {
-  console.log(lifestyleInfo)
   request
     .post(`${url}/api/v1/lifestyles`)
     .withCredentials()

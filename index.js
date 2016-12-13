@@ -26,6 +26,8 @@ var initialState = {
   lifestyles: [],
   flops: [],
   currentUser: {},
+  allUsers: null,
+  currentViewUserId: null,
   viewSingleFlopId: null
 }
 

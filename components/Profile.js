@@ -4,27 +4,55 @@ import Nav from './Nav'
 import logout from '../api/logout'
 
 function Profile ({state, dispatch}) {
-  return (
-    <div>
-      <Header />
-      <button className='create' onClick={() => dispatch({type: 'CHANGE_PAGE', payload: '/editprofile'})}>Edit Profile</button>
-      <button className='create' onClick={() => logout(dispatch)}>Logout</button>
-      <h3>Your Profile</h3>
-      <div className='profile'>
-        <img className='profilePic' src={state.currentUser.profilePic} />
-        <div className='profileInfo'>
-          <h2 >{state.currentUser.name}</h2>
-          <p>{state.currentUser.bio}</p>
+  if(state.currentUser.userId === state.viewSingleFlopId) {
+    return (
+      <div>
+        <Header />
+        <button className='create' onClick={() => dispatch({type: 'CHANGE_PAGE', payload: '/editprofile'})}>Edit Profile</button>
+        <button className='create' onClick={() => logout(dispatch)}>Logout</button>
+        <h3>Your Profile</h3>
+        <div className='profile'>
+          <h1 >{state.currentUser.name}</h1>
+          <img className='profilePic' src={state.currentUser.profilePic} />
+          <div className='profileInfo'>
+            <p>{state.currentUser.bio}</p>
+          </div>
         </div>
+        {SortFlops(state, dispatch, state.currentUser.userId)}
+        <div className='clear' />
+        <Nav state={state} dispatch={dispatch} />
       </div>
-      {SortFlops(state, dispatch)}
-      <div className='clear' />
-      <Nav state={state} dispatch={dispatch} />
-    </div>
-  )
+    )
+  } else {
+    return (
+      <div>
+        <Header />
+        <h3>User Profile</h3>
+        {User(state, dispatch)}
+        {SortFlops(state, dispatch, state.currentViewUserId)}
+        <Nav dispatch={dispatch} state={state}/>
+      </div>
+    )
+  }
+
 }
 
-function SortFlops (state, dispatch) {
+function User (state, dispatch) {
+  return state.allUsers
+    .filter(user => {
+      return user.userId == state.currentViewUserId
+    })
+    .map(user => {
+      return (
+        <div>
+          <h1>{user.username}</h1>
+          <img src={user.profilePic}/>
+        </div>
+      )
+    })
+}
+
+function SortFlops (state, dispatch, userId) {
   const {flops, lifestyles} = state
   return lifestyles
     .map(lifestyle => {
@@ -33,7 +61,7 @@ function SortFlops (state, dispatch) {
       .sort((a, b) => b.upvotes - a.upvotes)
       .map((flop, index) => {
         flop.rank = index + 1
-        if (flop.username === state.currentUser.username) {
+        if (flop.userId === userId) {
           return (
             <div>
               {getTitle(flop, lifestyle)}
@@ -46,7 +74,6 @@ function SortFlops (state, dispatch) {
 }
 
 function getTitle (flop, lifestyle) {
-  flop.lifestyleId == lifestyle.lifestyleId
   return <h2>{lifestyle.title}</h2>
 }
 
