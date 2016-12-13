@@ -18,11 +18,17 @@ function CreateFlop ({state, dispatch}) {
     postNewFlop(dispatch, flopInfo)
   }
 
+  function goBack (e) {
+    e.preventDefault()
+    dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
+  }
+
   return (
     <div>
       <Header />
       <h2>Flopping</h2>
       {RenderTitle(state)}
+      <button onClick={goBack}>back</button>
       <form>
         <label>Describe your entry</label>
         <input placeholder='Description' type='text' id='description' />

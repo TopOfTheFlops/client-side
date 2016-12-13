@@ -4,7 +4,7 @@
   "description": "Find the best Floppers",
   "main": "index.js",
   "scripts": {
-    "start": "budo . -d --serve bundle.js --live",
+    "start": "budo . -d -P --serve bundle.js --live",
     "build": "browserify . -o bundle.js -g uglifyify",
     "test": "browserify test/*.js | node | tap-spec",
     "dist": "mkdir -p dist && bash -c 'cp *.{js,html,css} dist'",

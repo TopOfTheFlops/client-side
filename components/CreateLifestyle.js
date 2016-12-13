@@ -16,10 +16,17 @@ function CreateLifestyle ({state, dispatch}) {
     }
     postNewLifestyle(dispatch, lifestyleInfo)
   }
+
+  function goBack (e) {
+    e.preventDefault()
+    dispatch({type: 'CHANGE_PAGE', payload: '/lifestyles'})
+  }
+
   return (
     <div>
       <Header />
       <h2>Create a Lifestyle</h2>
+      <button onClick={goBack}>back</button>
       <form>
         <h3>What is this lifestyles name?</h3>
         <input placeholder='Name' type='text' id='title' />

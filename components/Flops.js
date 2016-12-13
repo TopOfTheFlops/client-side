@@ -6,7 +6,7 @@ import voteFlop from '../api/voteFlop'
 
 function Flops ({state, dispatch}) {
   function goToCreateFlop (e) {
-    dispatch({type: 'CHANGE_PAGE', payload: '/createflop'})
+    dispatch({type: 'CHANGE_PAGE', payload: '/flops/new'})
   }
   return (
     <div>
@@ -32,9 +32,12 @@ function RenderFlops (state, dispatch) {
         <div className='flop' key={flop.flopId}>
           <img className='flopPic' src={flop.mediaURL} onClick={() => {
             dispatch({type: 'CHANGE_VIEW_SINGLE_FLOP', payload: flop.flopId})
-            dispatch({type: 'CHANGE_PAGE', payload: '/singleflop'})
+            dispatch({type: 'CHANGE_PAGE', payload: `/flops/${flop.flopId}`})
           }} />
-          <p>{flop.rank}. {flop.username}</p>
+          <p onClick={() => {
+            dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
+            dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+          }}>{flop.rank}. {flop.username}</p>
           <p>{flop.description}</p>
           <button className='upvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
           <button className='downvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>

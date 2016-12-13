@@ -23,7 +23,6 @@ module.exports = (state, action) => {
       var voteIndex = 0
       newState.votes.forEach((vote, index) => {
         if (vote.flopId === payload.flopId && vote.userId === payload.userId) {
-          console.log('Vote found, overwriting')
           voteFound = true
           voteIndex = index
         }
@@ -55,12 +54,14 @@ module.exports = (state, action) => {
     case 'RECEIVE_CURRENT_USER':
       newState.currentUser = payload
       return newState
+    case 'RECEIVE_ALL_USERS':
+      newState.allUsers = payload
+      return newState
     case 'CHANGE_CURRENTLIFESTYLEID':
       newState.currentLifestyleId = payload
       return newState
     case 'CHANGE_VIEW_SINGLE_FLOP':
       newState.viewSingleFlopId = payload
-      console.log('State changing view', newState.viewSingleFlopId)
       return newState
     case 'SAVE_PHOTO_URL':
       newState.currentPhotoURLs = payload
@@ -84,6 +85,9 @@ module.exports = (state, action) => {
            })
         return flop
       })
+      return newState
+    case 'CHANGE_CURRENT_VIEW_USER_ID':
+      newState.currentViewUserId = payload
       return newState
     default:
       return newState

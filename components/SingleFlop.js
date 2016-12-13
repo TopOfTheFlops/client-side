@@ -8,7 +8,7 @@ import voteFlop from '../api/voteFlop'
 
 function Flops ({state, dispatch}) {
   function goToCreateFlop (e) {
-    dispatch({type: 'CHANGE_PAGE', payload: '/CreateFlop'})
+    dispatch({type: 'CHANGE_PAGE', payload: '/flops/new'})
   }
   function goBack (e) {
     e.preventDefault()
@@ -32,8 +32,11 @@ function RenderFlop (state, dispatch) {
     .map(flop => {
       return (
         <div className='flop' key={flop.flopId}>
-          <img className='singleflopPic' src={flop.mediaURL}/>
-          <p>{flop.rank}. {flop.username}</p>
+          {RenderMedia(flop.mediaURL)}
+          <p onClick={() => {
+            dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
+            dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+          }}>{flop.rank}. {flop.username}</p>
           <p>{flop.description}</p>
           <button className='upvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
           <button className='downvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
@@ -52,6 +55,16 @@ function RenderDeleteButton(dispatch, flop, userId) {
   if (flop.userId === userId) {
     return <button className='create' onClick={() => deleteFlop(dispatch, flop.flopId)}>Delete Flop</button>
   }
+}
+
+function RenderMedia(mediaURL){
+  var extension = mediaURL.slice(mediaURL.length - 3, mediaURL.length)
+  if(extension == 'mp4'){
+    return <video width="320" height="240" controls>
+            <source src={mediaURL} type="video/mp4"/>
+          </video>
+  }
+  return <img className='singleflopPic' src={mediaURL}/>
 }
 
 module.exports = Flops

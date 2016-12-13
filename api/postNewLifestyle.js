@@ -3,7 +3,6 @@ import getLifestyles from '../api/getLifestyles'
 import url from './apiUrl'
 
 module.exports = (dispatch, lifestyleInfo) => {
-  console.log(lifestyleInfo)
   request
     .post(`${url}/api/v1/lifestyles`)
     .withCredentials()
@@ -14,7 +13,7 @@ module.exports = (dispatch, lifestyleInfo) => {
         dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
       } else {
         getLifestyles(dispatch)
-        dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
+        dispatch({type: 'CHANGE_PAGE', payload: '/lifestyles'})
         dispatch({type: 'REMOVE_PHOTO_URL'})
       }
     })

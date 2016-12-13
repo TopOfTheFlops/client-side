@@ -8,7 +8,6 @@ module.exports = (dispatch, state, flopId, userId, upvote, downvote) => {
     upvote,
     downvote
   }
-  console.log('Sendinfo', sendInfo)
   request
     .post(`${url}/api/v1/votes`)
     .withCredentials()

@@ -37,5 +37,3 @@ function Login ({state, dispatch}) {
 }
 
 export default Login
-
-// dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
