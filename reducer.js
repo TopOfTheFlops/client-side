@@ -23,7 +23,6 @@ module.exports = (state, action) => {
       var voteIndex = 0
       newState.votes.forEach((vote, index) => {
         if (vote.flopId === payload.flopId && vote.userId === payload.userId) {
-          console.log('Vote found, overwriting')
           voteFound = true
           voteIndex = index
         }
@@ -60,7 +59,6 @@ module.exports = (state, action) => {
       return newState
     case 'CHANGE_VIEW_SINGLE_FLOP':
       newState.viewSingleFlopId = payload
-      console.log('State changing view', newState.viewSingleFlopId)
       return newState
     case 'SAVE_PHOTO_URL':
       newState.currentPhotoURLs = payload
