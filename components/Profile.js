@@ -63,7 +63,7 @@ function SortFlops (state, dispatch, userId) {
     .map(lifestyle => {
       return flops
       .filter(flop => flop.lifestyleId === lifestyle.lifestyleId)
-      .sort((a, b) => b.upvotes - a.upvotes)
+      .sort((a, b) => (b.upvotes - b.downvotes) - (a.upvotes - a.downvotes))
       .map((flop, index) => {
         flop.rank = index + 1
         if (flop.userId === userId) {

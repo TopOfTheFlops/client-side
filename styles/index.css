@@ -45,6 +45,10 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
+.hoverColorChange:hover {
+  color: #2980b9;
+}
+
 /******************************************/
 /************* Header & Nav ***************/
 /******************************************/
@@ -113,16 +117,26 @@ nav li {
 .currentUser {
   color: #f64161;
   font-weight: bolder;
-}
-
-.user:hover {
   border: solid 1px #95a5a6
 }
 
+/*.user:hover {
+  border: solid 1px #95a5a6
+}*/
+
 .user {
-  padding: 6px;
+  padding: 5px 10px;
   border-radius: 3px;
-  margin: -1px;
+  margin-bottom: 5px;
+}
+
+.usernameLink {
+  font-weight: 400;
+  /*color: #2980b9;*/
+}
+
+.usernameLink:hover {
+  color: #3498db;
 }
 
 .userThumbnail {
