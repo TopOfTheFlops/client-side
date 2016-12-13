@@ -4,7 +4,7 @@ import Nav from './Nav'
 import logout from '../api/logout'
 
 function Profile ({state, dispatch}) {
-  if(state.currentUser.userId === state.viewSingleFlopId) {
+  if(state.currentUser.userId === state.currentViewUserId) {
     return (
       <div>
         <Header />

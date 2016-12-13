@@ -4,7 +4,6 @@ import getFlops from './getFlops'
 import getVotes from './getVotes'
 
 module.exports = (dispatch, flopId) => {
-  console.log(flopId)
   request
     .post(`${url}/api/v1/flops/remove/${flopId}`)
     .withCredentials()
