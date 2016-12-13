@@ -12,8 +12,10 @@ function Profile ({state, dispatch}) {
     return (
       <div>
         <Header />
-        <button className='create clickable' onClick={() => dispatch({type: 'CHANGE_PAGE', payload: '/profile/edit'})}>Edit Profile</button>
-        <button className='create clickable' onClick={() => logout(dispatch)}>Logout</button>
+        <div className="buttonGroup dashboardButtons">
+          <div className='btn clickable' onClick={() => dispatch({type: 'CHANGE_PAGE', payload: `/profile/${state.currentUser.username}/edit`})}>Edit Profile</div>
+          <div className='btn clickable' onClick={() => logout(dispatch)}>Logout</div>
+        </div>  
         <h3>Your Profile</h3>
         <div className='profile'>
           <h1 >{state.currentUser.name}</h1>

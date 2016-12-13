@@ -58,14 +58,17 @@ input:-webkit-autofill {
   /*border: solid 2px #2ecc71;*/
   color: white;
   border-radius: 3px;
-  padding: 10px 20px;
+  padding: 12px 20px;
   box-sizing: border-box;
   margin: 30px;
   width: 250px;
   letter-spacing: 1px;
-  background-color: #2ecc71;
+  background-color: #38e280;
 }
 
+.btn:hover {
+  opacity: 0.8;
+}
 
 .buttonGroup {
   display: flex;
@@ -194,7 +197,7 @@ nav li {
 }
 
 .dashboardButtons {
-  background-color: #ecf0f1;
+  background-color: #E4F1FE;
 }
 
 /******************************************/
@@ -230,6 +233,7 @@ nav li {
   border-radius: 3px;
   color: #2c3e50;
   margin: 20px auto;
+  flex-wrap: wrap;
 }
 
 .flop {

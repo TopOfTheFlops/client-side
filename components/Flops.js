@@ -31,7 +31,7 @@ function RenderFlops (state, dispatch) {
       var userPic = state.allUsers.find(user => user.userId === flop.userId).profilePic
       return (
         <div className='flop' key={flop.flopId}>
-          <img className='flopPic clickable' src={flop.mediaURL} onClick={() => {
+          <img className='flopPic clickable' src={checkMedia(flop.mediaURL)} onClick={() => {
             dispatch({type: 'CHANGE_VIEW_SINGLE_FLOP', payload: flop.flopId})
             dispatch({type: 'CHANGE_PAGE', payload: `/flops/${flop.flopId}`})
           }} />
@@ -45,6 +45,7 @@ function RenderFlops (state, dispatch) {
               dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
             }}>{flop.username}</p>
           </div>
+
           <p>{flop.description}</p>
           <button className='upvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
           <button className='downvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
@@ -66,6 +67,16 @@ function RenderFlops (state, dispatch) {
 function RenderTitle (state) {
   const {lifestyles, currentLifestyleId} = state
   return lifestyles.filter(lifestyle => lifestyle.lifestyleId == currentLifestyleId).map(lifestyle => (<h2 className='lifestyleHeader' key={lifestyle.lifestyleId}>{lifestyle.title}</h2>))
+}
+
+function checkMedia(mediaURL){
+  if(mediaURL){
+    var extension = mediaURL.slice(mediaURL.length - 3, mediaURL.length)
+    if(extension == 'mp4'){
+      return "https://c3metrics.com/wp-content/uploads/2016/08/feature-video-thumbnail-overlay.png"
+    }
+    return mediaURL
+  }
 }
 
 module.exports = Flops

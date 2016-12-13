@@ -55,8 +55,9 @@ function getTopThree (state, dispatch, lifestyleId) {
 
             <p className="clickable usernameLink" onClick={() =>{
               dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
-              dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+              dispatch({type: 'CHANGE_PAGE', payload: `/profile/${flop.username}`})
             }}><bold>{flop.rank}.</bold> {flop.username}</p>
+
           </div>
           )
         })

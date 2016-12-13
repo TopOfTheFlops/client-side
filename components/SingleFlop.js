@@ -35,7 +35,7 @@ function RenderFlop (state, dispatch) {
           {RenderMedia(flop.mediaURL)}
           <p className="usernameLink clickable" onClick={() => {
             dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
-            dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+            dispatch({type: 'CHANGE_PAGE', payload: `/profile/${flop.username}`})
           }}>{flop.rank}. {flop.username}</p>
           <p>{flop.description}</p>
           <button className='upvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
@@ -58,13 +58,15 @@ function RenderDeleteButton(dispatch, flop, userId) {
 }
 
 function RenderMedia(mediaURL){
-  var extension = mediaURL.slice(mediaURL.length - 3, mediaURL.length)
-  if(extension == 'mp4'){
-    return <video width="320" height="240" controls>
-            <source src={mediaURL} type="video/mp4"/>
-          </video>
+  if(mediaURL){
+    var extension = mediaURL.slice(mediaURL.length - 3, mediaURL.length)
+    if(extension == 'mp4'){
+      return <video width="320" height="240" controls>
+      <source src={mediaURL} type="video/mp4"/>
+      </video>
+    }
+    return <img className='singleflopPic' src={mediaURL}/>
   }
-  return <img className='singleflopPic' src={mediaURL}/>
 }
 
 module.exports = Flops

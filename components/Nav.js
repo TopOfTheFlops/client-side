@@ -8,7 +8,7 @@ function Nav ({state, dispatch}) {
   function goToProfile (e) {
     e.preventDefault()
     dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: state.currentUser.userId})
-    dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+    dispatch({type: 'CHANGE_PAGE', payload: `/profile/${state.currentUser.username}`})
   }
   return (
     <nav>
