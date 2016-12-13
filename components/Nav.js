@@ -12,10 +12,13 @@ function Nav ({state, dispatch}) {
   }
   return (
     <nav>
-      <ul>
-        <li className="clickable navButton" onClick={goToNewsfeed}>newsfeed</li>
-        <li className="clickable navButton" onClick={goToProfile}>profile</li>
-      </ul>
+    <div className='clickable' onClick={goToNewsfeed}>
+      <img className='icons' src ='./assets/newsfeed.svg'/>
+      <p className="clickable navButton">newsfeed</p>
+    </div>
+    <div className='clickable' onClick={goToProfile}>
+      <img className='icons' src ='./assets/profile.svg'/>
+      <p className="clickable navButton">profile</p></div>
     </nav>
   )
 }

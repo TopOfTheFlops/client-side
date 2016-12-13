@@ -19,7 +19,7 @@ li {
 
 button {
   border: none;
-  color: white;
+  /*color: white;*/
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -54,8 +54,22 @@ input:-webkit-autofill {
   border-radius: 50%
 }
 
-.largeImage {
+.btn {
+  /*border: solid 2px #2ecc71;*/
+  color: white;
+  border-radius: 3px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  margin: 30px;
+  width: 250px;
+  letter-spacing: 1px;
+  background-color: #2ecc71;
+}
 
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
 }
 
 /******************************************/
@@ -78,9 +92,14 @@ nav {
   width: 100%;
   height: 50px;
   margin: 0;
-  padding: 10px 0;
+  padding-bottom: 25px;
+  padding-top: 10px;
   position: fixed;
   bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+
 }
 
 nav ul li {
@@ -94,6 +113,15 @@ nav li {
 .clear {
   clear: both;
   height: 70px;
+}
+
+.icons {
+  width: 40px;
+}
+
+.navButton {
+  color: white;
+  margin-top: 0;
 }
 
 /******************************************/
@@ -145,10 +173,6 @@ nav li {
   /*color: #2980b9;*/
 }
 
-.usernameLink p {
-
-}
-
 .usernameLink:hover {
   color: #3498db;
 }
@@ -158,6 +182,19 @@ nav li {
   height: 35px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.dashboardLoader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboardButtons {
+  background-color: #ecf0f1;
 }
 
 /******************************************/
