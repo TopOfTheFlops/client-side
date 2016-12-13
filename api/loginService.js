@@ -24,7 +24,7 @@ module.exports = (dispatch, userInfo) => {
         getFlops(dispatch)
         getAllUsers(dispatch)
         dispatch({type: 'LOGIN_SUCCESSFUL', payload: res.body.user})
-        dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
+        dispatch({type: 'CHANGE_PAGE', payload: '/lifestyles'})
       }
     })
 }

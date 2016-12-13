@@ -8,7 +8,7 @@ import voteFlop from '../api/voteFlop'
 
 function Flops ({state, dispatch}) {
   function goToCreateFlop (e) {
-    dispatch({type: 'CHANGE_PAGE', payload: '/CreateFlop'})
+    dispatch({type: 'CHANGE_PAGE', payload: '/flops/new'})
   }
   function goBack (e) {
     e.preventDefault()

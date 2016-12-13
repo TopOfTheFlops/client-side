@@ -36,13 +36,13 @@ const {dispatch, getState, subscribe} = createStore(reducer, initialState)
 const route = sheetRouter({default: '/404'}, [
   ['/', (params) => Login],
   ['/signup', (params) => Signup],
-  ['/dashboard', (params) => Dashboard],
+  ['/lifestyles', (params) => Dashboard],//['/dashboard', (params) => Dashboard],
   ['/flops', (params) => Flops],
-  ['/singleflop', (params) => SingleFlop],
-  ['/createlifestyle', (params) => CreateLifestyle],
-  ['/createflop', (params) => CreateFlop],
+  ['/flops/:id', (params) => SingleFlop],//['/singleflop', (params) => SingleFlop],
+  ['/lifestyles/new', (params) => CreateLifestyle],//['/createlifestyle', (params) => CreateLifestyle],
+  ['/flops/new', (params) => CreateFlop],//['/createflop', (params) => CreateFlop],
   ['/profile', (params) => Profile],
-  ['/editprofile', (params) => EditProfile],
+  ['/profile/edit', (params) => EditProfile],//['/editprofile', (params) => EditProfile],
   ['/unauthenticated', (parmas) => Unauthenticated]
 ])
 

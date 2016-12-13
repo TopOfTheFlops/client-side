@@ -8,7 +8,7 @@ function Profile ({state, dispatch}) {
     return (
       <div>
         <Header />
-        <button className='create' onClick={() => dispatch({type: 'CHANGE_PAGE', payload: '/editprofile'})}>Edit Profile</button>
+        <button className='create' onClick={() => dispatch({type: 'CHANGE_PAGE', payload: '/profile/edit'})}>Edit Profile</button>
         <button className='create' onClick={() => logout(dispatch)}>Logout</button>
         <h3>Your Profile</h3>
         <div className='profile'>

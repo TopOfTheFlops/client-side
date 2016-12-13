@@ -3,7 +3,7 @@ import React from 'react'
 function Nav ({state, dispatch}) {
   function goToNewsfeed (e) {
     e.preventDefault()
-    dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
+    dispatch({type: 'CHANGE_PAGE', payload: '/lifestyles'})
   }
   function goToProfile (e) {
     e.preventDefault()

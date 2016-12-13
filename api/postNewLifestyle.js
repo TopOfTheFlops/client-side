@@ -13,7 +13,7 @@ module.exports = (dispatch, lifestyleInfo) => {
         dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
       } else {
         getLifestyles(dispatch)
-        dispatch({type: 'CHANGE_PAGE', payload: '/dashboard'})
+        dispatch({type: 'CHANGE_PAGE', payload: '/lifestyles'})
         dispatch({type: 'REMOVE_PHOTO_URL'})
       }
     })
