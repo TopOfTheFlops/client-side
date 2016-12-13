@@ -16,10 +16,17 @@ function EditProfile({state, dispatch}) {
     }
     editUserProfile(dispatch, userInfo, state)
   }
+
+  function goBack (e) {
+    e.preventDefault()
+    dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+  }
+
   return (
     <div className=''>
       <Header />
       <h1 className='loginTitle'>top of the flops</h1>
+      <button onClick={goBack}>back</button>
       <form action='' method='post'>
         <input className='password' placeholder='Change password' type='password' name='password'id='password' />
         <input className='username' placeholder='Change location' type='text' name='location' id='location' />

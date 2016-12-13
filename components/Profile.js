@@ -4,6 +4,10 @@ import Nav from './Nav'
 import logout from '../api/logout'
 
 function Profile ({state, dispatch}) {
+  function goBack (e) {
+    e.preventDefault()
+    dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
+  }
   if(state.currentUser.userId === state.currentViewUserId) {
     return (
       <div>
@@ -27,6 +31,7 @@ function Profile ({state, dispatch}) {
     return (
       <div>
         <Header />
+        <button onClick={goBack}>back</button>
         <h3>User Profile</h3>
         {User(state, dispatch)}
         {SortFlops(state, dispatch, state.currentViewUserId)}
