@@ -18,7 +18,5 @@ module.exports = (dispatch, state, flopId, userId, upvote, downvote) => {
       if (err) {
         dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
       }
-      dispatch({type: 'POST_VOTE', payload: sendInfo})
-      dispatch({type: 'ATTACH_VOTES'})
     })
 }

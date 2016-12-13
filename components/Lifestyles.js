@@ -29,6 +29,7 @@ function lifeDash (state, dispatch) {
 
 function getTopThree (state, dispatch, lifestyleId) {
   var {lifestyles, flops, currentUser} = state
+  var hasAddedOwnRank = false
   return (
     <div className='topThree'>
       {flops
@@ -36,7 +37,12 @@ function getTopThree (state, dispatch, lifestyleId) {
         .sort((a, b) => (b.upvotes - b.downvotes) - (a.upvotes - a.downvotes))
         .filter((flop, index) => {
           flop.rank = index + 1
-          return flop.userId === lifestyleId || index < 3
+          if(flop.userId === state.currentUser.userId && !hasAddedOwnRank) {
+            hasAddedOwnRank = true
+            return true
+          } else {
+            return index < 3
+          }
         })
         .map((flop, index) => {
           var customClass = flop.username === state.currentUser.username ? 'currentUser' : ''
@@ -46,10 +52,11 @@ function getTopThree (state, dispatch, lifestyleId) {
             <div>
             <img className="userThumbnail" src={userPic}/>
             </div>
+
             <p className="clickable usernameLink" onClick={() =>{
               dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
               dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
-            }}>{flop.rank}. {flop.username}</p>
+            }}><bold>{flop.rank}.</bold> {flop.username}</p>
           </div>
           )
         })

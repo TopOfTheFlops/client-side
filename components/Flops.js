@@ -36,7 +36,10 @@ function RenderFlops (state, dispatch) {
             dispatch({type: 'CHANGE_PAGE', payload: `/flops/${flop.flopId}`})
           }} />
           <div className="user">
-            <div><img className="userThumbnail" src={userPic}/></div>
+            <div className="userHead">
+              <div className="rank"><p>{flop.rank}.</p></div>
+              <div><img className="userThumbnail" src={userPic}/></div>
+            </div>
             <p className="clickable usernameLink" onClick={() => {
               dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
               dispatch({type: 'CHANGE_PAGE', payload: '/profile'})

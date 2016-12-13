@@ -104,7 +104,7 @@ nav li {
   display: inline-block;
 }
 
-.lifestyle:nth-child(even) {
+.lifestyle:nth-child(even), .flop:nth-child(even) {
   background-color: #ecf0f1;
 }
 
@@ -118,11 +118,6 @@ nav li {
   border-radius: 50%;
 }
 
-
-.topThree {
-  padding: 15px
-}
-
 .currentUser {
   color: #f64161;
   font-weight: bolder;
@@ -130,9 +125,12 @@ nav li {
 }
 
 .user {
-  padding: 5px 7px;
+  padding: 15px 35px;
   border-radius: 3px;
+  margin: 0 5px;
   margin-bottom: 5px;
+  box-sizing: border-box;
+
   /*display: flex;*/
   /*justify-content: space-between;
   align-items: center;*/
@@ -142,7 +140,13 @@ nav li {
 
 .usernameLink {
   font-weight: 400;
+  margin: 0;
+  margin-top: 10px;
   /*color: #2980b9;*/
+}
+
+.usernameLink p {
+
 }
 
 .usernameLink:hover {
@@ -184,10 +188,11 @@ nav li {
 .topThree {
   /*border: solid 1px gray;*/
   /*background-color: #bdc3c7;*/
+  display: flex;
+  justify-content: center;
   border-radius: 3px;
   color: #2c3e50;
-  width: 150px;
-  margin: 10px auto;
+  margin: 20px auto;
 }
 
 .flop {
@@ -262,11 +267,14 @@ nav li {
   position: absolute;
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
 .loginForm {
-  margin-top: 150px;
+  /*margin-top: 150px;*/
   padding: 10px 0;
   border-radius: 3px;
   /*margin-bottom: 200px;*/
