@@ -13,8 +13,8 @@ function Nav ({state, dispatch}) {
   return (
     <nav>
       <ul>
-        <li onClick={goToNewsfeed}>newsfeed</li>
-        <li onClick={goToProfile}>profile</li>
+        <li className="clickable navButton" onClick={goToNewsfeed}>newsfeed</li>
+        <li className="clickable navButton" onClick={goToProfile}>profile</li>
       </ul>
     </nav>
   )

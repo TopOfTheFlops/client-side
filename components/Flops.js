@@ -30,17 +30,17 @@ function RenderFlops (state, dispatch) {
       flop.rank = index + 1
       return (
         <div className='flop' key={flop.flopId}>
-          <img className='flopPic' src={flop.mediaURL} onClick={() => {
+          <img className='flopPic clickable' src={flop.mediaURL} onClick={() => {
             dispatch({type: 'CHANGE_VIEW_SINGLE_FLOP', payload: flop.flopId})
             dispatch({type: 'CHANGE_PAGE', payload: `/flops/${flop.flopId}`})
           }} />
-          <p onClick={() => {
+          <p className="clickable usernameLink" onClick={() => {
             dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
             dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
           }}>{flop.rank}. {flop.username}</p>
           <p>{flop.description}</p>
-          <button className='upvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
-          <button className='downvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
+          <button className='upvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
+          <button className='downvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
         </div>
       )
     })

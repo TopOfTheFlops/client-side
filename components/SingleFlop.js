@@ -18,7 +18,7 @@ function Flops ({state, dispatch}) {
     <div>
       <Header />
       {RenderTitle(state)}
-      <button onClick={goBack}>back</button>
+      <button className="clickable" onClick={goBack}>back</button>
       {RenderFlop(state, dispatch)}
       <div className='clear' />
       <Nav state={state} dispatch={dispatch} />
@@ -33,13 +33,13 @@ function RenderFlop (state, dispatch) {
       return (
         <div className='flop' key={flop.flopId}>
           {RenderMedia(flop.mediaURL)}
-          <p onClick={() => {
+          <p className="usernameLink clickable" onClick={() => {
             dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
             dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
           }}>{flop.rank}. {flop.username}</p>
           <p>{flop.description}</p>
-          <button className='upvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
-          <button className='downvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
+          <button className='upvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
+          <button className='downvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
           {RenderDeleteButton(dispatch, flop, state.currentUser.userId)}
         </div>
       )
@@ -53,7 +53,7 @@ function RenderTitle (state) {
 
 function RenderDeleteButton(dispatch, flop, userId) {
   if (flop.userId === userId) {
-    return <button className='create' onClick={() => deleteFlop(dispatch, flop.flopId)}>Delete Flop</button>
+    return <button className='create clickable' onClick={() => deleteFlop(dispatch, flop.flopId)}>Delete Flop</button>
   }
 }
 

@@ -1,13 +1,8 @@
 import React from 'react'
 
 function Lifestyles ({state, dispatch}) {
-  function goToCreateLifestyle (e) {
-    e.preventDefault()
-    dispatch({type: 'CHANGE_PAGE', payload: '/lifestyles/new'})
-  }
   return (
     <div className='lifestyles'>
-      <button className='create clickable' onClick={goToCreateLifestyle}>create new lifestyle</button>
       {lifeDash(state, dispatch)}
     </div>
   )

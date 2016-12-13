@@ -49,6 +49,15 @@ input:-webkit-autofill {
   color: #2980b9;
 }
 
+.imageContainer {
+  overflow: hidden;
+  border-radius: 50%
+}
+
+.largeImage {
+
+}
+
 /******************************************/
 /************* Header & Nav ***************/
 /******************************************/
@@ -117,7 +126,7 @@ nav li {
 .currentUser {
   color: #f64161;
   font-weight: bolder;
-  border: solid 1px #95a5a6
+  border: solid 1px #95a5a6;
 }
 
 /*.user:hover {
@@ -125,9 +134,14 @@ nav li {
 }*/
 
 .user {
-  padding: 5px 10px;
+  padding: 5px 7px;
   border-radius: 3px;
   margin-bottom: 5px;
+  /*display: flex;*/
+  /*justify-content: space-between;
+  align-items: center;*/
+  /*border: solid 1px #95a5a6*/
+
 }
 
 .usernameLink {
@@ -140,9 +154,10 @@ nav li {
 }
 
 .userThumbnail {
-  width: 50px;
-  height: auto;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 /******************************************/
@@ -167,8 +182,7 @@ nav li {
   width: 100%;
   /*border-top: solid 1px black;*/
   padding-top: 15px;
-  /*border-bottom: solid 1px black;*/
-  margin-bottom: 2px;
+  /*border-bottom: solid 0.4px #ecf0f1;*/
 }
 
 .topThree {
@@ -205,6 +219,7 @@ nav li {
 .singleflopPic {
   position: relative;
   max-width: 80%;
+  object-fit: cover;
 }
 
 /******************************************/
@@ -215,6 +230,7 @@ nav li {
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .profile {
