@@ -37,7 +37,7 @@ function RenderFlop (state, dispatch) {
           <p>{flop.description}</p>
           <button className='upvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
           <button className='downvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
-          <button className='create' onClick={() => deleteFlop(dispatch, flop.flopId)}>Delete Flop</button>
+          {RenderDeleteButton(dispatch, flop, state.currentUser.userId)}
         </div>
       )
     })
@@ -46,6 +46,12 @@ function RenderFlop (state, dispatch) {
 function RenderTitle (state) {
   const {lifestyles, currentLifestyleId} = state
   return lifestyles.filter(lifestyle => lifestyle.lifestyleId == currentLifestyleId).map(lifestyle => (<h2 className='lifestyleHeader' key={lifestyle.lifestyleId}>{lifestyle.title}</h2>))
+}
+
+function RenderDeleteButton(dispatch, flop, userId) {
+  if (flop.userId === userId) {
+    return <button className='create' onClick={() => deleteFlop(dispatch, flop.flopId)}>Delete Flop</button>
+  }
 }
 
 module.exports = Flops
