@@ -19,7 +19,7 @@ function EditProfile({state, dispatch}) {
 
   function goBack (e) {
     e.preventDefault()
-    dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+    dispatch({type: 'CHANGE_PAGE', payload: `/profile/${state.currentUser.username}`})
   }
 
   return (

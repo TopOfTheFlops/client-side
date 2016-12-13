@@ -12,6 +12,6 @@ module.exports = (dispatch, userInfo, state) => {
         dispatch({type: 'CHANGE_PAGE', payload: '/unauthenticated'})
       }
       dispatch({type: 'RECEIVE_CURRENT_USER', payload: res.body.user})
-      dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+      dispatch({type: 'CHANGE_PAGE', payload: `/profile/${state.currentUser.username}`})
     })
 }

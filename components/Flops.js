@@ -36,7 +36,7 @@ function RenderFlops (state, dispatch) {
           }} />
           <p onClick={() => {
             dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
-            dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+            dispatch({type: 'CHANGE_PAGE', payload: `/profile/${flop.username}`})
           }}>{flop.rank}. {flop.username}</p>
           <p>{flop.description}</p>
           <button className='upvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
