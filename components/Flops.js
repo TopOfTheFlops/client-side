@@ -28,11 +28,10 @@ function RenderFlops (state, dispatch) {
     })
     .map((flop, index) => {
       flop.rank = index + 1
-      console.log('this is the flops', flop)
       return (
         <div className='flop' key={flop.flopId}>
           <img className='flopPic' src={flop.mediaURL} onClick={() => {
-            dispatch({type: 'CHANGE_VIEW_SINGLE_FLOP', payload: flop})
+            dispatch({type: 'CHANGE_VIEW_SINGLE_FLOP', payload: flop.flopId})
             dispatch({type: 'CHANGE_PAGE', payload: '/singleflop'})
           }} />
           <p>{flop.rank}. {flop.username}</p>

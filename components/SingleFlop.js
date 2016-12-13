@@ -4,6 +4,8 @@ import Header from './Header'
 import Nav from './Nav'
 import deleteFlop from '../api/deleteFlop'
 
+import voteFlop from '../api/voteFlop'
+
 function Flops ({state, dispatch}) {
   function goToCreateFlop (e) {
     dispatch({type: 'CHANGE_PAGE', payload: '/CreateFlop'})
@@ -25,16 +27,20 @@ function Flops ({state, dispatch}) {
 }
 
 function RenderFlop (state, dispatch) {
-  return (
-    <div className='flop' key={state.viewSingleFlop.flopId}>
-      <img className='singleflopPic' src={state.viewSingleFlop.mediaURL} />
-      <p>{state.viewSingleFlop.rank}. {state.viewSingleFlop.username}</p>
-      <p>{state.viewSingleFlop.description}</p>
-      <button className='upvote' onClick={() => upvoteFlop(dispatch, state.viewSingleFlop.flopId)} >{state.viewSingleFlop.upvotes}</button>
-      <button className='downvote' onClick={() => downvoteFlop(dispatch, state.viewSingleFlop.FlopId)}>{state.viewSingleFlop.downvotes}</button>
-      <button className='create' onClick={() => deleteFlop(dispatch, state.viewSingleFlop.FlopId)}>Delete Flop</button>
-    </div>
-  )
+  return state.flops
+    .filter( flop  => flop.flopId === state.viewSingleFlopId)
+    .map(flop => {
+      return (
+        <div className='flop' key={flop.flopId}>
+          <img className='singleflopPic' src={flop.mediaURL}/>
+          <p>{flop.rank}. {flop.username}</p>
+          <p>{flop.description}</p>
+          <button className='upvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
+          <button className='downvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
+          <button className='create' onClick={() => deleteFlop(dispatch, flop.flopId)}>Delete Flop</button>
+        </div>
+      )
+    })
 }
 
 function RenderTitle (state) {
