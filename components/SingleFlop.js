@@ -2,6 +2,7 @@ import React from 'react'
 
 import Header from './Header'
 import Nav from './Nav'
+import deleteFlop from '../api/deleteFlop'
 
 import voteFlop from '../api/voteFlop'
 
@@ -36,6 +37,7 @@ function RenderFlop (state, dispatch) {
           <p>{flop.description}</p>
           <button className='upvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
           <button className='downvote' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
+          {RenderDeleteButton(dispatch, flop, state.currentUser.userId)}
         </div>
       )
     })
@@ -46,16 +48,10 @@ function RenderTitle (state) {
   return lifestyles.filter(lifestyle => lifestyle.lifestyleId == currentLifestyleId).map(lifestyle => (<h2 className='lifestyleHeader' key={lifestyle.lifestyleId}>{lifestyle.title}</h2>))
 }
 
+function RenderDeleteButton(dispatch, flop, userId) {
+  if (flop.userId === userId) {
+    return <button className='create' onClick={() => deleteFlop(dispatch, flop.flopId)}>Delete Flop</button>
+  }
+}
+
 module.exports = Flops
-
-
-
-// return (
-//   <div className='flop' key={state.viewSingleFlop.flopId}>
-//   <img className='singleflopPic' src={state.viewSingleFlop.mediaURL} />
-//   <p>{state.viewSingleFlop.rank}. {state.viewSingleFlop.username}</p>
-//   <p>{state.viewSingleFlop.description}</p>
-//   <button className='upvote' onClick={() => upvoteFlop(dispatch, state.viewSingleFlop.flopId)} >{state.viewSingleFlop.upvotes}</button>
-//   <button className='downvote' onClick={() => downvoteFlop(dispatch, state.viewSingleFlop.FlopId)}>{state.viewSingleFlop.downvotes}</button>
-//   </div>
-// )

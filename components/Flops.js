@@ -28,7 +28,6 @@ function RenderFlops (state, dispatch) {
     })
     .map((flop, index) => {
       flop.rank = index + 1
-      console.log('this is the flops', flop)
       return (
         <div className='flop' key={flop.flopId}>
           <img className='flopPic' src={flop.mediaURL} onClick={() => {
