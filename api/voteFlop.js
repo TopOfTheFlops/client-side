@@ -8,6 +8,8 @@ module.exports = (dispatch, state, flopId, userId, upvote, downvote) => {
     upvote,
     downvote
   }
+  dispatch({type: 'POST_VOTE', payload: sendInfo})
+  dispatch({type: 'ATTACH_VOTES'})
   request
     .post(`${url}/api/v1/votes`)
     .withCredentials()

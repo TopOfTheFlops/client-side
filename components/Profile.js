@@ -51,7 +51,7 @@ function User (state, dispatch) {
       return (
         <div>
           <h1>{user.username}</h1>
-          <img src={user.profilePic}/>
+          <img className="profilePic" src={user.profilePic}/>
         </div>
       )
     })

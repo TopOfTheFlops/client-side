@@ -28,16 +28,20 @@ function RenderFlops (state, dispatch) {
     })
     .map((flop, index) => {
       flop.rank = index + 1
+      var userPic = state.allUsers.find(user => user.userId === flop.userId).profilePic
       return (
         <div className='flop' key={flop.flopId}>
           <img className='flopPic clickable' src={flop.mediaURL} onClick={() => {
             dispatch({type: 'CHANGE_VIEW_SINGLE_FLOP', payload: flop.flopId})
             dispatch({type: 'CHANGE_PAGE', payload: `/flops/${flop.flopId}`})
           }} />
-          <p className="clickable usernameLink" onClick={() => {
-            dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
-            dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
-          }}>{flop.rank}. {flop.username}</p>
+          <div className="user">
+            <div><img className="userThumbnail" src={userPic}/></div>
+            <p className="clickable usernameLink" onClick={() => {
+              dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
+              dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+            }}>{flop.username}</p>
+          </div>
           <p>{flop.description}</p>
           <button className='upvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
           <button className='downvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
@@ -45,6 +49,16 @@ function RenderFlops (state, dispatch) {
       )
     })
 }
+
+// <div className={customClass+" user"} key={index}>
+//   <div>
+//   <img className="userThumbnail" src={userPic}/>
+//   </div>
+//   <p className="clickable usernameLink" onClick={() =>{
+//     dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
+//     dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+//   }}>{flop.rank}. {flop.username}</p>
+// </div>
 
 function RenderTitle (state) {
   const {lifestyles, currentLifestyleId} = state
