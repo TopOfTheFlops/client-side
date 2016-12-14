@@ -282,7 +282,7 @@ nav li {
 
 .singleflopPic {
   position: relative;
-  max-width: 80%;
+  max-width: 40%;
   object-fit: cover;
 }
 
@@ -299,6 +299,10 @@ nav li {
 
 .profile {
   display: inline-block;
+}
+
+.delete {
+  background-color: #ff3333;
 }
 
 /******************************************/
