@@ -10,10 +10,11 @@ function Nav ({state, dispatch}) {
     dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: state.currentUser.userId})
     dispatch({type: 'CHANGE_PAGE', payload: `/profile/${state.currentUser.username}`})
   }
+  var iconFilepath = state.currentpage === 'dashboard' ? './' : '../'
   return (
     <nav>
     <div className='clickable' onClick={goToNewsfeed}>
-      <img className='icons' src ='./assets/newsfeed.svg'/>
+      <img className='icons' src ={iconFilepath+"assets/newsfeed.svg"}/>
       <p className="clickable navButton">newsfeed</p>
     </div>
     <div className='clickable' onClick={goToProfile}>

@@ -12,7 +12,9 @@ function Flops ({state, dispatch}) {
     <div>
       <Header />
       {RenderTitle(state)}
-      <button className='create' onClick={goToCreateFlop}>Compete!</button>
+      <div className="buttonGroup dashboardButtons">
+        <div className='btn' onClick={goToCreateFlop}>Compete!</div>
+      </div>
       {RenderFlops(state, dispatch)}
       <div className='clear' />
       <Nav state={state} dispatch={dispatch} />
@@ -42,7 +44,7 @@ function RenderFlops (state, dispatch) {
             </div>
             <p className="clickable usernameLink" onClick={() => {
               dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
-              dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
+              dispatch({type: 'CHANGE_PAGE', payload: `/profile/${flop.username}`})
             }}>{flop.username}</p>
           </div>
 
@@ -66,7 +68,11 @@ function RenderFlops (state, dispatch) {
 
 function RenderTitle (state) {
   const {lifestyles, currentLifestyleId} = state
-  return lifestyles.filter(lifestyle => lifestyle.lifestyleId == currentLifestyleId).map(lifestyle => (<h2 className='lifestyleHeader' key={lifestyle.lifestyleId}>{lifestyle.title}</h2>))
+  return lifestyles.filter(lifestyle => lifestyle.lifestyleId == currentLifestyleId).map(lifestyle => (
+    <div className='lifestyleHeader' key={lifestyle.lifestyleId}>
+      <h2>{lifestyle.title}</h2>
+      <p>{lifestyle.description}</p>
+    </div>))
 }
 
 function checkMedia(mediaURL){

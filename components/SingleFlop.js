@@ -18,7 +18,9 @@ function Flops ({state, dispatch}) {
     <div>
       <Header />
       {RenderTitle(state)}
-      <button className="clickable" onClick={goBack}>back</button>
+      <div className="buttonGroup dashboardButtons">
+        <div className="clickable btn" onClick={goBack}>back</div>
+      </div>
       {RenderFlop(state, dispatch)}
       <div className='clear' />
       <Nav state={state} dispatch={dispatch} />
