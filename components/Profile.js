@@ -53,7 +53,7 @@ function User (state, dispatch) {
     })
     .map(user => {
       return (
-        <div>
+        <div key={user.userId}>
           <h1>{user.username}</h1>
           <img className="profilePic" src={user.profilePic}/>
         </div>
@@ -72,7 +72,7 @@ function SortFlops (state, dispatch, userId) {
         flop.rank = index + 1
         if (flop.userId === userId) {
           return (
-            <div>
+            <div key={flop.flopId}>
               {getTitle(flop, lifestyle)}
               <h2>#{flop.rank}</h2>
             </div>
