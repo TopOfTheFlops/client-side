@@ -31,6 +31,21 @@ function RenderFlops (state, dispatch) {
     .map((flop, index) => {
       flop.rank = index + 1
       var userPic = state.allUsers.find(user => user.userId === flop.userId).profilePic
+      //On this particular vote, is there a vote in the votes array that has a match on userId and flopId
+      //If there is,is it up or down
+      var userUpvote = ""
+      var userDownvote = ""
+      var foundVote = state.votes.filter(vote => vote.flopId === flop.flopId && vote.userId === state.currentUser.userId)
+      console.log('Found vote: ', foundVote)
+      if (foundVote.length > 0) {
+        console.log("foundvote === 1", foundVote[0].upvote === 1)
+        if (Number(foundVote[0].upvote) === 1) {
+          userUpvote = "userHasVoted"
+        }
+        else {
+          userDownvote = "userHasVoted"
+        }
+      }
       return (
         <div className='flop' key={flop.flopId}>
           <img className='flopPic clickable' src={checkMedia(flop.mediaURL)} onClick={() => {
@@ -49,22 +64,13 @@ function RenderFlops (state, dispatch) {
           </div>
 
           <p>{flop.description}</p>
-          <button className='upvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
-          <button className='downvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
+          <button className={'btn upvote clickable '+userUpvote} onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
+          <button className={'btn downvote clickable '+userDownvote} onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
         </div>
       )
     })
 }
 
-// <div className={customClass+" user"} key={index}>
-//   <div>
-//   <img className="userThumbnail" src={userPic}/>
-//   </div>
-//   <p className="clickable usernameLink" onClick={() =>{
-//     dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: flop.userId})
-//     dispatch({type: 'CHANGE_PAGE', payload: '/profile'})
-//   }}>{flop.rank}. {flop.username}</p>
-// </div>
 
 function RenderTitle (state) {
   const {lifestyles, currentLifestyleId} = state
