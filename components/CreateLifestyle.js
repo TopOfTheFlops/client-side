@@ -30,9 +30,9 @@ function CreateLifestyle ({state, dispatch}) {
       </div>
       <h2>Create a Lifestyle</h2>
       <form>
-        <h3>What is this lifestyles name?</h3>
+        <p>What is this lifestyles name?</p>
         <input placeholder='Name' type='text' id='title' />
-        <h3>Briefly describe what this lifestyle is about</h3>
+        <p>Briefly describe what this lifestyle is about</p>
         <input placeholder='Description' type='text' id='description' />
         <div className='btn upload_widget_opener' onClick={(e) => {
           e.preventDefault()
