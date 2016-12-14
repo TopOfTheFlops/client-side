@@ -61,7 +61,7 @@ function RenderTitle (state) {
 
 function RenderDeleteButton(dispatch, flop, userId) {
   if (flop.userId === userId) {
-    return <button className='create clickable' onClick={() => deleteFlop(dispatch, flop.flopId)}>Delete Flop</button>
+    return <button className='btn delete clickable' onClick={() => deleteFlop(dispatch, flop.flopId)}>Delete Flop</button>
   }
 }
 
