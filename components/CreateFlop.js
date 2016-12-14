@@ -5,13 +5,7 @@ import Nav from './Nav'
 
 import postNewFlop from '../api/postNewFlop'
 import callCloudinary from '../widget'
-
-const RenderTitle = state => {
-  const {lifestyles, currentLifestyleId} = state
-  return lifestyles
-  .filter(lifestyle => lifestyle.lifestyleId == currentLifestyleId)
-  .map(lifestyle => (<h2 key={lifestyle.lifestyleId}>{lifestyle.title}</h2>))
-}
+import RenderTitle from '../helpers/createFlop'
 
 const CreateFlop = ({state, dispatch}) => {
   const createNewFlop = e => {
