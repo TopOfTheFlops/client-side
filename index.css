@@ -6,7 +6,6 @@ body {
   font-family: 'Helvetica-Neue', sans-serif;
   margin: 0;
   font-weight: 200;
-  /*background-color: #f64161;*/
 }
 
 main {
@@ -19,7 +18,7 @@ li {
 
 button {
   border: none;
-  /*color: white;*/
+  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -31,50 +30,6 @@ input {
   text-align: center;
 }
 
-.clickable {
-  cursor: pointer;
-  cursor: hand;
-}
-
-.container {
-  margin: 0 auto;
-  max-width: 960px;
-}
-
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
-}
-
-.hoverColorChange:hover {
-  color: #2980b9;
-}
-
-.imageContainer {
-  overflow: hidden;
-  border-radius: 50%
-}
-
-.btn {
-  /*border: solid 2px #2ecc71;*/
-  color: white;
-  border-radius: 3px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  margin: 30px;
-  width: 250px;
-  letter-spacing: 1px;
-  background-color: #38e280;
-}
-
-.btn:hover {
-  opacity: 0.8;
-}
-
-.buttonGroup {
-  display: flex;
-  justify-content: center;
-}
-
 /******************************************/
 /************* Header & Nav ***************/
 /******************************************/
@@ -83,14 +38,8 @@ input:-webkit-autofill {
   background-color: #f64161;
   color: white;
   width: 100%;
-  padding: 20px 0;
+  padding: 10px 0;
   margin: 0;
-}
-
-.header h1 {
-  font-size: 24px;
-  margin: 0;
-  padding: 0;
 }
 
 nav {
@@ -101,14 +50,9 @@ nav {
   width: 100%;
   height: 50px;
   margin: 0;
-  padding-bottom: 12px;
-  padding-top: 5px;
+  padding: 10px 0;
   position: fixed;
   bottom: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-
 }
 
 nav ul li {
@@ -124,15 +68,6 @@ nav li {
   height: 70px;
 }
 
-.icons {
-  width: 35px;
-}
-
-.navButton {
-  color: white;
-  margin-top: 0;
-}
-
 /******************************************/
 /************* DashBoard ******************/
 /******************************************/
@@ -141,69 +76,23 @@ nav li {
   display: inline-block;
 }
 
-.lifestyle:nth-child(even), .flop:nth-child(even) {
-  background-color: #ecf0f1;
-}
-
-.lifestyle h4 {
-  margin-top: 0;
-}
-
 .lifestylePic {
   width: 150px;
   height: 150px;
   border-radius: 50%;
 }
 
+
+.topThree {
+  padding: 15px
+}
+
+.lifestylesContainer .lifestyle:nth-child(odd){
+  background-color: #ecf0f1;
+}
+
 .currentUser {
   color: #f64161;
-  font-weight: bolder;
-  border: solid 1px #95a5a6;
-}
-
-.user {
-  padding: 15px 35px;
-  border-radius: 3px;
-  margin: 0 5px;
-  margin-bottom: 5px;
-  box-sizing: border-box;
-
-  /*display: flex;*/
-  /*justify-content: space-between;
-  align-items: center;*/
-  /*border: solid 1px #95a5a6*/
-
-}
-
-.usernameLink {
-  font-weight: 400;
-  margin: 0;
-  margin-top: 10px;
-  /*color: #2980b9;*/
-}
-
-.usernameLink:hover {
-  color: #3498db;
-}
-
-.userThumbnail {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.dashboardLoader {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dashboardButtons {
-  background-color: #E4F1FE;
 }
 
 /******************************************/
@@ -217,38 +106,18 @@ nav li {
 }
 
 .lifestyleHeader {
-  background-color: #E4F1FE;
-  padding: 20px 20px 0 20px;
+  background-color: #DADFE1;
+  padding: 20px 0;
   margin: 0;
   font-size: 1.1em;
   font-weight: lighter;
-  box-sizing: border-box;
 }
 
-.lifestyleHeader p {
-  padding: 0;
-  margin: 0;
-}
-
-.lifestyleHeader h2 {
-  font-weight: 200;
-}
 .lifestyle, .flop {
   width: 100%;
   /*border-top: solid 1px black;*/
-  padding-top: 15px;
-  /*border-bottom: solid 0.4px #ecf0f1;*/
-}
-
-.topThree {
-  /*border: solid 1px gray;*/
-  /*background-color: #bdc3c7;*/
-  display: flex;
-  justify-content: center;
-  border-radius: 3px;
-  color: #2c3e50;
-  margin: 20px auto;
-  flex-wrap: wrap;
+  border-bottom: solid 1px black;
+  margin-bottom: 2px;
 }
 
 .flop {
@@ -276,7 +145,6 @@ nav li {
 .singleflopPic {
   position: relative;
   max-width: 80%;
-  object-fit: cover;
 }
 
 /******************************************/
@@ -287,7 +155,6 @@ nav li {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  object-fit: cover;
 }
 
 .profile {
@@ -300,10 +167,8 @@ nav li {
 .signupButton {
   color: white;
   background-color: #f64161;
-  position: relative;
-  bottom: -100px;
 }
-.signupButton:hover, .loginButton:hover {
+.signupButton:hover {
   color: lightgray;
 }
 
@@ -313,38 +178,25 @@ nav li {
   font-size: 3em;
 }
 
-.loginSubtitle {
-  color: white;
-  margin-top: -25px;
-}
-
 .loginPage {
   background-color: #f64161;
   position: absolute;
   height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 }
 
 .loginForm {
-  /*margin-top: 150px;*/
-  padding: 10px 0;
-  border-radius: 3px;
-  /*margin-bottom: 200px;*/
+  margin-top: 150px;
+  margin-bottom: 200px;
   text-align: center;
 }
 
 .loginButton {
   background-color: #4CAF50; /* Green */
-  border-radius: 3px;
   border: none;
   color: white;
-  width: 302px;
-  padding: 15px 0;
-  box-sizing: border-box;
+  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -354,7 +206,6 @@ nav li {
 .username, .password {
   display: block;
   height: 30px;
-  width: 60px;
   margin: 10px auto;
   font-size: 1.3em;
   padding: 7px 0;

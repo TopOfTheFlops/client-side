@@ -316,8 +316,24 @@ nav li {
 
 .loginTitle {
   color: white;
-  margin-top: 20%;
   font-size: 3em;
+  background-color: #f64161;
+}
+
+.signupTitle {
+  padding-top: 3%;
+  padding-bottom: 6%;
+  margin: 0;
+}
+
+
+.signupPage {
+  margin: 0;
+  padding: 0;
+}
+
+.signupText {
+  color: white;
 }
 
 .loginSubtitle {
@@ -333,7 +349,6 @@ nav li {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .loginForm {
