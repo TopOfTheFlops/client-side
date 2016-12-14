@@ -72,9 +72,11 @@ function SortFlops (state, dispatch, userId) {
         flop.rank = index + 1
         if (flop.userId === userId) {
           return (
-            <div key={flop.flopId}>
-              {getTitle(flop, lifestyle)}
-              <h2>#{flop.rank}</h2>
+            <div className='flopContainer' key={flop.flopId}>
+            <div className='flopRank'>
+              <h2>{flop.rank}</h2>
+            </div>
+            {getTitle(flop, lifestyle)}
             </div>
           )
         }
@@ -83,7 +85,7 @@ function SortFlops (state, dispatch, userId) {
 }
 
 function getTitle (flop, lifestyle) {
-  return <h2>{lifestyle.title}</h2>
+  return <h2 className='lifestyleTitle'>{lifestyle.title}</h2>
 }
 
 module.exports = Profile
