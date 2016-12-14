@@ -312,6 +312,13 @@ nav li {
 /******************************************/
 /************* Login **********************/
 /******************************************/
+
+.loginLogo {
+  height: 25vh;
+  /*width: 200px;*/
+  display: block;
+}
+
 .signupButton {
   color: white;
   background-color: #f64161;
