@@ -26,11 +26,13 @@ function CreateFlop ({state, dispatch}) {
   return (
     <div>
       <Header />
-      <h2>Flopping</h2>
+      <div className="buttonGroup dashboardButtons">
+        <div className ='btn clickable' onClick={goBack}>back</div>
+      </div>  
+      <h2>Create a Flop</h2>
       {RenderTitle(state)}
-      <button onClick={goBack}>back</button>
       <form>
-        <label>Describe your entry</label>
+        <p>Describe your entry</p>
         <input placeholder='Description' type='text' id='description' />
         <button className='upload' id='upload_widget_opener' onClick={(e) => {
           e.preventDefault()
