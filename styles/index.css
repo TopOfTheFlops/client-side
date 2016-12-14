@@ -265,12 +265,6 @@ nav li {
   left: 0;
   height:50px;
 }
-.downvote {
-  background-color: #f64161; /*Krang's Pink*/
-}
-.upvote {
-  background-color: #2ecc71; /*Green*/
-}
 
 /******************************************/
 /********* Single Flops *******************/
@@ -382,6 +376,15 @@ nav li {
 /******************************************/
 /************* VOTES HANDLING *************/
 /******************************************/
+
+.downvote {
+  background-color: #f64161; /*Krang's Pink*/
+  color: white;
+}
+.upvote {
+  background-color: #2ecc71; /*Green*/
+  color: white;
+}
 
 .userHasVoted {
   box-sizing: border-box;
