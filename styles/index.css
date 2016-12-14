@@ -379,16 +379,19 @@ nav li {
 
 .downvote {
   background-color: #f64161; /*Krang's Pink*/
+  opacity: 0.8;
   color: white;
 }
 .upvote {
   background-color: #2ecc71; /*Green*/
+  opacity: 0.8;
   color: white;
 }
 
 .userHasVoted {
   box-sizing: border-box;
-  border: solid 3px black
+  border: solid 3px black;
+  opacity: 1;
 }
 
 .disabled {
