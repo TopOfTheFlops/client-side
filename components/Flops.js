@@ -73,7 +73,7 @@ function checkMedia(mediaURL){
   if(mediaURL){
     var extension = mediaURL.slice(mediaURL.length - 3, mediaURL.length)
     if(extension == 'mp4'){
-      return "https://c3metrics.com/wp-content/uploads/2016/08/feature-video-thumbnail-overlay.png"
+      return "http://cache.trustedpartner.com/images/library/AfterHoursPediatrics2010/Content/Video-Icon.jpg"
     }
     return mediaURL
   }

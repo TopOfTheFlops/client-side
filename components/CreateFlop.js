@@ -28,12 +28,13 @@ function CreateFlop ({state, dispatch}) {
       <Header />
       <div className="buttonGroup dashboardButtons">
         <div className ='btn clickable' onClick={goBack}>back</div>
-      </div>  
+      </div>
       <h2>Create a Flop</h2>
       {RenderTitle(state)}
       <form>
         <p>Describe your entry</p>
         <input placeholder='Description' type='text' id='description' />
+        <p>Add a picture</p>
         <div className='btn upload_widget_opener' onClick={(e) => {
           e.preventDefault()
           callCloudinary(dispatch)
