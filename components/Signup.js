@@ -16,21 +16,24 @@ function Signup ({state, dispatch}) {
     createNewUser(dispatch, userInfo)
   }
   return (
-    <div className='loginPage'>
-      <h1 className='loginTitle'>top of the flops</h1>
-      <form action='' method='post'>
-        <input className='username' placeholder='username' type='text' name='username' id='username' />
-        <input className='username' placeholder='name' type='text' name='name' id='name' />
-        <input className='password' placeholder='password' type='password' name='password'id='password' />
-        <input className='username' placeholder='location' type='text' name='location' id='location' />
-        <input className='username' placeholder='a bit about you...' type='text' name='bio' id='bio' />
-        <button id='upload_widget_opener' onClick={(e) => {
-          e.preventDefault()
-          callCloudinary(dispatch)
-        }
-        }>Add a profile picture</button>
-        <input className='loginButton' type='submit' value='signup!' onClick={signupNewUser} />
-      </form>
+    <div className='signupPage'>
+      <h1 className='loginTitle signupTitle'>top of the flops</h1>
+      <div className='loginPage'>
+        <form action='' method='post'>
+          <input className='username' placeholder='username' type='text' name='username' id='username' />
+          <input className='username' placeholder='name' type='text' name='name' id='name' />
+          <input className='password' placeholder='password' type='password' name='password'id='password' />
+          <input className='username' placeholder='location' type='text' name='location' id='location' />
+          <input className='username' placeholder='a bit about you...' type='text' name='bio' id='bio' />
+          <p className='signupText'>Add a picture</p>
+          <div className='btn upload_widget_opener' onClick={(e) => {
+            e.preventDefault()
+            callCloudinary(dispatch)
+          }
+        }><p>+</p></div>
+          <input className='loginButton' type='submit' value='signup!' onClick={signupNewUser} />
+        </form>
+      </div>
     </div>
   )
 }
