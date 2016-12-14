@@ -31,21 +31,9 @@ function RenderFlops (state, dispatch) {
     .map((flop, index) => {
       flop.rank = index + 1
       var userPic = state.allUsers.find(user => user.userId === flop.userId).profilePic
-      //On this particular vote, is there a vote in the votes array that has a match on userId and flopId
-      //If there is,is it up or down
-      var userUpvote = ""
-      var userDownvote = ""
       var foundVote = state.votes.filter(vote => vote.flopId === flop.flopId && vote.userId === state.currentUser.userId)
-      console.log('Found vote: ', foundVote)
-      if (foundVote.length > 0) {
-        console.log("foundvote === 1", foundVote[0].upvote === 1)
-        if (Number(foundVote[0].upvote) === 1) {
-          userUpvote = "userHasVoted"
-        }
-        else {
-          userDownvote = "userHasVoted"
-        }
-      }
+      var userUpvote = foundVote.length > 0 && (Number(foundVote[0].upvote) === 1) ? "userHasVoted" : ""
+      var userDownvote = foundVote.length > 0 && (Number(foundVote[0].downvote) === 1) ? "userHasVoted" : ""
       return (
         <div className='flop' key={flop.flopId}>
           <img className='flopPic clickable' src={checkMedia(flop.mediaURL)} onClick={() => {
@@ -64,8 +52,8 @@ function RenderFlops (state, dispatch) {
           </div>
 
           <p>{flop.description}</p>
-          <button className={'btn upvote clickable '+userUpvote} onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
-          <button className={'btn downvote clickable '+userDownvote} onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
+          <button className={'btn upvote clickable noselect '+userUpvote} onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
+          <button className={'btn downvote clickable noselect '+userDownvote} onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
         </div>
       )
     })
