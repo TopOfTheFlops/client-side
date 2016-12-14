@@ -24,7 +24,7 @@ function Login ({state, dispatch}) {
   return (
     <div className='loginPage'>
       <div className='container'>
-        <img className='loginLogo' src="../assets/logo.svg"/>
+        <img className='loginLogo' src="https://topoftheflops.github.io/client-side/assets/logo.svg"/>
         <h2 className='loginTitle'>top of the flops</h2>
         <p className='loginSubtitle'>useless talents global leaders</p>
         <form className='loginForm'>
