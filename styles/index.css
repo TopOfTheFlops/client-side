@@ -265,12 +265,6 @@ nav li {
   left: 0;
   height:50px;
 }
-.downvote {
-  background-color: #f64161; /*Krang's Pink*/
-}
-.upvote {
-  background-color: #2ecc71; /*Green*/
-}
 
 /******************************************/
 /********* Single Flops *******************/
@@ -372,9 +366,34 @@ nav li {
 }
 
 /******************************************/
-/************* Upload Flop **********************/
+/************* Upload Flop ****************/
 /******************************************/
 
 .upload {
   background-color: #f64161
+}
+
+/******************************************/
+/************* VOTES HANDLING *************/
+/******************************************/
+
+.downvote {
+  background-color: #f64161; /*Krang's Pink*/
+  opacity: 0.8;
+  color: white;
+}
+.upvote {
+  background-color: #2ecc71; /*Green*/
+  opacity: 0.8;
+  color: white;
+}
+
+.userHasVoted {
+  box-sizing: border-box;
+  border: solid 3px black;
+  opacity: 1;
+}
+
+.disabled {
+  cursor: not-allowed;
 }
