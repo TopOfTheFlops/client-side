@@ -17,9 +17,16 @@ li {
   list-style: none;
 }
 
+h2, p, h3, h1, h4 {
+  color: #444
+}
+
+.siteTitle {
+  color: white;
+}
+
 button {
   border: none;
-  /*color: white;*/
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -248,19 +255,16 @@ nav li {
 }
 .lifestyle, .flop {
   width: 100%;
-  /*border-top: solid 1px black;*/
-  padding-top: 15px;
-  /*border-bottom: solid 0.4px #ecf0f1;*/
+  padding-top: 30px;
+  padding-bottom: 20px;
 }
 
 .topThree {
-  /*border: solid 1px gray;*/
-  /*background-color: #bdc3c7;*/
   display: flex;
   justify-content: center;
   border-radius: 3px;
   color: #2c3e50;
-  margin: 20px auto;
+  margin: 20px auto 0 auto;
   flex-wrap: wrap;
 }
 
@@ -312,7 +316,8 @@ nav li {
   color: white;
   background-color: #f64161;
   margin: 20px auto;
-  margin-top: 30px;
+  margin-top: 100px;
+
 }
 .signupButton:hover, .loginButton:hover {
   color: lightgray;
@@ -398,7 +403,7 @@ nav li {
 /************* Upload Flop ****************/
 /******************************************/
 
-form {
+.form-content {
   margin-bottom: 80px;
 }
 
@@ -415,6 +420,7 @@ form {
   color: #ccccb3;
   font-size: 40px;
 }
+
 
 /******************************************/
 /************* VOTES HANDLING *************/

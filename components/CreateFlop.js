@@ -31,17 +31,19 @@ function CreateFlop ({state, dispatch}) {
       </div>
       <h2>Create a Flop</h2>
       {RenderTitle(state)}
-      <form>
-        <p>Describe your entry</p>
-        <input placeholder='Description' type='text' id='description' />
-        <p>Add a picture</p>
-        <div className='btn upload_widget_opener' onClick={(e) => {
-          e.preventDefault()
-          callCloudinary(dispatch)
-        }
-      }><p>+</p></div>
-        <input className='btn' type='submit' value='compete!' onClick={createNewFlop} />
-      </form>
+      <div className='form-content'>
+        <form>
+          <p>Describe your entry</p>
+          <input placeholder='Description' type='text' id='description' />
+          <p>Add a picture</p>
+          <div className='btn upload_widget_opener' onClick={(e) => {
+            e.preventDefault()
+            callCloudinary(dispatch)
+          }
+        }><p>+</p></div>
+          <input className='btn' type='submit' value='compete!' onClick={createNewFlop} />
+        </form>
+      </div>
       <div className='clear' />
       <Nav dispatch={dispatch} state={state} />
     </div>
