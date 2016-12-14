@@ -12,8 +12,10 @@ function Profile ({state, dispatch}) {
     return (
       <div>
         <Header />
-        <button className='create' onClick={() => dispatch({type: 'CHANGE_PAGE', payload: `/profile/${state.currentUser.username}/edit`})}>Edit Profile</button>
-        <button className='create' onClick={() => logout(dispatch)}>Logout</button>
+        <div className="buttonGroup dashboardButtons">
+          <div className='btn clickable' onClick={() => dispatch({type: 'CHANGE_PAGE', payload: `/profile/${state.currentUser.username}/edit`})}>Edit Profile</div>
+          <div className='btn clickable' onClick={() => logout(dispatch)}>Logout</div>
+        </div>
         <h3>Your Profile</h3>
         <div className='profile'>
           <h1 >{state.currentUser.name}</h1>
@@ -31,7 +33,9 @@ function Profile ({state, dispatch}) {
     return (
       <div>
         <Header />
-        <button onClick={goBack}>back</button>
+        <div className="dashboardButtons buttonGroup">
+          <div className="btn clickable" onClick={goBack}>back</div>
+        </div>
         <h3>User Profile</h3>
         {User(state, dispatch)}
         {SortFlops(state, dispatch, state.currentViewUserId)}
@@ -51,7 +55,7 @@ function User (state, dispatch) {
       return (
         <div>
           <h1>{user.username}</h1>
-          <img src={user.profilePic}/>
+          <img className="profilePic" src={user.profilePic}/>
         </div>
       )
     })
@@ -63,7 +67,7 @@ function SortFlops (state, dispatch, userId) {
     .map(lifestyle => {
       return flops
       .filter(flop => flop.lifestyleId === lifestyle.lifestyleId)
-      .sort((a, b) => b.upvotes - a.upvotes)
+      .sort((a, b) => (b.upvotes - b.downvotes) - (a.upvotes - a.downvotes))
       .map((flop, index) => {
         flop.rank = index + 1
         if (flop.userId === userId) {
