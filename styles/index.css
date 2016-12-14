@@ -39,6 +39,9 @@ input {
 .container {
   margin: 0 auto;
   max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input:-webkit-autofill {
@@ -73,6 +76,16 @@ input:-webkit-autofill {
 .buttonGroup {
   display: flex;
   justify-content: center;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
 
 /******************************************/
@@ -262,12 +275,6 @@ nav li {
   left: 0;
   height:50px;
 }
-.downvote {
-  background-color: #f64161; /*Krang's Pink*/
-}
-.upvote {
-  background-color: #2ecc71; /*Green*/
-}
 
 /******************************************/
 /********* Single Flops *******************/
@@ -300,8 +307,8 @@ nav li {
 .signupButton {
   color: white;
   background-color: #f64161;
-  position: relative;
-  bottom: -100px;
+  margin: 20px auto;
+  margin-top: 30px;
 }
 .signupButton:hover, .loginButton:hover {
   color: lightgray;
@@ -369,7 +376,7 @@ nav li {
 }
 
 /******************************************/
-/************* Upload Flop **********************/
+/************* Upload Flop ****************/
 /******************************************/
 
 form {
@@ -388,4 +395,29 @@ form {
 .upload_widget_opener p {
   color: #ccccb3;
   font-size: 40px;
+}
+
+/******************************************/
+/************* VOTES HANDLING *************/
+/******************************************/
+
+.downvote {
+  background-color: #f64161; /*Krang's Pink*/
+  opacity: 0.8;
+  color: white;
+}
+.upvote {
+  background-color: #2ecc71; /*Green*/
+  opacity: 0.8;
+  color: white;
+}
+
+.userHasVoted {
+  box-sizing: border-box;
+  border: solid 3px black;
+  opacity: 1;
+}
+
+.disabled {
+  cursor: not-allowed;
 }

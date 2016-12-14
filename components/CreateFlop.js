@@ -27,8 +27,8 @@ function CreateFlop ({state, dispatch}) {
     <div>
       <Header />
       <div className="buttonGroup dashboardButtons">
-        <button className='btn' onClick={goBack}>back</button>
-      </div>
+        <div className ='btn clickable' onClick={goBack}>back</div>
+      </div>  
       <h2>Create a Flop</h2>
       {RenderTitle(state)}
       <form>

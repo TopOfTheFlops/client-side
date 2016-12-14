@@ -26,8 +26,8 @@ function CreateLifestyle ({state, dispatch}) {
     <div>
       <Header />
       <div className="buttonGroup dashboardButtons">
-        <button className='btn' onClick={goBack}>back</button>
-      </div>
+        <div className ='btn clickable' onClick={goBack}>back</div>
+      </div>  
       <h2>Create a Lifestyle</h2>
       <form>
         <p>What is this lifestyles name?</p>

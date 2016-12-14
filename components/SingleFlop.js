@@ -32,6 +32,10 @@ function RenderFlop (state, dispatch) {
   return state.flops
     .filter( flop  => flop.flopId === state.viewSingleFlopId)
     .map(flop => {
+      var userPic = state.allUsers.find(user => user.userId === flop.userId).profilePic
+      var foundVote = state.votes.filter(vote => vote.flopId === flop.flopId && vote.userId === state.currentUser.userId)
+      var userUpvote = foundVote.length > 0 && (Number(foundVote[0].upvote) === 1) ? "userHasVoted" : ""
+      var userDownvote = foundVote.length > 0 && (Number(foundVote[0].downvote) === 1) ? "userHasVoted" : ""
       return (
         <div className='flop' key={flop.flopId}>
           {RenderMedia(flop.mediaURL)}
@@ -40,8 +44,10 @@ function RenderFlop (state, dispatch) {
             dispatch({type: 'CHANGE_PAGE', payload: `/profile/${flop.username}`})
           }}>{flop.rank}. {flop.username}</p>
           <p>{flop.description}</p>
-          <button className='upvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</button>
-          <button className='downvote clickable' onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</button>
+          <div className="buttonGroup">
+            <div className={'btn upvote clickable noselect '+ userUpvote} onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 1, 0)} >{flop.upvotes}</div>
+            <div className={'btn downvote clickable noselect '+ userDownvote} onClick={() => voteFlop(dispatch, state, flop.flopId, state.currentUser.userId, 0, 1)}>{flop.downvotes}</div>
+          </div>
           {RenderDeleteButton(dispatch, flop, state.currentUser.userId)}
         </div>
       )
