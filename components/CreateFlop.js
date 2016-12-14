@@ -26,18 +26,20 @@ function CreateFlop ({state, dispatch}) {
   return (
     <div>
       <Header />
-      <h2>Flopping</h2>
+      <div className="buttonGroup dashboardButtons">
+        <button onClick={goBack}>back</button>
+      </div>
+      <h2>Create a Flop</h2>
       {RenderTitle(state)}
-      <button onClick={goBack}>back</button>
       <form>
         <label>Describe your entry</label>
         <input placeholder='Description' type='text' id='description' />
-        <button className='upload' id='upload_widget_opener' onClick={(e) => {
+        <div className='btn upload_widget_opener' onClick={(e) => {
           e.preventDefault()
           callCloudinary(dispatch)
         }
-        }>Click to upload File</button>
-        <input className='loginButton' type='submit' value='compete!' onClick={createNewFlop} />
+      }><p>+</p></div>
+        <input className='btn' type='submit' value='compete!' onClick={createNewFlop} />
       </form>
       <div className='clear' />
       <Nav dispatch={dispatch} state={state} />
