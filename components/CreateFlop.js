@@ -34,12 +34,12 @@ function CreateFlop ({state, dispatch}) {
       <form>
         <p>Describe your entry</p>
         <input placeholder='Description' type='text' id='description' />
-        <button className='upload' id='upload_widget_opener' onClick={(e) => {
+        <div className='btn upload_widget_opener' onClick={(e) => {
           e.preventDefault()
           callCloudinary(dispatch)
         }
-        }>Click to upload File</button>
-        <input className='loginButton' type='submit' value='compete!' onClick={createNewFlop} />
+      }><p>+</p></div>
+        <input className='btn' type='submit' value='compete!' onClick={createNewFlop} />
       </form>
       <div className='clear' />
       <Nav dispatch={dispatch} state={state} />

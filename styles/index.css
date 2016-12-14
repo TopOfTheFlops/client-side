@@ -379,8 +379,22 @@ nav li {
 /************* Upload Flop ****************/
 /******************************************/
 
-.upload {
-  background-color: #f64161
+form {
+  margin-bottom: 80px;
+}
+
+.upload_widget_opener {
+  background-color: white;
+  border: 1px solid #ccccb3;
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.upload_widget_opener p {
+  color: #ccccb3;
+  font-size: 40px;
 }
 
 /******************************************/
