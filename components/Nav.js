@@ -15,11 +15,11 @@ function Nav ({state, dispatch}) {
   return (
     <nav>
     <div className='clickable' onClick={goToNewsfeed}>
-      <img className='icons' src={iconFilepath+"assets/newsfeed.svg"}/>
+      <img className='icons' src="https://topoftheflops.github.io/client-side/assets/newsfeed.svg"/>
       <p className="clickable navButton">newsfeed</p>
     </div>
     <div className='clickable' onClick={goToProfile}>
-      <img className='icons' src={iconFilepath+'assets/profile.svg'}/>
+      <img className='icons' src="https://topoftheflops.github.io/client-side/assets/profile.svg"/>
       <p className="clickable navButton">profile</p></div>
     </nav>
   )
