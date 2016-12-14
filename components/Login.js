@@ -2,8 +2,8 @@ import React from 'react'
 import loginService from '../api/loginService'
 import Loader from 'halogen/PulseLoader'
 
-function Login ({state, dispatch}) {
-  function login (e) {
+const Login = ({state, dispatch}) => {
+  const login = e => {
     e.preventDefault()
 
     const userInfo = {
@@ -13,7 +13,7 @@ function Login ({state, dispatch}) {
     loginService(dispatch, userInfo)
   }
 
-  function goToSignup () {
+  const goToSignup = () => {
     dispatch({type: 'CHANGE_PAGE', payload: '/signup'})
   }
 

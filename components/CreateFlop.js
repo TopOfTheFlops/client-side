@@ -6,10 +6,17 @@ import Nav from './Nav'
 import postNewFlop from '../api/postNewFlop'
 import callCloudinary from '../widget'
 
-function CreateFlop ({state, dispatch}) {
-  function createNewFlop (e) {
+const RenderTitle = state => {
+  const {lifestyles, currentLifestyleId} = state
+  return lifestyles
+  .filter(lifestyle => lifestyle.lifestyleId == currentLifestyleId)
+  .map(lifestyle => (<h2 key={lifestyle.lifestyleId}>{lifestyle.title}</h2>))
+}
+
+const CreateFlop = ({state, dispatch}) => {
+  const createNewFlop = e => {
     e.preventDefault()
-    var flopInfo = {
+    const flopInfo = {
       userId: state.currentUser.userId,
       mediaURL: state.currentPhotoURLs,
       description: document.getElementById('description').value,
@@ -18,7 +25,7 @@ function CreateFlop ({state, dispatch}) {
     postNewFlop(dispatch, flopInfo)
   }
 
-  function goBack (e) {
+  const goBack = e => {
     e.preventDefault()
     dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
   }
@@ -45,11 +52,5 @@ function CreateFlop ({state, dispatch}) {
   )
 }
 
-function RenderTitle (state) {
-  const {lifestyles, currentLifestyleId} = state
-  return lifestyles
-    .filter(lifestyle => lifestyle.lifestyleId == currentLifestyleId)
-    .map(lifestyle => (<h2 key={lifestyle.lifestyleId}>{lifestyle.title}</h2>))
-}
 
 module.exports = CreateFlop

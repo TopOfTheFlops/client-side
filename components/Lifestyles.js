@@ -1,35 +1,8 @@
 import React from 'react'
 
-function Lifestyles ({state, dispatch}) {
-  return (
-    <div className='lifestyles'>
-      {lifeDash(state, dispatch)}
-    </div>
-  )
-}
-
-function lifeDash (state, dispatch) {
-  var {lifestyles} = state
-  return lifestyles.map(function (lifestyle, index) {
-    return (
-      <div className='lifestyle' key={index}>
-        <h4 className='clickable hoverColorChange' onClick={() => {
-          dispatch({type: 'CHANGE_CURRENTLIFESTYLEID', payload: lifestyle.lifestyleId})
-          dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
-        }}>{lifestyle.title}</h4>
-        <img className='lifestylePic clickable' src={lifestyle.media} onClick={() => {
-          dispatch({type: 'CHANGE_CURRENTLIFESTYLEID', payload: lifestyle.lifestyleId})
-          dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
-        }}/>
-        {getTopThree(state, dispatch, lifestyle.lifestyleId)}
-      </div>
-    )
-  })
-}
-
-function getTopThree (state, dispatch, lifestyleId) {
-  var {lifestyles, flops, currentUser} = state
-  var hasAddedOwnRank = false
+const getTopThree =  (state, dispatch, lifestyleId) => {
+  const {lifestyles, flops, currentUser} = state
+  let hasAddedOwnRank = false
   return (
     <div className='topThree'>
       {flops
@@ -62,6 +35,33 @@ function getTopThree (state, dispatch, lifestyleId) {
           )
         })
     }
+    </div>
+  )
+}
+
+const lifeDash = (state, dispatch) => {
+  const {lifestyles} = state
+  return lifestyles.map(function (lifestyle, index) {
+    return (
+      <div className='lifestyle' key={index}>
+        <h4 className='clickable hoverColorChange' onClick={() => {
+          dispatch({type: 'CHANGE_CURRENTLIFESTYLEID', payload: lifestyle.lifestyleId})
+          dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
+        }}>{lifestyle.title}</h4>
+        <img className='lifestylePic clickable' src={lifestyle.media} onClick={() => {
+          dispatch({type: 'CHANGE_CURRENTLIFESTYLEID', payload: lifestyle.lifestyleId})
+          dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
+        }}/>
+        {getTopThree(state, dispatch, lifestyle.lifestyleId)}
+      </div>
+    )
+  })
+}
+
+const Lifestyles = ({state, dispatch}) => {
+  return (
+    <div className='lifestyles'>
+      {lifeDash(state, dispatch)}
     </div>
   )
 }

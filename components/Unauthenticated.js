@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './Header'
 
-function Unauthenticated ({state, dispatch}) {
+const Unauthenticated = ({state, dispatch}) => {
   return (
     <div>
       <Header />

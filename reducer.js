@@ -19,8 +19,8 @@ module.exports = (state, action) => {
       newState.currentPage = payload
       return newState
     case 'POST_VOTE':
-      var voteFound = false
-      var voteIndex = 0
+      let voteFound = false
+      let voteIndex = 0
       newState.votes.forEach((vote, index) => {
         if (vote.flopId === payload.flopId && vote.userId === payload.userId) {
           voteFound = true

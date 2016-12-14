@@ -6,10 +6,10 @@ import Nav from './Nav'
 import postNewLifestyle from '../api/postNewLifestyle'
 import callCloudinary from '../widget'
 
-function CreateLifestyle ({state, dispatch}) {
-  function createNewLifestyle (e) {
+const CreateLifestyle = ({state, dispatch}) => {
+  const createNewLifestyle = e => {
     e.preventDefault()
-    var lifestyleInfo = {
+    const lifestyleInfo = {
       title: document.getElementById('title').value,
       description: document.getElementById('description').value,
       media: state.currentPhotoURLs
@@ -17,7 +17,7 @@ function CreateLifestyle ({state, dispatch}) {
     postNewLifestyle(dispatch, lifestyleInfo)
   }
 
-  function goBack (e) {
+  const goBack = e => {
     e.preventDefault()
     dispatch({type: 'CHANGE_PAGE', payload: '/lifestyles'})
   }
@@ -32,7 +32,7 @@ function CreateLifestyle ({state, dispatch}) {
         <input placeholder='Name' type='text' id='title' />
         <h3>Briefly describe what this lifestyle is about</h3>
         <input placeholder='Description' type='text' id='description' />
-        <button className='upload' id='upload_widget_opener' onClick={(e) => {
+        <button className='upload' id='upload_widget_opener' onClick={e => {
           e.preventDefault()
           callCloudinary(dispatch)
         }

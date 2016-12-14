@@ -5,10 +5,10 @@ import Header from './Header'
 import Nav from './Nav'
 
 
-function EditProfile({state, dispatch}) {
-  function editProfile (e) {
+const EditProfile = ({state, dispatch}) => {
+  const editProfile =  e => {
     e.preventDefault()
-    var userInfo = {
+    const userInfo = {
       password: document.getElementById('password').value,
       bio: document.getElementById('bio').value,
       location: document.getElementById('location').value,
@@ -17,7 +17,7 @@ function EditProfile({state, dispatch}) {
     editUserProfile(dispatch, userInfo, state)
   }
 
-  function goBack (e) {
+  const goBack = e => {
     e.preventDefault()
     dispatch({type: 'CHANGE_PAGE', payload: `/profile/${state.currentUser.username}`})
   }
@@ -31,7 +31,7 @@ function EditProfile({state, dispatch}) {
         <input className='password' placeholder='Change password' type='password' name='password'id='password' />
         <input className='username' placeholder='Change location' type='text' name='location' id='location' />
         <input className='username' placeholder='Change Bio' type='text' name='bio' id='bio' />
-        <button id='upload_widget_opener' onClick={(e) => {
+        <button id='upload_widget_opener' onClick={e => {
           e.preventDefault()
           callCloudinary(dispatch)
         }

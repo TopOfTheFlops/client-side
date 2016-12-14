@@ -9,12 +9,12 @@ import refreshState from '../api/refreshState'
 import Loader from 'halogen/PulseLoader'
 
 
-function Dashboard ({state, dispatch}) {
-  function goToCreateLifestyle (e) {
+const Dashboard = ({state, dispatch}) => {
+  const goToCreateLifestyle = e => {
     e.preventDefault()
     dispatch({type: 'CHANGE_PAGE', payload: '/lifestyles/new'})
   }
-  function actionRefreshState (e) {
+  const actionRefreshState = e => {
     e.preventDefault()
     refreshState(dispatch)
   }

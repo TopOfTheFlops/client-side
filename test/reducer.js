@@ -1,31 +1,31 @@
-var test = require('tape')
-var reducer = require('../reducer')
-var freeze = require('deep-freeze')
+import test from 'tape'
+import reducer from '../reducer'
+import freeze from 'deep-freeze'
 
-test('base test', function (t) {
+test('base test', t => {
   t.ok(true)
   t.end()
 })
 
-test('tests CHANGE_PAGE case', function (t) {
-  var initialState = {
+test('tests CHANGE_PAGE case', t => {
+  const initialState = {
     currentPage: 'login',
     lifestyles: [],
     currentUser: {}
   }
   freeze(initialState)
-  var expected = {
+  const expected = {
     currentPage: 'newsFeed',
     lifestyles: [],
     currentUser: {}
   }
-  var actual = reducer(initialState, {type: 'CHANGE_PAGE', payload: 'newsFeed'})
+  const actual = reducer(initialState, {type: 'CHANGE_PAGE', payload: 'newsFeed'})
   t.deepEqual(actual, expected, 'CHANGE_PAGE changes page correctly')
   t.end()
 })
 
-test('tests POST_VOTE can add a vote to the state ', function (t) {
-  var initialState = {
+test('tests POST_VOTE can add a vote to the state ', t => {
+  const initialState = {
     currentPage: 'login',
     lifestyles: [
       {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
@@ -37,7 +37,7 @@ test('tests POST_VOTE can add a vote to the state ', function (t) {
   }
 
   freeze(initialState)
-  var expected = {
+  const expected = {
     currentPage: 'login',
     lifestyles: [
       {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
@@ -50,15 +50,15 @@ test('tests POST_VOTE can add a vote to the state ', function (t) {
       {'voteId': 3, 'flopId': 13, 'userId': 32, 'upvote': 1, 'downvote': 0}
     ]
   }
-  var actual = reducer(initialState, {type: 'POST_VOTE', payload:
+  const actual = reducer(initialState, {type: 'POST_VOTE', payload:
     {'voteId': 3, 'flopId': 13, 'userId': 32, 'upvote': 1, 'downvote': 0}})
 
   t.deepEqual(actual, expected, 'POST_VOTE posts a single vote correctly')
   t.end()
 })
 
-test('tests POST_VOTE only updates vote when it is already present ', function (t) {
-  var initialState = {
+test('tests POST_VOTE only updates vote when it is already present ', t => {
+  const initialState = {
     currentPage: 'login',
     lifestyles: [
       {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
@@ -70,7 +70,7 @@ test('tests POST_VOTE only updates vote when it is already present ', function (
   }
 
   freeze(initialState)
-  var expected = {
+  const expected = {
     currentPage: 'login',
     lifestyles: [
       {title: 'Best Lasagna', description: 'The person that can make the best lasagna', lifestyleId: 1},
@@ -82,15 +82,15 @@ test('tests POST_VOTE only updates vote when it is already present ', function (
       {'flopId': 1, 'userId': 1, 'upvote': 1, 'downvote': 0}
     ]
   }
-  var actual = reducer(initialState, {type: 'POST_VOTE', payload:
+  const actual = reducer(initialState, {type: 'POST_VOTE', payload:
     {'flopId': 1, 'userId': 1, 'upvote': 1, 'downvote': 0}})
 
   t.deepEqual(actual, expected, 'POST_VOTE updates a vote correctly')
   t.end()
 })
 
-test('tests RECEIVE_LIFESTYLES gets lifestyle data', function (t) {
-  var initialState = {
+test('tests RECEIVE_LIFESTYLES gets lifestyle data', t => {
+  const initialState = {
     currentPage: 'login',
     requestingLifestyles: true,
     lifestyles: [],
@@ -99,7 +99,7 @@ test('tests RECEIVE_LIFESTYLES gets lifestyle data', function (t) {
   }
   freeze(initialState)
 
-  var expected = {
+  const expected = {
     currentPage: 'login',
     requestingLifestyles: false,
     lifestyles: [
@@ -118,8 +118,8 @@ test('tests RECEIVE_LIFESTYLES gets lifestyle data', function (t) {
   t.end()
 })
 
-test('tests RECEIVE_FLOPS gets flops data', function (t) {
-  var initialState = {
+test('tests RECEIVE_FLOPS gets flops data', t => {
+  const initialState = {
     currentPage: 'login',
     requestingFlops: true,
     lifestyles: [],
@@ -128,7 +128,7 @@ test('tests RECEIVE_FLOPS gets flops data', function (t) {
   }
   freeze(initialState)
 
-  var expected = {
+  const expected = {
     currentPage: 'login',
     lifestyles: [],
     requestingFlops: false,
@@ -151,8 +151,8 @@ test('tests RECEIVE_FLOPS gets flops data', function (t) {
   t.end()
 })
 
-test('tests RECEIVE_CURRENT_USER gets current flopper data', function (t) {
-  var initialState = {
+test('tests RECEIVE_CURRENT_USER gets current flopper data', t => {
+  const initialState = {
     currentPage: 'login',
     lifestyles: [],
     currentUser: {},
@@ -160,7 +160,7 @@ test('tests RECEIVE_CURRENT_USER gets current flopper data', function (t) {
   }
   freeze(initialState)
 
-  var expected = {
+  const expected = {
     currentPage: 'login',
     lifestyles: [],
     currentUser: {
@@ -186,7 +186,7 @@ test('tests RECEIVE_CURRENT_USER gets current flopper data', function (t) {
   t.end()
 })
 
-test('tests CHANGE_CURRENTLIFESTYLEID can change the id', function (t) {
+test('tests CHANGE_CURRENTLIFESTYLEID can change the id', t => {
   const initialState = {
     currentPage: '/',
     currentLifestyleId: 1
@@ -205,8 +205,8 @@ test('tests CHANGE_CURRENTLIFESTYLEID can change the id', function (t) {
   t.end()
 })
 
-test('LOGIN_INIT', function (t) {
-  var initialState = {
+test('LOGIN_INIT', t => {
+  const initialState = {
     loginInProgress: false
   }
   // arrange
@@ -220,8 +220,8 @@ test('LOGIN_INIT', function (t) {
   t.end()
 })
 
-test('LOGIN_SUCCESSFUL', function (t) {
-  var initialState = {
+test('LOGIN_SUCCESSFUL', t => {
+  const initialState = {
     loginInProgress: true,
     loginUnsuccessful: true
   }
@@ -245,8 +245,8 @@ test('LOGIN_SUCCESSFUL', function (t) {
   t.end()
 })
 
-test('LOGIN_UNSUCCESSFUL', function (t) {
-  var initialState = {
+test('LOGIN_UNSUCCESSFUL', t => {
+  const initialState = {
     loginInProgress: true,
     loginUnsuccessful: false
   }
@@ -263,12 +263,12 @@ test('LOGIN_UNSUCCESSFUL', function (t) {
   t.end()
 })
 
-test('SAVE_PHOTO_URL', function (t) {
-  var initialState = {
+test('SAVE_PHOTO_URL', t => {
+  const initialState = {
     currentPhotoURLs: null
   }
   // arrange
-  var expectedState = {
+  const expectedState = {
     currentPhotoURLs: 'url'
   }
   freeze(initialState)
@@ -280,8 +280,8 @@ test('SAVE_PHOTO_URL', function (t) {
   t.end()
 })
 
-test('REMOVE_PHOTO_URL', function (t) {
-  var initialState = {
+test('REMOVE_PHOTO_URL', t => {
+  const initialState = {
     currentPhotoURLs: 'url'
   }
   // arrange
@@ -297,8 +297,8 @@ test('REMOVE_PHOTO_URL', function (t) {
   t.end()
 })
 
-test('LOGOUT', function (t) {
-  var initialState = {
+test('LOGOUT', t => {
+  const initialState = {
     currentUser: {
       userId: 1,
       name: 'lord master',
@@ -317,8 +317,8 @@ test('LOGOUT', function (t) {
   t.end()
 })
 
-test('tests RECEIVE_VOTES gets all the votes', function (t) {
-  var initialState = {
+test('tests RECEIVE_VOTES gets all the votes', t => {
+  const initialState = {
     currentPage: 'login',
     lifestyles: [],
     currentUser: {},
@@ -327,7 +327,7 @@ test('tests RECEIVE_VOTES gets all the votes', function (t) {
   }
   freeze(initialState)
 
-  var expected = {
+  const expected = {
     currentPage: 'login',
     lifestyles: [],
     currentUser: {},
@@ -348,8 +348,8 @@ test('tests RECEIVE_VOTES gets all the votes', function (t) {
   t.end()
 })
 
-test('tests RECEIVE_ALL_USERS can receive all users correctly', function (t) {
-  var initialState = {
+test('tests RECEIVE_ALL_USERS can receive all users correctly', t => {
+  const initialState = {
     currentPage: 'login',
     lifestyles: [],
     currentUser: {},
@@ -359,7 +359,7 @@ test('tests RECEIVE_ALL_USERS can receive all users correctly', function (t) {
   }
   freeze(initialState)
 
-  var expected = {
+  const expected = {
     currentPage: 'login',
     lifestyles: [],
     currentUser: {},

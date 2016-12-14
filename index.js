@@ -46,16 +46,15 @@ const route = sheetRouter({default: '/404'}, [
   ['/unauthenticated', (parmas) => Unauthenticated]
 ])
 
-history(function (href) {
-  dispatch({type: 'CHANGE_PAGE', payload: href.pathname})
-})
+history(href => dispatch({type: 'CHANGE_PAGE', payload: href.pathname}))
+
 
 subscribe(() => {
   const currentPage = getState().currentPage
   if(window.location.href !== currentPage){
     window.history.pushState({}, null, currentPage)
   }
-  var Component = route(currentPage)
+  const Component = route(currentPage)
   render(<Component state={getState()} dispatch={dispatch} />, main)
 })
 

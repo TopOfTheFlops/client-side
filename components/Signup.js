@@ -2,10 +2,10 @@ import React from 'react'
 import createNewUser from '../api/createNewUser'
 import callCloudinary from '../widget'
 
-function Signup ({state, dispatch}) {
-  function signupNewUser (e) {
+const Signup = ({state, dispatch}) => {
+  const signupNewUser = e => {
     e.preventDefault()
-    var userInfo = {
+    const userInfo = {
       username: document.getElementById('username').value,
       name: document.getElementById('name').value,
       password: document.getElementById('password').value,

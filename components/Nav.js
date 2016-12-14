@@ -1,16 +1,16 @@
 import React from 'react'
 
-function Nav ({state, dispatch}) {
-  function goToNewsfeed (e) {
+const Nav = ({state, dispatch}) => {
+  const goToNewsfeed = e => {
     e.preventDefault()
     dispatch({type: 'CHANGE_PAGE', payload: '/lifestyles'})
   }
-  function goToProfile (e) {
+  const goToProfile = e => {
     e.preventDefault()
     dispatch({type: 'CHANGE_CURRENT_VIEW_USER_ID', payload: state.currentUser.userId})
     dispatch({type: 'CHANGE_PAGE', payload: `/profile/${state.currentUser.username}`})
   }
-  var iconFilepath = state.currentpage === 'dashboard' ? './' : '../'
+  const iconFilepath = state.currentpage === 'dashboard' ? './' : '../'
   return (
     <nav>
     <div className='clickable' onClick={goToNewsfeed}>
