@@ -28,18 +28,20 @@ function EditProfile({state, dispatch}) {
       <div className="buttonGroup dashboardButtons">
         <button className='btn clickable' onClick={goBack}>back</button>
       </div>
-      <form action='' method='post'>
-        <input className='password' placeholder='Change password' type='password' name='password'id='password' />
-        <input className='username' placeholder='Change location' type='text' name='location' id='location' />
-        <input className='username' placeholder='Change Bio' type='text' name='bio' id='bio' />
-        <p>Change Profile Picture</p>
-        <div className='btn upload_widget_opener' onClick={(e) => {
-          e.preventDefault()
-          callCloudinary(dispatch)
-        }
-      }><p>+</p></div>
-        <input className='loginButton' type='submit' value='Submit!' onClick={editProfile}/>
-      </form>
+      <div className='form-content'>
+        <form action='' method='post'>
+          <input className='password' placeholder='Change password' type='password' name='password'id='password' />
+          <input className='username' placeholder='Change location' type='text' name='location' id='location' />
+          <input className='username' placeholder='Change Bio' type='text' name='bio' id='bio' />
+          <p>Change Profile Picture</p>
+          <div className='btn upload_widget_opener' onClick={(e) => {
+            e.preventDefault()
+            callCloudinary(dispatch)
+          }
+        }><p>+</p></div>
+          <input className='loginButton' type='submit' value='Submit!' onClick={editProfile}/>
+        </form>
+      </div>  
       <Nav state={state} dispatch={dispatch} />
     </div>
   )

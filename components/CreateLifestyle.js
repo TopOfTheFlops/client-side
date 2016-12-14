@@ -29,19 +29,21 @@ function CreateLifestyle ({state, dispatch}) {
         <div className ='btn clickable' onClick={goBack}>back</div>
       </div>
       <h2>Create a Lifestyle</h2>
-      <form>
-        <p>What is this lifestyles name?</p>
-        <input placeholder='Name' type='text' id='title' />
-        <p>Briefly describe what this lifestyle is about</p>
-        <input placeholder='Description' type='text' id='description' />
-        <p>Add a picture</p>
-        <div className='btn upload_widget_opener' onClick={(e) => {
-          e.preventDefault()
-          callCloudinary(dispatch)
-        }
-      }><p>+</p></div>
-        <input className='btn' type='submit' value='Go!' onClick={createNewLifestyle} />
-      </form>
+      <div className='form-content'>
+        <form>
+          <p>What is this lifestyles name?</p>
+          <input placeholder='Name' type='text' id='title' />
+          <p>Briefly describe what this lifestyle is about</p>
+          <input placeholder='Description' type='text' id='description' />
+          <p>Add a picture</p>
+          <div className='btn upload_widget_opener' onClick={(e) => {
+            e.preventDefault()
+            callCloudinary(dispatch)
+          }
+        }><p>+</p></div>
+          <input className='btn' type='submit' value='Go!' onClick={createNewLifestyle} />
+        </form>
+      </div>  
       <Nav state={state} dispatch={dispatch} />
     </div>
   )
