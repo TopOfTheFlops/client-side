@@ -25,17 +25,19 @@ function EditProfile({state, dispatch}) {
   return (
     <div className=''>
       <Header />
-      <h1 className='loginTitle'>top of the flops</h1>
-      <button onClick={goBack}>back</button>
+      <div className="buttonGroup dashboardButtons">
+        <button className='btn clickable' onClick={goBack}>back</button>
+      </div>
       <form action='' method='post'>
         <input className='password' placeholder='Change password' type='password' name='password'id='password' />
         <input className='username' placeholder='Change location' type='text' name='location' id='location' />
         <input className='username' placeholder='Change Bio' type='text' name='bio' id='bio' />
-        <button id='upload_widget_opener' onClick={(e) => {
+        <p>Change Profile Picture</p>
+        <div className='btn upload_widget_opener' onClick={(e) => {
           e.preventDefault()
           callCloudinary(dispatch)
         }
-        }>Change profile picture</button>
+      }><p>+</p></div>
         <input className='loginButton' type='submit' value='Submit!' onClick={editProfile}/>
       </form>
       <Nav state={state} dispatch={dispatch} />
