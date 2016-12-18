@@ -72,7 +72,7 @@ function RenderTitle (state) {
 function checkMedia(mediaURL){
   if(mediaURL){
     var extension = mediaURL.slice(mediaURL.length - 3, mediaURL.length)
-    if(extension == 'mp4'){
+    if(extension == 'mp4' || 'ebm' || 'ogg' || 'mov'){
       return "http://cache.trustedpartner.com/images/library/AfterHoursPediatrics2010/Content/Video-Icon.jpg"
     }
     return mediaURL

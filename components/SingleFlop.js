@@ -68,9 +68,9 @@ function RenderDeleteButton(dispatch, flop, userId) {
 function RenderMedia(mediaURL){
   if(mediaURL){
     var extension = mediaURL.slice(mediaURL.length - 3, mediaURL.length)
-    if(extension == 'mp4'){
+    if(extension == 'mp4' || 'ogg' || 'mov'){
       return <video width="320" height="240" controls>
-      <source src={mediaURL} type="video/mp4"/>
+      <source src={mediaURL} type=`"video/${extension}"`/>
       </video>
     }
     return <img className='singleflopPic' src={mediaURL}/>
