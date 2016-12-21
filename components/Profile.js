@@ -6,7 +6,8 @@ import logout from '../api/logout'
 function Profile ({state, dispatch}) {
   function goBack (e) {
     e.preventDefault()
-    dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
+    window.history.back()
+    // dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
   }
   if(state.currentUser.userId === state.currentViewUserId) {
     return (
@@ -43,7 +44,6 @@ function Profile ({state, dispatch}) {
       </div>
     )
   }
-
 }
 
 function User (state, dispatch) {
