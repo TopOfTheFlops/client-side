@@ -10,21 +10,25 @@ function Lifestyles ({state, dispatch}) {
 
 function lifeDash (state, dispatch) {
   var {lifestyles} = state
-  return lifestyles.map(function (lifestyle, index) {
-    return (
-      <div className='lifestyle' key={index}>
-        <h4 className='clickable hoverColorChange' onClick={() => {
-          dispatch({type: 'CHANGE_CURRENTLIFESTYLEID', payload: lifestyle.lifestyleId})
-          dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
-        }}>{lifestyle.title}</h4>
-        <img className='lifestylePic clickable' src={lifestyle.media} onClick={() => {
-          dispatch({type: 'CHANGE_CURRENTLIFESTYLEID', payload: lifestyle.lifestyleId})
-          dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
-        }}/>
-        {getTopThree(state, dispatch, lifestyle.lifestyleId)}
-      </div>
-    )
-  })
+  return (
+    lifestyles
+      .sort((a, b) => b.lifestyleId - a.lifestyleId)
+      .map(function (lifestyle, index) {
+        return (
+          <div className='lifestyle' key={index}>
+          <h4 className='clickable hoverColorChange' onClick={() => {
+            dispatch({type: 'CHANGE_CURRENTLIFESTYLEID', payload: lifestyle.lifestyleId})
+            dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
+          }}>{lifestyle.title}</h4>
+          <img className='lifestylePic clickable' src={lifestyle.media} onClick={() => {
+            dispatch({type: 'CHANGE_CURRENTLIFESTYLEID', payload: lifestyle.lifestyleId})
+            dispatch({type: 'CHANGE_PAGE', payload: '/flops'})
+          }}/>
+          {getTopThree(state, dispatch, lifestyle.lifestyleId)}
+          </div>
+        )
+    })
+  )
 }
 
 function getTopThree (state, dispatch, lifestyleId) {
